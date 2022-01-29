@@ -26,7 +26,7 @@ class AccountController extends Controller
         if($data->allow_ip_addr == $request->ip()){
             $logins=User::find($user->id);
             $login=$logins->logins+1;
-            $logins->update(['logins'=> $login]);
+            $logins->update(['logins'=> $login,'ip_address'=> $request->ip()]);
             return view('new_api_test');
         }
         return response('錯誤的登入IP',400);
