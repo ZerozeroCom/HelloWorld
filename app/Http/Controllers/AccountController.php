@@ -20,6 +20,18 @@ class AccountController extends Controller
 
         return $dataTable->render('accounts');
     }
+    public function logincheck(Request $request){
+        $user =$request->user();
+        $data=Allow_list::where('user_id',$user->id)->first();
+        if($data->allow_ip_addr == $request->ip()){
+            $logins=User::find($user->id);
+            $login=$logins->logins+1;
+            $logins->update(['logins'=> $login]);
+            return view('new_api_test');
+        }
+        return response('錯誤的登入IP',400);
+    }
+
 
     //log用刪除多餘字串
     public function deleStr($data){

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Actions\Fortify\CreateNewUser;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

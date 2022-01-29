@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
-{{          session_start();
 
-
-}}
-
+<script>window.location.href='/logincheck';</script>
 
 @endsection
