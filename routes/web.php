@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
-
-Route::get('/usertable', 'UserTableController@datatable');
-
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::get('/dashboard', function () {

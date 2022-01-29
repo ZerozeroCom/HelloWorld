@@ -28,7 +28,7 @@ class Allow_listController extends Controller
         $data=Allow_list::find($id);
             //若有資料 進行驗證
         $dev = $request->validate([
-            'allow_ip_addr' => 'required|string|min:9',
+            'allow_ip_addr' => 'required|ip|string|min:7',
         ]);
         Log::channel('change_al')->info('beforeData',['userid'=>$user->id,'data'=> $data] );
         $data->update($dev);
