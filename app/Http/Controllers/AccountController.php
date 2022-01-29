@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Jetstream\DeleteUser;
 use App\DataTables\UsersDataTable;
+use App\Models\Allow_list;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -33,6 +34,9 @@ class AccountController extends Controller
         $user = $request->user();
         $data=['type'=> $request->type,'name'=> $request->name, 'email'=> $request->email];
         Log::channel('change_ac')->info('NewData',['userid'=>$user->id,'data'=> $data] );
+        $user = User::where('email',$request->email)->first();
+        $dataA=Allow_list::create(['user_id'=>$user->id,'allow_ip_addr'=>'127.0.0.1']);
+        Log::channel('change_al')->info('NewData',['userid'=>$user->id,'data'=> $dataA] );
         return response('ok',200);
     }
 

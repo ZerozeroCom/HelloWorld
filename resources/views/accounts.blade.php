@@ -70,14 +70,11 @@
                                         "password": password,
                                         "password_confirmation": password_confirmation,
                                     },
-
                             });
                                 location.reload();
-
                         }
                         else {alert('請再次確認是否填滿欄位')
                         }
-
                 }
                 else {alert('請再次確認密碼是否相符，或者密碼長度達到八位以上')
                 }
@@ -99,11 +96,8 @@
                                         "password": password,
                                         "password_confirmation": password_confirmation,
                                     },
-
                             });
                                 location.reload();
-
-
                 }
                 else {alert('請再次確認密碼是否相符，或者密碼長度達到八位以上')
                 }
@@ -127,8 +121,6 @@
             }else {
             }
         })
-
     </script>
-
 
 @endsection

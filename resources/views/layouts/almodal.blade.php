@@ -7,15 +7,10 @@
             </div>
             <div class="modal-body">
                 <form>
-                <div class="mb-3">
-                        <label for="message-text" class="col-form-label">使用者:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">白名單:</label>
-                    <input type="text" class="form-control" id="recipient-name">
-                </div>
-
+                    <div class="mb-3">
+                        <label for="allow-list" class="col-form-label">白名單:</label>
+                        <input type="text" class="form-control" id="allow-list">
+                    </div>
                 </form>
             </div>
              <div class="modal-footer">

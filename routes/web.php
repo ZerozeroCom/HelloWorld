@@ -35,6 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/accounts/delete/{id}','AccountController@deleteAcc');
 
     Route::get('/allow-lists','Allow_listController@index');
+    Route::post('/allow-lists/addNew','Allow_listController@addNewAL');
     Route::post('/allow-lists/edit/{id}','Allow_listController@editAL');
     Route::post('/allow-lists/{id}/delete','Allow_listController@delete');
 
@@ -45,6 +46,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
 
     Route::get('/sms-lists','Sms_listController@index');
+
+    Route::get('/newapitest', function () {
+        return view('new_api_test');
+    });
     Route::post('/sms-lists/API/{id}','Sms_listController@newSMSIn');
     Route::post('/sms-lists/{id}/delete','Sms_listController@delete');
 

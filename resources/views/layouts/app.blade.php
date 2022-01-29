@@ -88,6 +88,14 @@
                             <span>IP白名單管理</span>
                         </a>
                     </li>
+                    <!-- Nav Item - Utilities Collapse Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="/newapitest"
+                            >
+                            <i class="fas fa-fw fa-wrench"></i>
+                            <span>API測試</span>
+                        </a>
+                    </li>
                     <!-- Divider -->
                     <hr class="sidebar-divider">
                 </ul>

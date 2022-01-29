@@ -30,7 +30,7 @@ class Allow_listsDataTable extends DataTable
                 return $users->user->name;
             })
             ->editColumn('action',function ($model){
-                $html= '<button class="btn btn-warning edital"  data-bs-toggle="modal" data-bs-target="#alModal" data-bs-whatever="'.$model->allow_ip_addr.'" data-id="'.$model->id.'">編輯</button>&nbsp;
+                $html= '<button class="btn btn-warning edital"  data-bs-toggle="modal" data-bs-target="#alModal" data-bs-whatever="'.$model->allow_ip_addr.'" data-bs-user="'.$model->user_id.'" data-id="'.$model->id.'">編輯</button>&nbsp;
                         <button class="btn btn-danger deleteal" data-id="'.$model->id.'">刪除</button>';
                 return $html;
                 });

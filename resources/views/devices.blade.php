@@ -101,7 +101,7 @@
                                     "unnoti_keywords": data2[2],
                             },
                         }).done(function(msg){
-                            alert('新建成功')
+                            alert('編輯成功')
                             location.reload();
                         });
                 }
