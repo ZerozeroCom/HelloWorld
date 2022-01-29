@@ -2,14 +2,14 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\Device;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class DevicesDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -22,8 +22,8 @@ class UsersDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->editColumn('action',function ($model){
-                $html= '<button class="btn btn-warning editac"   data-bs-toggle="modal" data-bs-target="#accModal" data-bs-whatever="'.$model->name.'" data-id="'.$model->id.'">編輯</button>&nbsp;
-                        <button class="btn btn-danger deleteac" data-id="'.$model->id.'">刪除</button>';
+                $html= '<button class="btn btn-warning editdev"   data-bs-toggle="modal" data-bs-target="#devModal"  data-bs-whatever="'.$model->UID.'" data-id="'.$model->id.'">編輯</button>&nbsp;
+                        <button class="btn btn-danger deletedev" data-id="'.$model->id.'">刪除</button>';
                 return $html;
                 });
     }
@@ -31,10 +31,10 @@ class UsersDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\User $model
+     * @param \App\Models\Device $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
+    public function query(Device $model)
     {
         return $model->newQuery();
     }
@@ -47,8 +47,9 @@ class UsersDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('users-table')
+                    ->setTableId('devices-table')
                     ->columns($this->getColumns())
+                    ->minifiedAjax()
                     ->dom('fplBrtip')
                     ->orderBy(1)->parameters([
                         'pageLength' => 20,
@@ -65,16 +66,16 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('type')->title('管理者類型'),
-            Column::make('name')->title('管理者名稱'),
-            Column::make('email')->title('E-MAIL'),
-            Column::make('updated_at')->title('最後登入時間'),
-            Column::make('ip_address')->title('最後登入IP'),
-            Column::make('logins')->title('登入次數'),
+            Column::make('name')->title('裝置名稱'),
+            Column::make('number')->title('裝置號碼'),
+            Column::make('UID')->title('裝置UID'),
+            Column::make('note')->title('裝置備註'),
+            Column::make('noti_keywords')->title('通知關鍵字'),
+            Column::make('unnoti_keywords')->title('不通知關鍵字'),
             new Column(['title' =>'操作',
-                        'data'=>'action',
-                        'searchable'=>'false',
-                        'orderable'=>false]),
+            'data'=>'action',
+            'searchable'=>'false',
+            'orderable'=>false]),
         ];
     }
 
@@ -85,6 +86,6 @@ class UsersDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Users_' . date('YmdHis');
+        return 'Devices_' . date('YmdHis');
     }
 }

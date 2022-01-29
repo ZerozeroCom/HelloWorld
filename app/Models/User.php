@@ -24,9 +24,12 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'type',
         'name',
         'email',
         'password',
+        'ip_address',
+        'logins'
     ];
 
     /**
@@ -58,4 +61,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    public function allow_list(){
+        return $this->hasMany(Allow_list::class);
+    }
 }

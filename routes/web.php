@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,40 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+
 
 Route::get('/usertable', 'UserTableController@datatable');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/accounts','AccountController@index');
+
+    Route::post('/accounts/addNew','AccountController@addNewAcc');
+    Route::post('/accounts/edit/{id}','AccountController@editAcc');
+    Route::post('/accounts/delete/{id}','AccountController@deleteAcc');
+
+    Route::get('/allow-lists','Allow_listController@index');
+    Route::post('/allow-lists/edit/{id}','Allow_listController@editAL');
+    Route::post('/allow-lists/{id}/delete','Allow_listController@delete');
+
+    Route::get('/devices','DeviceController@index');
+    Route::post('/devices/addNew','DeviceController@addNewDev');
+    Route::post('/devices/edit/{id}','DeviceController@editDev');
+    Route::post('/devices/{id}/delete','DeviceController@delete');
+
+
+    Route::get('/sms-lists','Sms_listController@index');
+    Route::post('/sms-lists/API/{id}','Sms_listController@newSMSIn');
+    Route::post('/sms-lists/{id}/delete','Sms_listController@delete');
+
+
+});
+
+

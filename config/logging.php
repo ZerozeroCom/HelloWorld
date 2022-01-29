@@ -59,6 +59,46 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],
+        'delete_sms' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/delete/delete_sms.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'delete_dev' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/delete/delete_dev.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'delete_al' => [
+        'driver' => 'single',
+        'path' => storage_path('logs/delete/delete_al.log'),
+        'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'delete_ac' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/delete/delete_ac.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'change_ac' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/change/change_ac.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'change_al' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/change/change_al.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'change_dev' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/change/change_dev.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'change_sms' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/change/change_sms.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
 
         'daily' => [
             'driver' => 'daily',
