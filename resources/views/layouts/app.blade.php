@@ -26,14 +26,14 @@
     <body class="font-sans antialiased" id="page-top">
         <div id="wrapper">
                         <!-- Sidebar -->
-            <div id="navbarToggleExternalContent">
+            <div class="collapse" id="navbarToggleExternalContent">
                 <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
                     <!-- Sidebar - Brand -->
                     <div class="sidebar-brand d-flex align-items-center justify-content-center">
                         <div class="sidebar-brand-icon rotate-n-15">
                             <i class="fas fa-laugh-wink"></i>
                         </div>
-                        <div class="sidebar-brand-text mx-3">簡訊過濾提醒 </div>
+                        <div class="sidebar-brand-text ">簡訊過濾提醒 </div>
                     </div>
                     <!-- Divider -->
                     <hr class="sidebar-divider my-0">
@@ -97,6 +97,18 @@
                     </li>
                     <!-- Divider -->
                     <hr class="sidebar-divider">
+
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-jet-responsive-nav-link href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                {{ __('　登出　') }}
+                            </x-jet-responsive-nav-link>
+                        </form>
+                    </li>
                 </ul>
                 <!-- End of Sidebar -->
             </div>
