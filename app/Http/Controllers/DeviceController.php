@@ -24,20 +24,19 @@ class DeviceController extends Controller
     public function addNewDev(Request $request){
 
         $user = $request->user();
-        $data=[ 'name'=> $request->name,
-                'number'=> $request->number,
-                'UID'=> $request->UID,
-                'note'=> $request->note,
-                'noti_keywords'=> $request->noti_keywords,
-                'unnoti_keywords'=> $request->unnoti_keywords];
-        //重複裝置
-        $dev=Device::where('UID',$data['UID'])->first();
-        if($dev != null){
-            return response('重複登記',400);
-        }
 
-        Log::channel('change_dev')->info('NewData',['userid'=>$user->id,'data'=> $data] );
-        Device::create($data);
+        //資料驗證
+        $dev= $request->validate([
+            'name' => 'required|string|max:40',
+            'number' => 'required|string|max:20|min:9',
+            'UID' => 'unique:App\Models\Device,UID|string|max:255',
+            'note' => 'nullable|string',
+            'noti_keywords' => 'nullable|string',
+            'unnoti_keywords' => 'nullable|string',
+        ]);
+        dd($dev);
+        Log::channel('change_dev')->info('NewData',['userid'=>$user->id,'data'=> $dev] );
+        Device::create($dev);
         return response('ok',200);
     }
 
@@ -45,8 +44,8 @@ class DeviceController extends Controller
     public function editDev(Request $request,$id){
         $user = $request->user();
         $data=Device::find($id);
-            //若有資料 進行驗證
 
+            //若有資料 進行驗證
         $dev = collect($request->validate([
             'name' => 'nullable|string|max:40',
             'number' => 'nullable|string|max:20|min:9',

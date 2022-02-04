@@ -16,6 +16,7 @@
         }
         input:invalid{
             border:2px solid red;
+            color: red;
         }
     </style>
 
@@ -70,8 +71,11 @@
                             .done(function(msg){
                             location.reload()
                             alert(`${msg}新建成功`);
-                            }).fail(function(errors){
-                                alert('錯誤');
+                            }).fail(function(xhr, status, data){
+                                var error =Object.keys(xhr.responseJSON.errors)
+                                .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                .join('&');
+                                alert(`${error}`);
                             });
                 }else {alert('請再次確認，前三項為必填')}
         })
@@ -93,7 +97,7 @@
             //用來檢查表格是否完全沒填
             var check =data1[0].length+data1[1].length+data1[2].length+data2[0].length+data2[1].length+data2[2].length
             console.log(data2[0].length);
-                if ( check >= 1 && (data1[1].length >= 9 || data1[1] == "") || true){
+                if ( check >= 1 && (data1[1].length >= 9 || data1[1] == "")){
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -109,10 +113,13 @@
                                     "unnoti_keywords": data2[2],
                             },
                         }).done(function(msg){
-                            alert('編輯成功')
-                            location.reload();
-                        }).fail(function(message){
-                                alert(`${message}錯誤`);
+                                alert('編輯成功')
+                                location.reload();
+                        }).fail(function(xhr, status, data){
+                                var error =Object.keys(xhr.responseJSON.errors)
+                                .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                .join('&');
+                                alert(`${error}`);
                             });
                 }
                 else {alert('請再次確認是否有填入值，或裝置號碼需超過8碼')
@@ -135,8 +142,9 @@
                 .done(function(msg){
                     alert('刪除成功')
                     location.reload();
-                })
-            }else {
+                }).fail(function(message){
+                    alert(`${message}錯誤`);
+                });
             }
         })
 

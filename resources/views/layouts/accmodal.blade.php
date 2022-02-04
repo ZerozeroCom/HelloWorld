@@ -13,13 +13,13 @@
           </div>
           <div class="mb-3">
             <label for="acc-email" class="col-form-label">E-MAIL:</label>
-            <input type="text" class="form-control" id="email">
+            <input type="email" class="form-control" id="email">
           </div>
           <div class="mb-3">
             <label for="acc-type" class="col-form-label">管理類型:</label>
             <select type="text" class="form-control" autocomplete="new-type" id="acc-type">
-                <option>admin</option>
                 <option>common</option>
+                <option>admin</option>
                 <option>trainee</option>
             </select>
           </div>

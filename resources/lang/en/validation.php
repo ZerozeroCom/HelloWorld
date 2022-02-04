@@ -157,6 +157,30 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+
+        //共通
+        'name' => '名稱',
+        'created_at' => '創建時間',
+        'updated_at' => '更新時間',
+        //dev
+        'number' => '裝置號碼',
+        'note'  => '備註',
+        'noti_keywords'  => '通知關鍵字',
+        'unnoti_keywords'  => '不通知關鍵字',
+        //user
+        'type' => '管理類型',
+        'password' => '密碼',
+        'ip_address' => '登入IP',
+        'logins' => '登入次數',
+        //allow list
+        'allow_ip_addr' =>  '允許登入IP',
+        'user_id' =>  '使用者ID',
+        //SMS
+        'device_id' => '裝置ID',
+        'send_number' => '發送號碼',
+        'sms_content' => '簡訊內容',
+
+    ],
 
 ];
