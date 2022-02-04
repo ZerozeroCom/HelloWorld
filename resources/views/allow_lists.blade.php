@@ -49,7 +49,6 @@
                         },
                             method: 'POST',
                             url: `/allow-lists/edit/${id}`,
-                            dataType: "json",
                             data:{
                                     "user_id": data1[0],
                                     "allow_ip_addr": data1[1],

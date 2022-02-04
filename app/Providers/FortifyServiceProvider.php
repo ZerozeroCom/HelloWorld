@@ -10,6 +10,7 @@ use App\Models\Allow_list;
 use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
@@ -55,10 +56,12 @@ class FortifyServiceProvider extends ServiceProvider
                 return NULL;
             }
             $user_ip = Allow_list::where('user_id',$user->id)->first();
-            if ($user_ip->allow_ip_addr != $request->ip()) {
-                return NULL;
+
+            if ($user_ip->allow_ip_addr == $request->ip() &&
+                Hash::check($request->password, $user->password)) {
+                    return $user;
             }
-            return $user;
+            return NULL;
         });
 
 

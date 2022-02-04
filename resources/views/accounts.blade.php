@@ -62,7 +62,6 @@
                                 },
                                 method: 'POST',
                                 url: `/accounts/addNew`,
-                                dataType: "json",
                                 data:{
                                         "type": type,
                                         "name": name,
@@ -70,8 +69,10 @@
                                         "password": password,
                                         "password_confirmation": password_confirmation,
                                     },
-                            });
+                            }).done(function(msg){
+                                alert('新增成功');
                                 location.reload();
+                                })
                         }
                         else {alert('請再次確認是否填滿欄位')
                         }
@@ -88,7 +89,6 @@
                                 },
                                 method: 'POST',
                                 url: `/accounts/edit/${id}`,
-                                dataType: "json",
                                 data:{  "id": id,
                                         "type": type,
                                         "name": name,
@@ -96,8 +96,10 @@
                                         "password": password,
                                         "password_confirmation": password_confirmation,
                                     },
-                            });
+                            }).done(function(msg){
+                                alert('編輯成功');
                                 location.reload();
+                            });
                 }
                 else {alert('請再次確認密碼是否相符，或者密碼長度達到八位以上')
                 }

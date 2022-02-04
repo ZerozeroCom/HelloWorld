@@ -15,7 +15,7 @@
             </div>
              <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                <button type="button" class="btn btn-primary" id="aledit_go">確認</button>
+                <button type="button" class="btn btn-primary" id="aledit_go">送出</button>
             </div>
             </div>
     </div>

@@ -17,7 +17,11 @@
           </div>
           <div class="mb-3">
             <label for="acc-type" class="col-form-label">管理類型:</label>
-            <input type="text" class="form-control" autocomplete="new-type" id="acc-type">
+            <select type="text" class="form-control" autocomplete="new-type" id="acc-type">
+                <option>admin</option>
+                <option>common</option>
+                <option>trainee</option>
+            </select>
           </div>
           <div class="mb-3 password">
             <label for="acc-password" class="col-form-label">帳號密碼:</label>
@@ -31,7 +35,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" id="accedit_go">發送</button>
+        <button type="button" class="btn btn-primary" id="accedit_go">送出</button>
       </div>
     </div>
   </div>

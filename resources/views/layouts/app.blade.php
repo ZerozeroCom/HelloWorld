@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link href="/css/sb-admin-2.min.css" rel="stylesheet">
         <link href="/css/bootstrap.min.css" rel="stylesheet">
-
+        <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/>
         @livewireStyles
 
         <!-- Scripts -->
@@ -21,12 +21,12 @@
         <script src="/js/jquery-3.6.0.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
 
-        <script src="/js/jquery.dataTables.js" ></script>
+        <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
     </head>
     <body class="font-sans antialiased" id="page-top">
         <div id="wrapper">
                         <!-- Sidebar -->
-            <div class="collapse" id="navbarToggleExternalContent">
+            <div class="collapse show" id="navbarToggleExternalContent">
                 <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
                     <!-- Sidebar - Brand -->
                     <div class="sidebar-brand d-flex align-items-center justify-content-center">
