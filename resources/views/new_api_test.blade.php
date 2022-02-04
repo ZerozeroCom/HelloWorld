@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+
     <div class="header">
         <h5 class="modal-title" id="SMStestLabel">簡訊API測試</h5>
     </div>
@@ -8,15 +9,15 @@
         <form>
         <div class="mb-3">
             <label for="dev-email" class="col-form-label">裝置號碼:</label>
-            <input type="text" class="form-control"autocomplete="number" id="dev-number">
+            <input type="text" class="validate form-control"autocomplete="number" id="dev-number" required minlength="9" >
         </div>
         <div class="mb-3">
             <label for="dev-UID" class="col-form-label">發送號碼:</label>
-            <input type="text" class="form-control" autocomplete="send-number" id="send-number">
+            <input type="text" class="validate form-control" autocomplete="send-number" id="send-number" required minlength="9">
         </div>
         <div class="mb-3">
             <label for="message-text" class="col-form-label">簡訊內容:</label>
-            <textarea type="message-text" class="form-control" autocomplete="new-content" id="sms-content"></textarea>
+            <textarea type="message-text" class="validate form-control" autocomplete="new-content" id="sms-content" required ></textarea>
         </div>
         </form>
     </div>
@@ -33,7 +34,7 @@
                     document.getElementById('send-number').value,
                     document.getElementById('sms-content').value,];
                 //若必填有空值就不傳資料
-                if ( data[0] != "" && data[1] != "" && data[2] != ""){
+                if ( data[0] != "" && data[1] != "" && data[2] != "" &&  data[0].length >= 9 &&  data[1].length >= 9){
                     console.log(12)
                             $.ajax({
                                 headers: {
@@ -41,7 +42,6 @@
                                 },
                                 method: 'POST',
                                 url: `/sms-lists/API/${id}`,
-                                dataType: "json",
                                 data:{
                                         "number": data[0],
                                         "send_number": data[1],
@@ -50,8 +50,13 @@
                             }).done(function(msg){
                             alert('新建成功')
                             location.reload();
+                            }).fail(function(xhr, status, data){
+                                var error =Object.keys(xhr.responseJSON.errors)
+                                .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                .join('&');
+                                alert(`${error}`);
                             });
-                }else {alert('請再次確認')}
+                }else {alert('號碼需大於8碼，裝置號碼需存在於資料庫，要填完所有選項')}
         })
     </script>
 

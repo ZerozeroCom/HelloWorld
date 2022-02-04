@@ -32,16 +32,44 @@
         modalBodyInput.value = newOrEdit
         })
 
-        $('.modal-footer').on('click','#aledit_go',function(){
-            //資料依必填或選填分類
-
+          //新增資料部分
+        $('.modal-footer').on('click','#alnew_go',function(){
             var data1 =[
                     user_id,
                     document.getElementById('allow-list').value,
             ];
+            if (!data1.includes("")){
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                            method: 'POST',
+                            url: `/allow-lists/addNew`,
+                            data:{
+                                    "user_id": data1[0],
+                                    "allow_ip_addr": data1[1],
+                            },
+                        }).done(function(msg){
+                            alert('新建成功')
+                            location.reload();
+                        }).fail(function(xhr, status, data){
+                                var error =Object.keys(xhr.responseJSON.errors)
+                                .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                .join('&');
+                                alert(`${error}`);
+                            });
+                }
+                else {alert('請再次確認是否有填入值')
+                }
 
-            console.log(123);
+        })
             //編輯資料部分
+        $('.modal-footer').on('click','#aledit_go',function(){
+            var data1 =[
+                    user_id,
+                    document.getElementById('allow-list').value,
+            ];
+            console.log(123);
             if (!data1.includes("")){
                     $.ajax({
                         headers: {
@@ -56,7 +84,12 @@
                         }).done(function(msg){
                             alert('編輯成功')
                             location.reload();
-                        });
+                        }).fail(function(xhr, status, data){
+                                var error =Object.keys(xhr.responseJSON.errors)
+                                .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                .join('&');
+                                alert(`${error}`);
+                            });
                 }
                 else {alert('請再次確認是否有填入值')
                 }
@@ -64,18 +97,16 @@
         })
 
 
-
-
         //DELETE
         $('table').on('click','.deleteal',function(){
-            var id = $(this).data('id');
+            var idx = $(this).data('id');
             if (confirm("是否真的要刪除白名單?")){
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
                     },
                     method: 'POST',
-                    url: `/allow-lists/${id}/delete`,
+                    url: `/allow-lists/${idx}/delete`,
                 })
                 .done(function(msg){
                     alert('刪除成功')

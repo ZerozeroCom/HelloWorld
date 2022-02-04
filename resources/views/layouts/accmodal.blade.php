@@ -9,15 +9,15 @@
         <form>
           <div class="mb-3">
             <label for="acc-name" class="col-form-label">帳號名稱:</label>
-            <input type="text" class="form-control" id="acc-name">
+            <input type="text" class="validate form-control" id="acc-name" placeholder required>
           </div>
           <div class="mb-3">
             <label for="acc-email" class="col-form-label">E-MAIL:</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="validate form-control" id="email" placeholder required>
           </div>
           <div class="mb-3">
             <label for="acc-type" class="col-form-label">管理類型:</label>
-            <select type="text" class="form-control" autocomplete="new-type" id="acc-type">
+            <select type="text" class="form-control" autocomplete="new-type" id="acc-type" >
                 <option>common</option>
                 <option>admin</option>
                 <option>trainee</option>
@@ -25,11 +25,11 @@
           </div>
           <div class="mb-3 password">
             <label for="acc-password" class="col-form-label">帳號密碼:</label>
-            <input type="password" class="form-control" autocomplete="new-password" id="acc-password">
+            <input type="password" class="validate form-control" autocomplete="new-password" id="acc-password" placeholder required>
           </div>
           <div class="mb-3 password">
             <label for="acc-password_confirmation" class="col-form-label">確認密碼:</label>
-            <input type="password" class="form-control" autocomplete="new-password" id="acc-password_confirmation">
+            <input type="password" class="validate form-control" autocomplete="new-password" id="acc-password_confirmation" placeholder required>
           </div>
         </form>
       </div>

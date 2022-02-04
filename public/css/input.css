@@ -1,0 +1,8 @@
+
+.validate:valid{
+    border:2px solid green;
+}
+.validate:invalid{
+    border:2px solid red;
+    color: red;
+}

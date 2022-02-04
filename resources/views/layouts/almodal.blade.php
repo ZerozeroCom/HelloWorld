@@ -9,13 +9,14 @@
                 <form>
                     <div class="mb-3">
                         <label for="allow-list" class="col-form-label">白名單:</label>
-                        <input type="text" class="form-control" id="allow-list">
+                        <input type="ip" class="form-control" id="allow-list">
                     </div>
                 </form>
             </div>
              <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                <button type="button" class="btn btn-primary" id="aledit_go">送出</button>
+                <button type="button" class="btn btn-primary" id="aledit_go">送出編輯</button>
+                <button type="button" class="btn btn-success" id="alnew_go">新建送出</button>
             </div>
             </div>
     </div>

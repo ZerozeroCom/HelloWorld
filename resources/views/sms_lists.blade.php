@@ -24,7 +24,9 @@
                 .done(function(msg){
                     alert('刪除成功')
                     location.reload();
-                })
+                }).fail(function(message){
+                    alert(`${message}錯誤`);
+                });
             }else {
             }
         })

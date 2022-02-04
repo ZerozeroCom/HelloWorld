@@ -73,6 +73,12 @@
                                 alert('新增成功');
                                 location.reload();
                                 })
+                                .fail(function(xhr, status, data){
+                                var error =Object.keys(xhr.responseJSON.errors)
+                                .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                .join('&');
+                                alert(`${error}`);
+                            });
                         }
                         else {alert('請再次確認是否填滿欄位')
                         }
@@ -99,6 +105,12 @@
                             }).done(function(msg){
                                 alert('編輯成功');
                                 location.reload();
+                            })
+                            .fail(function(xhr, status, data){
+                                var error =Object.keys(xhr.responseJSON.errors)
+                                .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                .join('&');
+                                alert(`${error}`);
                             });
                 }
                 else {alert('請再次確認密碼是否相符，或者密碼長度達到八位以上')
@@ -108,14 +120,14 @@
 
         //delete account
         $('table').on('click','.deleteac',function(){
-            var id = $(this).data('id');
+            var idx = $(this).data('id');
             if (confirm("是否真的要刪除帳號?")){
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
                     },
                     method: 'POST',
-                    url: `/accounts/delete/${id}`,
+                    url: `/accounts/delete/${idx}`,
                 }).done(function(msg){
                     alert('刪除成功')
                     location.reload();

@@ -2,6 +2,17 @@
 @section('content')
 
     <div>
+        <span class-"">搜尋</span>
+        <div >
+            <div>
+                <span>裝置名稱 <input type="search" class="form-control form-control-sm" placeholder aria-controls="devices-table"></span>
+                <span>裝置號碼<input></span>
+                <span>裝置UID<input></span>
+                <span>裝置備註<input></span>
+                <span>通知關鍵字<input></span>
+                <span>不通知關鍵字<input></span>
+            </div>
+        </div>
         <button type="button" data-bs-toggle="modal" data-bs-target="#newdevModal" class="btn btn-success" id="make_new_dev">新增</button>
     </div>
     <div >
@@ -10,15 +21,6 @@
         {{$dataTable->scripts()}}
 
         @include('layouts.devmodal')
-    <style>
-        input:valid{
-            border:2px solid green;
-        }
-        input:invalid{
-            border:2px solid red;
-            color: red;
-        }
-    </style>
 
     <script>
         var newOrEdit =null;
@@ -51,7 +53,7 @@
                     document.getElementById('ndev-noti_keywords').value,
                     document.getElementById('ndev-unnoti_keywords').value,
             ];
-            if (!data1.includes("")){
+            if (!data1.includes("") && data1[1].length >= 9){
                     console.log(12)
                             $.ajax({
                                 headers: {
@@ -77,7 +79,7 @@
                                 .join('&');
                                 alert(`${error}`);
                             });
-                }else {alert('請再次確認，前三項為必填')}
+                }else {alert('請再次確認，前三項為必填或裝置號碼需超過8碼')}
         })
 
 
@@ -129,14 +131,14 @@
 
         //刪除裝置
         $('table').on('click','.deletedev',function(){
-            var id = $(this).data('id');
+            var idx = $(this).data('id');
             if (confirm("是否真的要刪除裝置?")){
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
                     },
                     method: 'POST',
-                    url: `/devices/${id}/delete`,
+                    url: `/devices/${idx}/delete`,
 
                 })
                 .done(function(msg){

@@ -3,34 +3,34 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="newdevModalLabel">裝置修改</h5>
+          <h5 class="modal-title" id="newdevModalLabel">新增裝置</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form>
             <div class="mb-3">
               <label for="dev-name" class="col-form-label">裝置名稱:</label>
-              <input type="text" class="form-control" id="ndev-name" required>
+              <input type="text" class="validate form-control" id="ndev-name" required>
             </div>
             <div class="mb-3">
               <label for="dev-email" class="col-form-label">裝置號碼:</label>
-              <input type="text" class="form-control" id="ndev-number" required minlength="9">
+              <input type="text" class="validate form-control" id="ndev-number" required minlength="9">
             </div>
             <div class="mb-3">
               <label for="dev-UID" class="col-form-label">裝置UID:</label>
-              <input type="text" class="form-control" autocomplete="new-UID" id="ndev-UID" required>
+              <input type="text" class="validate form-control" autocomplete="new-UID" id="ndev-UID" required>
             </div>
             <div class="mb-3">
               <label for="dev-note" class="col-form-label">備註:</label>
-              <input type="message-text" class="form-control" autocomplete="new-note" id="ndev-note">
+              <input type="message-text" class="validate form-control" autocomplete="new-note" id="ndev-note">
             </div>
             <div class="mb-3">
               <label for="dev-noti_keywords" class="col-form-label">通知關鍵字:</label>
-              <input type="text" class="form-control" autocomplete="new-noti_keywords" id="ndev-noti_keywords">
+              <input type="text" class="validate form-control" autocomplete="new-noti_keywords" id="ndev-noti_keywords">
             </div>
             <div class="mb-3">
                 <label for="dev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
-                <input type="text" class="form-control" autocomplete="new-unnoti_keywords" id="ndev-unnoti_keywords">
+                <input type="text" class="validate form-control" autocomplete="new-unnoti_keywords" id="ndev-unnoti_keywords">
               </div>
           </form>
         </div>
@@ -54,27 +54,27 @@
           <form>
             <div class="mb-3">
               <label for="dev-name" class="col-form-label">裝置名稱:</label>
-              <input type="text" class="form-control" id="dev-name">
+              <input type="text" class="validate form-control" id="dev-name">
             </div>
             <div class="mb-3">
               <label for="dev-email" class="col-form-label">裝置號碼:</label>
-              <input type="text" class="form-control" id="dev-number" minlength="9">
+              <input type="text" class="validate form-control" id="dev-number" minlength="9">
             </div>
             <div class="mb-3">
               <label for="dev-UID" class="col-form-label">裝置UID:</label>
-              <input type="text" class="form-control" autocomplete="new-UID" id="dev-UID">
+              <input type="text" class="validate form-control" autocomplete="new-UID" id="dev-UID">
             </div>
             <div class="mb-3">
               <label for="dev-note" class="col-form-label">備註:</label>
-              <input type="message-text" class="form-control" autocomplete="new-note" id="dev-note">
+              <input type="message-text" class="validate form-control" autocomplete="new-note" id="dev-note">
             </div>
             <div class="mb-3">
               <label for="dev-noti_keywords" class="col-form-label">通知關鍵字:</label>
-              <input type="text" class="form-control" autocomplete="new-noti_keywords" id="dev-noti_keywords">
+              <input type="text" class="validate form-control" autocomplete="new-noti_keywords" id="dev-noti_keywords">
             </div>
             <div class="mb-3">
                 <label for="dev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
-                <input type="text" class="form-control" autocomplete="new-unnoti_keywords" id="dev-unnoti_keywords">
+                <input type="text" class="validate form-control" autocomplete="new-unnoti_keywords" id="dev-unnoti_keywords">
               </div>
           </form>
         </div>

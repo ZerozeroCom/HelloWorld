@@ -55,10 +55,8 @@ class FortifyServiceProvider extends ServiceProvider
             if ($user == NULL) {
                 return NULL;
             }
-            $user_ip = Allow_list::where('user_id',$user->id)->first();
-
-            if ($user_ip->allow_ip_addr == $request->ip() &&
-                Hash::check($request->password, $user->password)) {
+            $ip= Allow_list::where('user_id',$user->id)->where('allow_ip_addr',$request->ip())->first();
+            if (Hash::check($request->password, $user->password) && $ip != null) {
                     return $user;
             }
             return NULL;
