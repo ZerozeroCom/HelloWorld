@@ -1,29 +1,43 @@
 @extends('layouts.app')
 @section('content')
 
-    <div>
-        <span class-"">搜尋</span>
+    <div class="card row m-2" >
+        <h5 class="card-header bg-info py-3 row ml-0 mr-0">搜尋</h5>
         <div >
-            <div>
-                <form>
-                    <label for="sedev-name" class="">裝置名稱:</label>
-                    <input type="text" class="" id="sedev-name">
-                    <label for="sedev-email" class="">裝置號碼:</label>
-                    <input type="text" class="" id="sedev-number" >
-                    <label for="sedev-UID" class="">裝置UID:</label>
-                    <input type="text" class="" id="sedev-UID">
-                    <label for="sedev-note" class="">備註:</label>
-                    <input type="text" class=""  id="sedev-note">
-                    <label for="sedev-noti_keywords" class="">通知關鍵字:</label>
-                    <input type="text" class="" id="sedev-noti_keywords">
-                    <label for="sedev-unnoti_keywords" class="">不通知關鍵字:</label>
-                    <input type="text" class="" id="sedev-unnoti_keywords">
-                  </form>
-                <button type="button" class="btn btn-primary" id="search_dev">搜尋</button>
-            </div>
+            <form>
+                <div class="row m-3">
+                        <div class="col-md-4 ">
+                            <label for="sedev-name" class="col-form-label">裝置名稱:</label>
+                            <input type="text" class="col-form-control" id="sedev-name">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="sedev-email" class="col-form-label">裝置號碼　:</label>
+                            <input type="text" class="col-form-control" id="sedev-number" >
+                        </div>
+                        <div class="col-md-4">
+                            <label for="sedev-UID" class="col-form-label">裝置UID　　 :</label>
+                            <input type="text" class="col-form-control" id="sedev-UID">
+                        </div>
+                </div>
+                <div class="row m-3">
+                        <div class="col-md-4">
+                            <label for="sedev-note" class="col-form-label">備註　　:</label>
+                            <input type="text" class="col-form-control"  id="sedev-note">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="sedev-noti_keywords" class="col-form-label">通知關鍵字:</label>
+                            <input type="text" class="col-form-control" id="sedev-noti_keywords">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="sedev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
+                            <input type="text" class="col-form-control" id="sedev-unnoti_keywords">
+                        </div>
+                </div>
+            </form>
         </div>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#newdevModal" class="btn btn-success" id="make_new_dev">新增</button>
+        <button type="button" class="btn  m-2 btn-primary" id="search_dev">搜尋</button>
     </div>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#newdevModal" class="btn m-2 btn-success" id="make_new_dev">新增帳號</button>
     <div >
         {{$dataTable->table()}}
     </div>

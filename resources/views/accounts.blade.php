@@ -1,24 +1,34 @@
 @extends('layouts.app')
 @section('content')
-    <div>
-        <span class-"">搜尋</span>
+
+    <div class="card row m-2" >
+        <h5 class="card-header bg-info py-3 row ml-0 mr-0">搜尋</h5>
         <div >
             <form>
-                <label for="seacc-type" class="">管理者類型:</label>
-                <select type="text" class=""  id="seacc-type" >
-                    <option></option>
-                    <option>common</option>
-                    <option>admin</option>
-                    <option>trainee</option>
-                </select>
-                <label for="seacc-name" class="">帳號名稱:</label>
-                <input type="text" class="" id="seacc-name" >
-                <label for="seemail" class="">E-MAIL:</label>
-                <input type="text" class="" id="seemail">
+                <div class="row m-3">
+                        <div class="col-md-4 ">
+                            <label for="seacc-type" class="col-form-label">管理者類型:</label>
+                            <select type="text" class="col-form-control col-md-4"  id="seacc-type" >
+                                <option></option>
+                                <option>common</option>
+                                <option>admin</option>
+                                <option>trainee</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="seacc-name" class="col-form-label">帳號名稱:</label>
+                            <input type="text" class="col-form-control" id="seacc-name" >
+                        </div>
+                        <div class="col-md-4">
+                            <label for="seemail" class="col-form-label">E-MAIL:</label>
+                            <input type="text" class="col-form-control" id="seemail">
+                        </div>
+                </div>
             </form>
-            <button type="button" class="btn btn-primary" id="search_acc">搜尋</button>
         </div>
+        <button type="button" class="btn btn-primary" id="search_acc">搜尋</button>
     </div>
+
     <div>
           <button type="button" data-bs-toggle="modal" data-bs-target="#naccModal" class="btn btn-success" id="make_new_acc">新增</button>
     </div>

@@ -1,20 +1,24 @@
 @extends('layouts.app')
 @section('content')
 
-    <div >
-        <span class-"">搜尋</span>
-        <div>
+    <div class="card row m-2" >
+        <h5 class="card-header bg-info py-3 row ml-0 mr-0">搜尋</h5>
+        <div >
             <form>
-                <label for="sesend_number" class="">簡訊發送號碼:</label>
-                <input type="text" class="" id="sesend_number">
-                <label for="sesms_content" class="">簡訊內容:</label>
-                <input type="text" class="" id="sesms_content">
-
+                <div class="row m-3">
+                        <div class="col-md-6 ">
+                            <label for="sesend_number" class="col-form-label">簡訊發送號碼:</label>
+                            <input type="text" class="col-form-control" id="sesend_number">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="sesms_content" class="col-form-label">簡訊內容:</label>
+                            <input type="text" class="col-form-control" id="sesms_content">
+                        </div>
+                </div>
             </form>
-            <button type="button" class="btn btn-primary" id="search_sms">搜尋</button>
         </div>
+        <button type="button" class="btn btn-primary" id="search_sms">搜尋</button>
     </div>
-
     <div >
     {{$dataTable->table()}}
     </div>

@@ -116,6 +116,7 @@
 
              <div id="content-wrapper" class="d-flex flex-column ">
                 @include('layouts.nav')
+            </div>
 
         </div>
 

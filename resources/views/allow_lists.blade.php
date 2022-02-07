@@ -1,17 +1,22 @@
 @extends('layouts.app')
 @section('content')
 
-
-    <div >
-        <span class-"">搜尋</span>
-        <div>
+    <div class="card row m-2" >
+        <h5 class="card-header bg-info py-3 row ml-0 mr-0">搜尋</h5>
+        <div >
             <form>
-                <label for="seallow_ip_addr" class="">IP位址:</label>
-                <input type="text" class="" id="seallow_ip_addr">
+                <div class="row m-3">
+                        <div class="col-md-12 ">
+                            <label for="seallow_ip_addr" class="col-form-label">IP位址:</label>
+                            <input type="text" class="col-form-control" id="seallow_ip_addr">
+                        </div>
+                </div>
             </form>
-            <button type="button" class="btn btn-primary" id="search_al">搜尋</button>
         </div>
+        <button type="button" class="btn btn-primary" id="search_al">搜尋</button>
     </div>
+
+
 
     <div >
     {{$dataTable->table()}}
