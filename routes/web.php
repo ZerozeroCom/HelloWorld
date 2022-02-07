@@ -1,7 +1,9 @@
 <?php
 
+use App\DataTables\DevicesDataTable;
 use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
+use Yajra\DataTables\Facades\DataTables;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +42,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/devices/addNew','DeviceController@addNewDev');
     Route::post('/devices/edit/{id}','DeviceController@editDev');
     Route::post('/devices/{id}/delete','DeviceController@delete');
-
 
     Route::get('/sms-lists','Sms_listController@index');
 

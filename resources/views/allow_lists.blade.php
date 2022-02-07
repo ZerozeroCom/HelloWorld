@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('content')
 
+
+    <div >
+        <span class-"">搜尋</span>
+        <div>
+            <form>
+                <label for="seallow_ip_addr" class="">IP位址:</label>
+                <input type="text" class="" id="seallow_ip_addr">
+            </form>
+            <button type="button" class="btn btn-primary" id="search_al">搜尋</button>
+        </div>
+    </div>
+
     <div >
     {{$dataTable->table()}}
     </div>
@@ -12,6 +24,22 @@
 
 
     <script>
+        //搜索
+        $('#search_al').on('click',function(){
+            var table = $('#allow_lists-table').DataTable();
+            var data =[
+                    "",
+                    "",
+                    document.getElementById('seallow_ip_addr').value,
+                    ]
+            for(var i =2;i<data.length;i++){
+                table.columns(i).search(data[i]);
+            }
+            table.draw();
+        })
+
+
+
         var id = null;
         var alModal = document.getElementById('alModal')
         alModal.addEventListener('show.bs.modal', function (event) {

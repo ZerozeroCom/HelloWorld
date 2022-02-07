@@ -58,9 +58,9 @@ class Allow_listsDataTable extends DataTable
                     ->setTableId('allow_lists-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('fplBrtip')
-                    ->orderBy(1)->parameters([
-                        'pageLength' => 20,
+                    ->dom('plBrtip')
+                    ->orderBy(0)->parameters([
+                        'pageLength' => 10,
                         'language' => config('datatables.i18n.tw')
                     ])
                     ;
@@ -74,6 +74,7 @@ class Allow_listsDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id'),
             Column::make('name')->title('名稱'),
             Column::make('allow_ip_addr')->title('IP位址'),
             new Column(['title' =>'操作',

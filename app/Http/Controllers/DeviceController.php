@@ -20,7 +20,6 @@ class DeviceController extends Controller
         return $dataTable->render('devices');
     }
 
-
     public function addNewDev(Request $request){
 
         $user = $request->user()->id;

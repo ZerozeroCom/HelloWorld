@@ -57,7 +57,7 @@
               <input type="text" class="validate form-control" id="dev-name">
             </div>
             <div class="mb-3">
-              <label for="dev-email" class="col-form-label">裝置號碼:</label>
+              <label for="dev-number" class="col-form-label">裝置號碼:</label>
               <input type="text" class="validate form-control" id="dev-number" minlength="9">
             </div>
             <div class="mb-3">

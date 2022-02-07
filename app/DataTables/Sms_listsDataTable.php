@@ -25,6 +25,10 @@ class Sms_listsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->editColumn('created_at',function ($model){
+                $html= $model->created_at->format("Y/m/d H:i");;
+                return $html;
+                })
             ->addColumn('name', function($device){
                 return $device->device->name;
             })->addColumn('note', function($device){
@@ -63,9 +67,9 @@ class Sms_listsDataTable extends DataTable
                     ->setTableId('sms_lists-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('fplBrtip')
-                    ->orderBy(1)->parameters([
-                        'pageLength' => 20,
+                    ->dom('plBrtip')
+                    ->orderBy(0)->parameters([
+                        'pageLength' => 10,
                         'language' => config('datatables.i18n.tw')
                     ])
                     ;
@@ -79,7 +83,8 @@ class Sms_listsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('created_at')->title('簡訊發送時間'),
+            Column::make('id'),
+            Column::make('created_at')->title('簡訊發送時間')->type('date'),
             Column::make('name')->title('裝置名稱'),
             Column::make('note')->title('裝置備註'),
             Column::make('number')->title('裝置號碼'),

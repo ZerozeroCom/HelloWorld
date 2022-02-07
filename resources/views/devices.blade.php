@@ -5,12 +5,21 @@
         <span class-"">搜尋</span>
         <div >
             <div>
-                <span>裝置名稱 <input type="search" class="form-control form-control-sm" placeholder aria-controls="devices-table"></span>
-                <span>裝置號碼<input></span>
-                <span>裝置UID<input></span>
-                <span>裝置備註<input></span>
-                <span>通知關鍵字<input></span>
-                <span>不通知關鍵字<input></span>
+                <form>
+                    <label for="sedev-name" class="">裝置名稱:</label>
+                    <input type="text" class="" id="sedev-name">
+                    <label for="sedev-email" class="">裝置號碼:</label>
+                    <input type="text" class="" id="sedev-number" >
+                    <label for="sedev-UID" class="">裝置UID:</label>
+                    <input type="text" class="" id="sedev-UID">
+                    <label for="sedev-note" class="">備註:</label>
+                    <input type="text" class=""  id="sedev-note">
+                    <label for="sedev-noti_keywords" class="">通知關鍵字:</label>
+                    <input type="text" class="" id="sedev-noti_keywords">
+                    <label for="sedev-unnoti_keywords" class="">不通知關鍵字:</label>
+                    <input type="text" class="" id="sedev-unnoti_keywords">
+                  </form>
+                <button type="button" class="btn btn-primary" id="search_dev">搜尋</button>
             </div>
         </div>
         <button type="button" data-bs-toggle="modal" data-bs-target="#newdevModal" class="btn btn-success" id="make_new_dev">新增</button>
@@ -23,6 +32,24 @@
         @include('layouts.devmodal')
 
     <script>
+        //搜索
+        $('#search_dev').on('click',function(){
+            var table = $('#devices-table').DataTable();
+            var data =[
+                    "",
+                    document.getElementById('sedev-name').value,
+                    document.getElementById('sedev-number').value,
+                    document.getElementById('sedev-UID').value,
+                    document.getElementById('sedev-note').value,
+                    document.getElementById('sedev-noti_keywords').value,
+                    document.getElementById('sedev-unnoti_keywords').value,
+                    ]
+            for(var i =1;i<data.length;i++){
+                table.columns(i).search(data[i]);
+            }
+            table.draw();
+        })
+
         var newOrEdit =null;
         var id = null;
         var devModal = document.getElementById('devModal')
@@ -54,7 +81,6 @@
                     document.getElementById('ndev-unnoti_keywords').value,
             ];
             if (!data1.includes("") && data1[1].length >= 9){
-                    console.log(12)
                             $.ajax({
                                 headers: {
                                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -98,7 +124,6 @@
             ];
             //用來檢查表格是否完全沒填
             var check =data1[0].length+data1[1].length+data1[2].length+data2[0].length+data2[1].length+data2[2].length
-            console.log(data2[0].length);
                 if ( check >= 1 && (data1[1].length >= 9 || data1[1] == "")){
                     $.ajax({
                         headers: {

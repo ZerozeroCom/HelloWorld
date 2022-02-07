@@ -97,6 +97,12 @@ class AccountController extends Controller
     public function deleteAcc(Request $request,DeleteUser $deleteUser,$id){
             $user = $request->user()->id;
             $data=User::find($id);
+
+            //刪除相依白名單
+            $dataA=Allow_list::where('user_id',$id);
+            $this->log->deleteLog("al",$user,$dataA->get()->toArray());
+            $dataA->delete();
+            //刪除使用者
             $this->log->deleteLog('dev',$user,$this->deleStr($data));
             $deleteUser->delete($data);
             return response('ok',200);

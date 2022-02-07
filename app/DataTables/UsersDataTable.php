@@ -25,7 +25,10 @@ class UsersDataTable extends DataTable
                 $html= '<button class="btn btn-warning editac"   data-bs-toggle="modal" data-bs-target="#accModal" data-bs-whatever="'.$model->name.'" data-id="'.$model->id.'">編輯</button>&nbsp;
                         <button class="btn btn-danger deleteac" data-id="'.$model->id.'">刪除</button>';
                 return $html;
-                });
+                })->editColumn('updated_at',function ($model){
+                    $html= $model->updated_at->format("Y/m/d H:i");;
+                    return $html;
+                    });
     }
 
     /**
@@ -49,11 +52,11 @@ class UsersDataTable extends DataTable
         return $this->builder()
                     ->setTableId('users-table')
                     ->columns($this->getColumns())
-                    ->dom('fplBrtip')
-                    ->orderBy(1)->parameters([
-                        'pageLength' => 20,
+                    ->dom('plBrtip')
+                    ->orderBy(0)->parameters([
+                        'pageLength' => 10,
                         'language' => config('datatables.i18n.tw')
-                    ])
+                    ]);
                     ;
     }
 
@@ -65,10 +68,11 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id'),
             Column::make('type')->title('管理者類型'),
-            Column::make('name')->title('管理者名稱'),
+            Column::make('name')->title('帳號名稱'),
             Column::make('email')->title('E-MAIL'),
-            Column::make('updated_at')->title('最後登入時間'),
+            Column::make('updated_at')->title('最後登入時間')->type('date'),
             Column::make('ip_address')->title('最後登入IP'),
             Column::make('logins')->title('登入次數'),
             new Column(['title' =>'操作',
@@ -85,6 +89,6 @@ class UsersDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Users_' . date('YmdHis');
+        return 'Users_' . date('YmdHi');
     }
 }

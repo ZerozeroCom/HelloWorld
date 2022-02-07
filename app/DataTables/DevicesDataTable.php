@@ -50,9 +50,9 @@ class DevicesDataTable extends DataTable
                     ->setTableId('devices-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('fplBrtip')
-                    ->orderBy(1)->parameters([
-                        'pageLength' => 20,
+                    ->dom('plBrtip')
+                    ->orderBy(0)->parameters([
+                        'pageLength' => 10,
                         'language' => config('datatables.i18n.tw')
                     ])
                     ;
@@ -66,6 +66,7 @@ class DevicesDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id'),
             Column::make('name')->title('裝置名稱'),
             Column::make('number')->title('裝置號碼'),
             Column::make('UID')->title('裝置UID'),
