@@ -26,11 +26,11 @@
                 </div>
             </form>
         </div>
-        <button type="button" class="btn btn-primary" id="search_acc">搜尋</button>
+        <button type="button" class="btn  m-3 btn-primary" id="search_acc">搜尋</button>
     </div>
 
     <div>
-          <button type="button" data-bs-toggle="modal" data-bs-target="#naccModal" class="btn btn-success" id="make_new_acc">新增</button>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#naccModal" class="btn  m-2 btn-success" id="make_new_acc">新增帳號</button>
     </div>
 
     <div >

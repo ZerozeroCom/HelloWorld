@@ -35,9 +35,9 @@
                 </div>
             </form>
         </div>
-        <button type="button" class="btn  m-2 btn-primary" id="search_dev">搜尋</button>
+        <button type="button" class="btn  m-3 btn-primary" id="search_dev">搜尋</button>
     </div>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#newdevModal" class="btn m-2 btn-success" id="make_new_dev">新增帳號</button>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#newdevModal" class="btn m-2 btn-success" id="make_new_dev">新增裝置</button>
     <div >
         {{$dataTable->table()}}
     </div>
