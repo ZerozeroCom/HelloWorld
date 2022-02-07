@@ -27,8 +27,8 @@
     <body class="font-sans antialiased" id="page-top">
         <div id="wrapper">
                         <!-- Sidebar -->
-            <div class="collapse show" id="navbarToggleExternalContent">
-                <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion collapse show"" id="navbarToggleExternalContent">
                     <!-- Sidebar - Brand -->
                     <div class="sidebar-brand d-flex align-items-center justify-content-center">
                         <div class="sidebar-brand-icon rotate-n-15">
@@ -110,11 +110,15 @@
                             </x-jet-responsive-nav-link>
                         </form>
                     </li>
+
+
+
+
                 </ul>
                 <!-- End of Sidebar -->
-            </div>
 
-             <div id="content-wrapper" class="d-flex flex-column ">
+
+            <div id="content-wrapper" class="d-flex flex-column ">
                 @include('layouts.nav')
             </div>
 
