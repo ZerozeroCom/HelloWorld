@@ -60,6 +60,11 @@
         //edit account modal
         var accModal = document.getElementById('accModal');
         accModal.addEventListener('show.bs.modal', function (event) {
+            //獲取表格資料
+            var  tr = event.relatedTarget.closest("tr");
+            var data =[$(tr).children().eq(1).text(),
+                        $(tr).children().eq(2).text(),
+                        $(tr).children().eq(3).text(),];
             // Button that triggered the modal
             var button = event.relatedTarget;
             // Extract info from data-bs-* attributes
@@ -72,7 +77,9 @@
             var modalTitle = accModal.querySelector('.modal-title');
             var modalBodyInput = accModal.querySelector('.modal-body input');
                 modalTitle.textContent = '編輯帳號 ' + Edit;
-                document.getElementById('acc-type').value ="";
+                accModal.querySelector('#acc-type').value = data[0];
+                accModal.querySelector('#acc-name').value = data[1];
+                accModal.querySelector('#email').value = data[2];
         })
         //new
         $('.modal-footer').on('click','#accnew_go',function(){

@@ -64,11 +64,21 @@
             table.draw();
         })
 
+
+
         var newOrEdit =null;
         var id = null;
         var devModal = document.getElementById('devModal')
         devModal.addEventListener('show.bs.modal', function (event) {
-            // Button that triggered the modal
+            //獲取表格資料
+            var  tr = event.relatedTarget.closest("tr");
+            var data =[$(tr).children().eq(1).text(),
+                        $(tr).children().eq(2).text(),
+                        $(tr).children().eq(3).text(),
+                        $(tr).children().eq(4).text(),
+                        $(tr).children().eq(5).text(),
+                        $(tr).children().eq(6).text(),];
+            console.log(data);
             var button = event.relatedTarget
             id = button.getAttribute('data-id')
             // Extract info from data-bs-* attributes
@@ -78,9 +88,17 @@
             //
             // Update the modal's content.
             var modalTitle = devModal.querySelector('.modal-title')
-            var modalBodyInput = devModal.querySelector('.modal-body input')
+            //var name = devModal.querySelector('#dev-name')
                     modalTitle.textContent = '編輯裝置 ' + newOrEdit
-            })
+                    devModal.querySelector('#dev-name').value = data[0];
+                    devModal.querySelector('#dev-number').value = data[1];
+                    devModal.querySelector('#dev-UID').value = data[2];
+                    devModal.querySelector('#dev-note').value = data[3];
+                    devModal.querySelector('#dev-noti_keywords').value = data[4];
+                    devModal.querySelector('#dev-unnoti_keywords').value = data[5];
+        })
+
+
 
             //新增資料部分
         $('.modal').on('click','#devnew_go',function(){
@@ -125,6 +143,7 @@
 
               //編輯資料部分
         $('.modal-footer').on('click','#devedit_go',function(){
+
             //資料依必填或選填分類
             var data1 =[
                     document.getElementById('dev-name').value,
