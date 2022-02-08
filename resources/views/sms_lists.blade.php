@@ -17,7 +17,7 @@
                 </div>
             </form>
         </div>
-        <button type="button" class="btn btn-primary" id="search_sms">搜尋</button>
+        <button type="button" class="btn m-2 btn-primary" id="search_sms">搜尋</button>
     </div>
     <div >
     {{$dataTable->table()}}

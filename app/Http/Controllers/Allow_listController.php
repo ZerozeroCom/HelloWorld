@@ -63,6 +63,10 @@ class Allow_listController extends Controller
     public function delete(Request $request,$id){
         $user =$request->user()->id;
         $data=Allow_list::find($id);
+        $num=count(Allow_list::where('user_id',$data->user_id)->get()->toArray());
+        if($num == 1){
+            return response('請勿刪除最後一個白名單',422);
+        }
         $this->log->deleteLog("al",$user,$data);
         $data->delete();
         return response('ok',200);

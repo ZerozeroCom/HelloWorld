@@ -13,7 +13,7 @@
                 </div>
             </form>
         </div>
-        <button type="button" class="btn btn-primary" id="search_al">搜尋</button>
+        <button type="button" class="btn m-2 btn-primary" id="search_al">搜尋</button>
     </div>
 
 
@@ -144,7 +144,9 @@
                 .done(function(msg){
                     alert('刪除成功')
                     location.reload();
-                })
+                }).fail(function(error){
+                      alert('請勿刪除最後一個白名單，直接刪除帳號可消除所有白名單。');
+                    });
             }else {
             }
         })
