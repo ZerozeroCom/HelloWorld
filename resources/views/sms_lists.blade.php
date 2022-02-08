@@ -19,12 +19,31 @@
         </div>
         <button type="button" class="btn m-2 btn-primary" id="search_sms">搜尋</button>
     </div>
-    <div >
+    <div>
+        <button type="button" class="btn m-2 btn btn-dark" id="stop_reload">停止自動刷新</button>
+        <label id="stop_message" style="color: red"></label>
+    </div>
+
+    <div>
     {{$dataTable->table()}}
     </div>
     {{$dataTable->scripts()}}
 
     <script>
+        //自動刷新
+        var stop =true;
+        function myrefresh()
+        {
+            if(stop){
+                window.location.reload();
+            }
+        }
+        setTimeout('myrefresh()',5000);
+
+        $('#stop_reload').on('click',function(){
+            document.getElementById('stop_message').innerHTML="已暫停自動刷新，重開請按F5";
+            stop = false;
+        })
         //搜索
         $('#search_sms').on('click',function(){
             var table = $('#sms_lists-table').DataTable();

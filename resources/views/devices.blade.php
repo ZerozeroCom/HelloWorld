@@ -98,8 +98,6 @@
                     devModal.querySelector('#dev-unnoti_keywords').value = data[5];
         })
 
-
-
             //新增資料部分
         $('.modal').on('click','#devnew_go',function(){
             var data1 =[
