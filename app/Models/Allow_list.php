@@ -10,8 +10,7 @@ class Allow_list extends Model
     use HasFactory;
     protected $guarded = [''];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function allow_group(){
+        return $this->hasMany(User::class);
     }
-
 }

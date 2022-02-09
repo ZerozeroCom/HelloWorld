@@ -82,7 +82,7 @@
                         <a class="nav-link collapsed" href="/allow-lists"
                             >
                             <img src="/icon/file-lock2.svg" class="fas fa-fw">
-                            <span>IP白名單管理</span>
+                            <span>IP白名單群組管理</span>
                         </a>
                     </li>
                     <!-- Nav Item - Utilities Collapse Menu -->

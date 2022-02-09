@@ -6,7 +6,7 @@
         <div >
             <form>
                 <div class="row m-3">
-                        <div class="col-md-4 ">
+                        <div class="col-md-3 ">
                             <label for="seacc-type" class="col-form-label">管理者類型:</label>
                             <select type="text" class="col-form-control col-md-4"  id="seacc-type" >
                                 <option></option>
@@ -15,13 +15,22 @@
                                 <option>trainee</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="seacc-name" class="col-form-label">帳號名稱:</label>
                             <input type="text" class="col-form-control" id="seacc-name" >
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="seemail" class="col-form-label">E-MAIL:</label>
                             <input type="text" class="col-form-control" id="seemail">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="seacc-allow_group" class="col-form-label">白名單群組:</label>
+                            <select type="text" class="col-form-control col-md-4" id="seacc-allow_group" >
+                                <option></option>
+                                @foreach ($allow_group_list as $key =>$value)
+                                <option>{{$value->allow_group}}</option>
+                                @endforeach
+                            </select>
                         </div>
                 </div>
             </form>
@@ -49,6 +58,9 @@
                     document.getElementById('seacc-type').value,
                     document.getElementById('seacc-name').value,
                     document.getElementById('seemail').value,
+                    "",
+                    "",
+                    document.getElementById('seacc-allow_group').value,
                     ]
             for(var i =1;i<data.length;i++){
                 table.columns(i).search(data[i]);
@@ -64,7 +76,8 @@
             var  tr = event.relatedTarget.closest("tr");
             var data =[$(tr).children().eq(1).text(),
                         $(tr).children().eq(2).text(),
-                        $(tr).children().eq(3).text(),];
+                        $(tr).children().eq(3).text(),
+                        $(tr).children().eq(6).text(),];
             // Button that triggered the modal
             var button = event.relatedTarget;
             // Extract info from data-bs-* attributes
@@ -80,6 +93,8 @@
                 accModal.querySelector('#acc-type').value = data[0];
                 accModal.querySelector('#acc-name').value = data[1];
                 accModal.querySelector('#email').value = data[2];
+                accModal.querySelector('#acc-allow_group').value = data[3];
+
         })
         //new
         $('.modal-footer').on('click','#accnew_go',function(){
@@ -130,7 +145,8 @@
             var type = document.getElementById('acc-type').value
             var password = document.getElementById('acc-password').value
             var password_confirmation = document.getElementById('acc-password_confirmation').value
-            var lang = name.length+email.length+type.length+password.length
+            var allow_group = document.getElementById('acc-allow_group').value
+            var lang = name.length+email.length+type.length+password.length+allow_group.length
 
                 if ( lang!=0 && (password == password_confirmation) &&
                     (  password == ""   || password.length >=8 )){
@@ -146,6 +162,7 @@
                                         "email": email,
                                         "password": password,
                                         "password_confirmation": password_confirmation,
+                                        "allow_group": allow_group,
                                     },
                             }).done(function(msg){
                                 alert('編輯成功');

@@ -74,6 +74,7 @@ class UsersDataTable extends DataTable
             Column::make('email')->title('E-MAIL'),
             Column::make('updated_at')->title('最後登入時間')->type('date'),
             Column::make('ip_address')->title('最後登入IP'),
+            Column::make('allow_group')->title('IP登入群組'),
             Column::make('logins')->title('登入次數'),
             new Column(['title' =>'操作',
                         'data'=>'action',

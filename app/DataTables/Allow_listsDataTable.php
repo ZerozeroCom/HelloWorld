@@ -11,11 +11,6 @@ use Yajra\DataTables\Services\DataTable;
 
 class Allow_listsDataTable extends DataTable
 {
-
-    public function __construct()
-    {
-        $users = Allow_list::with('users')->select('name');
-    }
     /**
      * Build DataTable class.
      *
@@ -26,11 +21,8 @@ class Allow_listsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('name', function($users){
-                return $users->user->name;
-            })
             ->editColumn('action',function ($model){
-                $html= '<button class="btn btn-warning edital"  data-bs-toggle="modal" data-bs-target="#alModal" data-bs-whatever="'.$model->allow_ip_addr.'" data-bs-user="'.$model->user_id.'" data-id="'.$model->id.'">編輯</button>&nbsp;
+                $html= '<button class="btn btn-warning edital"  data-bs-toggle="modal" data-bs-target="#alModal" data-bs-whatever="'.$model->allow_ip_addr.'" data-bs-name="'.$model->allow_group.'" data-id="'.$model->id.'">編輯</button>&nbsp;
                         <button class="btn btn-danger deleteal" data-id="'.$model->id.'">刪除</button>';
                 return $html;
                 });
@@ -75,7 +67,7 @@ class Allow_listsDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name')->title('名稱'),
+            Column::make('allow_group')->title('群組名稱'),
             Column::make('allow_ip_addr')->title('IP位址'),
             new Column(['title' =>'操作',
                         'data'=>'action',

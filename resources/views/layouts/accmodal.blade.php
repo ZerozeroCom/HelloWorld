@@ -7,30 +7,39 @@
       </div>
       <div class="modal-body">
         <form>
-          <div class="mb-3">
-            <label for="acc-name" class="col-form-label">帳號名稱:</label>
-            <input type="text" class="validate form-control" id="acc-name">
-          </div>
-          <div class="mb-3">
-            <label for="acc-email" class="col-form-label">E-MAIL:</label>
-            <input type="email" class="validate form-control" id="email">
-          </div>
-          <div class="mb-3">
-            <label for="acc-type" class="col-form-label">管理類型:</label>
-            <select type="text" class="form-control" autocomplete="new-type" id="acc-type" >
-                <option>common</option>
-                <option>admin</option>
-                <option>trainee</option>
+            <div class="mb-3">
+                <label for="acc-name" class="col-form-label">帳號名稱:</label>
+                <input type="text" class="validate form-control" id="acc-name">
+            </div>
+            <div class="mb-3">
+                <label for="acc-email" class="col-form-label">E-MAIL:</label>
+                <input type="email" class="validate form-control" id="email">
+            </div>
+            <div class="mb-3">
+                <label for="acc-type" class="col-form-label">管理類型:</label>
+                <select type="text" class="form-control" autocomplete="new-type" id="acc-type" >
+                    <option>common</option>
+                    <option>admin</option>
+                    <option>trainee</option>
+                </select>
+            </div>
+            <div class="mb-3 password">
+                <label for="acc-password" class="col-form-label">帳號密碼:</label>
+                <input type="password" class="validate form-control" autocomplete="new-password" id="acc-password" minlength="8" >
+            </div>
+            <div class="mb-3 password">
+                <label for="acc-password_confirmation" class="col-form-label">確認密碼:</label>
+                <input type="password" class="validate form-control" autocomplete="new-password" id="acc-password_confirmation" minlength="8" >
+            </div>
+            <div class="mb-3 allow_group">
+            <label for="acc-allow_group" class="col-form-label">白名單群組:</label>
+            <select type="text" class="form-control" autocomplete="new-allow_group" id="acc-allow_group" >
+                <option></option>
+                @foreach ($allow_group_list as $key =>$value)
+                    <option>{{$value->allow_group}}</option>
+                @endforeach
             </select>
-          </div>
-          <div class="mb-3 password">
-            <label for="acc-password" class="col-form-label">帳號密碼:</label>
-            <input type="password" class="validate form-control" autocomplete="new-password" id="acc-password" minlength="8" >
-          </div>
-          <div class="mb-3 password">
-            <label for="acc-password_confirmation" class="col-form-label">確認密碼:</label>
-            <input type="password" class="validate form-control" autocomplete="new-password" id="acc-password_confirmation" minlength="8" >
-          </div>
+            </div>
         </form>
       </div>
       <div class="modal-footer">

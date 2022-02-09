@@ -9,6 +9,7 @@ use App\Http\Services\LogServe;
 use App\Models\Allow_list;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use PhpParser\ErrorHandler\Collecting;
@@ -22,8 +23,8 @@ class AccountController extends Controller
 
     //顯示頁面
     public function index(UsersDataTable $dataTable){
-
-        return $dataTable->render('accounts');
+        $allow_group_list = DB::table('allow_lists')->select('allow_group')->distinct()->get();
+        return $dataTable->render('accounts',['allow_group_list' => $allow_group_list]);
     }
     public function logincheck(Request $request){
         $user =$request->user();
@@ -47,12 +48,8 @@ class AccountController extends Controller
         $createNewUser->create($request->all());
 
         $user = $request->user()->id;
-        $data=['type'=> $request->type,'name'=> $request->name, 'email'=> $request->email];
+        $data=['type'=> $request->type,'name'=> $request->name, 'email'=> $request->email,'allow_group' => $request->allow_group,];
         $this->log->newDataLog("ac",$user,$data);
-        //新增帳號之白名單
-        $userA = User::where('email',$request->email)->first();
-        $dataA=Allow_list::create(['user_id'=>$userA->id,'allow_ip_addr'=>'127.0.0.1']);
-        $this->log->newDataLog("al",$user,$dataA);
 
         return response('ok',200);
     }
@@ -68,6 +65,7 @@ class AccountController extends Controller
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|email|max:255',
             'password' => 'nullable|string|confirmed|min:8|max:255',
+            'allow_group' => 'nullable|string|max:255|exists:App\Models\allow_list,allow_group',
         ]))->filter();
 
             //若改變密碼 加密 並額外處理

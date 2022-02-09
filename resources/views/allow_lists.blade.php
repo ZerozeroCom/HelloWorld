@@ -6,7 +6,11 @@
         <div >
             <form>
                 <div class="row m-3">
-                        <div class="col-md-12 ">
+                        <div class="col-md-6 ">
+                            <label for="seallow_group" class="col-form-label">群組名稱:</label>
+                            <input type="text" class="col-form-control" id="seallow_group">
+                        </div>
+                        <div class="col-md-6 ">
                             <label for="seallow_ip_addr" class="col-form-label">IP位址:</label>
                             <input type="text" class="col-form-control" id="seallow_ip_addr">
                         </div>
@@ -15,7 +19,9 @@
         </div>
         <button type="button" class="btn m-2 btn-primary" id="search_al">搜尋</button>
     </div>
-
+    <div>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#nalModal" class="btn  m-2 btn-success" id="make_new_al">新增群組</button>
+    </div>
 
 
     <div >
@@ -34,10 +40,10 @@
             var table = $('#allow_lists-table').DataTable();
             var data =[
                     "",
-                    "",
+                    document.getElementById('seallow_group').value,
                     document.getElementById('seallow_ip_addr').value,
                     ]
-            for(var i =2;i<data.length;i++){
+            for(var i =1;i<data.length;i++){
                 table.columns(i).search(data[i]);
             }
             table.draw();
@@ -51,7 +57,7 @@
         // Button that triggered the modal
         var button = event.relatedTarget
         id = button.getAttribute('data-id')
-        user_id=  button.getAttribute('data-bs-user')
+        allow_group=  button.getAttribute('data-bs-name')
         // Extract info from data-bs-* attributes
         newOrEdit = button.getAttribute('data-bs-whatever')
         // If necessary, you could initiate an AJAX request here
@@ -64,12 +70,11 @@
         modalTitle.textContent = '編輯白名單 ' + newOrEdit
         modalBodyInput.value = newOrEdit
         })
-
-          //新增資料部分
-        $('.modal-footer').on('click','#alnew_go',function(){
+          //新增群組部分
+          $('.modal-footer').on('click','#nalnew_go',function(){
             var data1 =[
-                    user_id,
-                    document.getElementById('allow-list').value,
+                document.getElementById('nallow-group').value,
+                document.getElementById('nallow-list').value,
             ];
             if (!data1.includes("")){
                     $.ajax({
@@ -79,7 +84,7 @@
                             method: 'POST',
                             url: `/allow-lists/addNew`,
                             data:{
-                                    "user_id": data1[0],
+                                    "allow_group": data1[0],
                                     "allow_ip_addr": data1[1],
                             },
                         }).done(function(msg){
@@ -96,14 +101,44 @@
                 }
 
         })
+          //舊群組新增資料部分
+        $('.modal-footer').on('click','#alnew_go',function(){
+            var data1 =[
+                    allow_group,
+                    document.getElementById('allow-list').value,
+            ];
+            if (!data1.includes("") && data1[1] != newOrEdit){
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                            method: 'POST',
+                            url: `/allow-lists/addNew`,
+                            data:{
+                                    "allow_group": data1[0],
+                                    "allow_ip_addr": data1[1],
+                            },
+                        }).done(function(msg){
+                            alert('新建成功')
+                            location.reload();
+                        }).fail(function(xhr, status, data){
+                                var error =Object.keys(xhr.responseJSON.errors)
+                                .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                .join('&');
+                                alert(`${error}`);
+                            });
+                }
+                else {alert('請再次確認是否有填入或更動值')
+                }
+
+        })
             //編輯資料部分
         $('.modal-footer').on('click','#aledit_go',function(){
             var data1 =[
-                    user_id,
+                    allow_group,
                     document.getElementById('allow-list').value,
             ];
-            console.log(123);
-            if (!data1.includes("")){
+            if (!data1.includes("") && data1[1] != newOrEdit){
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -111,7 +146,7 @@
                             method: 'POST',
                             url: `/allow-lists/edit/${id}`,
                             data:{
-                                    "user_id": data1[0],
+                                    "allow_group": data1[0],
                                     "allow_ip_addr": data1[1],
                             },
                         }).done(function(msg){
@@ -124,7 +159,7 @@
                                 alert(`${error}`);
                             });
                 }
-                else {alert('請再次確認是否有填入值')
+                else {alert('請再次確認是否有填入或更動值')
                 }
 
         })

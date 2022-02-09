@@ -29,6 +29,7 @@ class User extends Authenticatable
         'email',
         'password',
         'ip_address',
+        'allow_group',
         'logins'
     ];
 
@@ -61,7 +62,6 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
 
     public function allow_list(){
         return $this->hasMany(Allow_list::class);

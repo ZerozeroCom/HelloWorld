@@ -24,14 +24,14 @@ class Allow_listController extends Controller
 
     //資料驗證用
     public function alValidate($data){
-        $this->id=$data->user_id;
+        $this->group=$data->allow_group;
         $data=$data->validate([
-            'user_id' => 'exists:App\Models\User,id|required',
+            'allow_group' => 'string|max:40|required',
             'allow_ip_addr' => [
                     'required',
-                    'ip',  //下行規則同ID不可重複地址
+                    'ip',  //下行規則同group不可重複地址
                     Rule::unique('App\Models\Allow_list')->where(function($query){
-                        return $query->where('user_id',$this->id);
+                        return $query->where('allow_group',$this->group);
                     }),]
          ]);
          return $data;
@@ -63,7 +63,7 @@ class Allow_listController extends Controller
     public function delete(Request $request,$id){
         $user =$request->user()->id;
         $data=Allow_list::find($id);
-        $num=count(Allow_list::where('user_id',$data->user_id)->get()->toArray());
+        $num=count(Allow_list::where('allow_group',$data->allow_group)->get()->toArray());
         if($num == 1){
             return response('請勿刪除最後一個白名單',422);
         }

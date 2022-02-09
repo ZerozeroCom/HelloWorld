@@ -15,7 +15,7 @@ class CreateAllowlistsTable extends Migration
     {
         Schema::create('allow_lists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('allow_group', 40);
             $table->string('allow_ip_addr', 40)->default('127.0.0.1');
             $table->timestamps();
         });
