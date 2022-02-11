@@ -54,7 +54,7 @@ class Sms_listsDataTable extends DataTable
                     ->minifiedAjax()
                     ->dom('plBrtip')
                     ->orderBy(0)->parameters([
-                        'pageLength' => 10,
+                        'pageLength' => 100,
                         'language' => config('datatables.i18n.tw')
                     ])
                     ;

@@ -74,7 +74,7 @@
         //刪除
         $('table').on('click','.deletesms',function(){
             var id = $(this).data('id');
-            if (confirm("是否真的要刪除簡訊?")){
+            if (confirm("是否真的要刪除簡訊?\n ＊並不會實際刪除手機的簡訊，\n　　但後台不會再看到此簡訊")){
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"

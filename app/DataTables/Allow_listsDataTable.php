@@ -52,7 +52,7 @@ class Allow_listsDataTable extends DataTable
                     ->minifiedAjax()
                     ->dom('plBrtip')
                     ->orderBy(0)->parameters([
-                        'pageLength' => 10,
+                        'pageLength' => 25,
                         'language' => config('datatables.i18n.tw')
                     ])
                     ;

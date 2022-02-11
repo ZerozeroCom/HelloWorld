@@ -54,7 +54,7 @@ class UsersDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->dom('plBrtip')
                     ->orderBy(0)->parameters([
-                        'pageLength' => 10,
+                        'pageLength' => 50,
                         'language' => config('datatables.i18n.tw')
                     ]);
                     ;
