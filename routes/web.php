@@ -16,15 +16,9 @@ use Yajra\DataTables\Facades\DataTables;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/','AccountController@logincheck');
 
     Route::get('/accounts','AccountController@index');
     Route::get('/logincheck','AccountController@logincheck');
@@ -51,7 +45,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/sms-lists/{id}','Sms_listController@newSMSIn');
     Route::post('/sms-lists/{id}/delete','Sms_listController@delete');
 
-
+    Route::post('/read-notification','NavController@readOne');
+    Route::post('/read-all-notification','NavController@readAll');
 });
 
 
