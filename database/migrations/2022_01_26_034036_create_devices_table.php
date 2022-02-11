@@ -18,9 +18,9 @@ class CreateDevicesTable extends Migration
             $table->string('name', 40);
             $table->string('number', 20);
             $table->string('UID');
-            $table->json('note')->nullable();
-            $table->json('noti_keywords')->nullable();
-            $table->json('unnoti_keywords')->nullable();
+            $table->string('note')->nullable();
+            $table->string('noti_keywords')->nullable();
+            $table->string('unnoti_keywords')->nullable();
             $table->timestamps();
         });
     }

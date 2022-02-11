@@ -13,4 +13,6 @@ class Device extends Model
     public function sms_list(){
         return $this->hasMany(Sms_list::class);
     }
+
+
 }

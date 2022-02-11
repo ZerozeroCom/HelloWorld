@@ -48,7 +48,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/newapitest', function () {
         return view('new_api_test');
     });
-    Route::post('/sms-lists/API/{id}','Sms_listController@newSMSIn');
+    Route::post('/sms-lists/{id}','Sms_listController@newSMSIn');
     Route::post('/sms-lists/{id}/delete','Sms_listController@delete');
 
 

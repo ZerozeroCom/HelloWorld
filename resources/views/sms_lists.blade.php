@@ -15,6 +15,16 @@
                             <input type="text" class="col-form-control" id="sesms_content">
                         </div>
                 </div>
+                <div class="row m-3">
+                    <div class="col-md-6 ">
+                        <label for="sedev_note" class="col-form-label">裝置備註:</label>
+                        <input type="text" class="col-form-control" id="sedev_note">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="sedev_number" class="col-form-label">裝置號碼:</label>
+                        <input type="text" class="col-form-control" id="sedev_number">
+                    </div>
+            </div>
             </form>
         </div>
         <button type="button" class="btn m-2 btn-primary" id="search_sms">搜尋</button>
@@ -38,7 +48,7 @@
                 window.location.reload();
             }
         }
-        setTimeout('myrefresh()',5000);
+        //setTimeout('myrefresh()',5000);
 
         $('#stop_reload').on('click',function(){
             document.getElementById('stop_message').innerHTML="已暫停自動刷新，重開請按F5";
@@ -50,15 +60,14 @@
             var data =[
                     "",
                     "",
-                    "",
-                    "",
-                    "",
+                    document.getElementById('sedev_note').value,
+                    document.getElementById('sedev_number').value,
                     document.getElementById('sesend_number').value,
                     document.getElementById('sesms_content').value,
                     "",
                     ]
             for(var i =2;i<data.length;i++){
-                table.columns(i).search(data[i]);
+                table.column(i).search(data[i]);
             }
             table.draw();
         })

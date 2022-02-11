@@ -3,18 +3,11 @@
 namespace App\DataTables;
 
 use App\Models\Sms_list;
-use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class Sms_listsDataTable extends DataTable
 {
-    public function __construct()
-    {
-        $device = Sms_list::with('devices');
-    }
     /**
      * Build DataTable class.
      *
@@ -25,19 +18,11 @@ class Sms_listsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->editColumn('created_at',function ($model){
-                $html= $model->created_at->format("Y/m/d H:i");;
+            ->editColumn('sms_sendtime',function ($model){
+                $html= $model->sms_sendtime->format("Y/m/d H:i");
                 return $html;
                 })
-            ->addColumn('name', function($device){
-                return $device->device->name;
-            })->addColumn('note', function($device){
-                return $device->device->note;
-            })->addColumn('number', function($device){
-                return $device->device->number;
-            })->addColumn('noti_keywords', function($device){
-                return $device->device->noti_keywords;
-            })->editColumn('action',function ($model){
+            ->editColumn('action',function ($model){
                 $html= '<button  class="btn btn-danger deletesms" data-id="'.$model->id.'">刪除</button >';
                 return $html;
                 })
@@ -53,7 +38,7 @@ class Sms_listsDataTable extends DataTable
      */
     public function query(Sms_list $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('device');
     }
 
     /**
@@ -83,14 +68,13 @@ class Sms_listsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
-            Column::make('created_at')->title('簡訊發送時間')->type('date'),
-            Column::make('name')->title('裝置名稱'),
-            Column::make('note')->title('裝置備註'),
-            Column::make('number')->title('裝置號碼'),
+            Column::make('sms_sendtime')->title('簡訊發送時間')->type('date'),
+            Column::make('device.name')->title('裝置名稱'),
+            Column::make('device.note')->title('裝置備註'),
+            Column::make('device.number')->title('裝置號碼'),
             Column::make('send_number')->title('簡訊發送號碼'),
             Column::make('sms_content')->title('簡訊內容'),
-            Column::make('noti_keywords')->title('裝置通知關鍵字'),
+            Column::make('device.noti_keywords')->title('裝置通知關鍵字'),
             new Column(['title' =>'操作',
             'data'=>'action',
             'searchable'=>'false',
@@ -105,6 +89,6 @@ class Sms_listsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Sms_lists_' . date('YmdHis');
+        return 'Sms_lists_' . date('YmdHi');
     }
 }

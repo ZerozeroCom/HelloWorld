@@ -15,10 +15,10 @@ class CreateSMSlistTable extends Migration
     {
         Schema::create('sms_lists', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('sms_sendtime');
             $table->foreignId('device_id')->constrained('devices');
             $table->string('send_number');
-            $table->json('sms_content');
-            $table->timestamps();
+            $table->string('sms_content');
         });
     }
 

@@ -41,7 +41,7 @@
                                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
                                 },
                                 method: 'POST',
-                                url: `/sms-lists/API/${id}`,
+                                url: `sms-lists/${id}`,
                                 data:{
                                         "number": data[0],
                                         "send_number": data[1],

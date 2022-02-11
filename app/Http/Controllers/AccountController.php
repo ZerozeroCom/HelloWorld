@@ -31,7 +31,7 @@ class AccountController extends Controller
             $logins=User::find($user->id);
             $login=$logins->logins+1;
             $logins->update(['logins'=> $login,'ip_address'=> $request->ip()]);
-            return view('new_api_test');
+            return redirect('/devices');
     }
 
 
