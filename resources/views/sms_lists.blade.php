@@ -17,7 +17,7 @@
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6 ">
-                        <label for="sedev_note" class="col-form-label">裝置備註:</label>
+                        <label for="sedev_note" class="col-form-label">裝置　備註　:</label>
                         <input type="text" class="col-form-control" id="sedev_note">
                     </div>
                     <div class="col-md-6">

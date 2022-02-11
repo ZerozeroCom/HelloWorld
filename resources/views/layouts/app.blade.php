@@ -99,9 +99,8 @@
                     <hr class="sidebar-divider">
 
                         <div class="text-center d-none d-md-inline position-relative">
-                            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                            <button class="fas fa-fw rounded-circle border-0" id="sidebarToggle"></button>
                         </div>
-
                 </ul>
                 <!-- End of Sidebar -->
             <div id="content-wrapper" class="d-flex flex-column ">

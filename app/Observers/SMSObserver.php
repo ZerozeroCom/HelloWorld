@@ -21,29 +21,37 @@ class SMSObserver
     {
         $id = $sms_list->device_id;
         $dev = Device::find($id);
-        //通知線上用戶
+
+        //判斷線上用戶
         $user = DB::table('sessions')->select('user_id')->distinct()->get()->map(function ($value, $key) {
             $key = ['id' => $value->user_id];
             return $key;
         });
         $users = User::find($user);
 
+        //物件轉換為陣列
         $notikeyword =explode(' ',$dev->noti_keywords);
         $unnotikeyword =explode(' ',$dev->unnoti_keywords);
 
+        //判斷是否通知 含不通知關鍵字則優先不通知
         $content = $sms_list->sms_content;
         foreach($unnotikeyword as $value){
             if(substr_count($content,$value) != 0){
                 return false;
             }
         }
+        $keyword ="";
         foreach($notikeyword as $value){
             if(substr_count($content,$value) != 0){
-                foreach($users as $value){
-                    $value->notify(new SMSCheck($content,$dev));
-                }
+                $keyword=$keyword.$value." ";
             }
         }
+        if($keyword != ""){
+            foreach($users as $value){
+                $value->notify(new SMSCheck($keyword,$dev));
+            }
+        }
+
         return false;
     }
 

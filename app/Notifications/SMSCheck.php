@@ -16,10 +16,10 @@ class SMSCheck extends Notification
      *
      * @return void
      */
-    public function __construct($content,$dev)
+    public function __construct($value,$dev)
     {
-        $this->content =$content;
-        $this->dev =$dev;
+        $this->keyword = $value;
+        $this->dev = $dev;
     }
 
     /**
@@ -34,14 +34,11 @@ class SMSCheck extends Notification
     }
 
     /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+
      */
     public function toDatabase($notifiable)
     {
-        return [$this->content];
+        return ['裝置:'.$this->dev->name.' 號碼:'.$this->dev->number.' 含有關鍵字:'.$this->keyword];
     }
 
     /**
@@ -53,7 +50,7 @@ class SMSCheck extends Notification
     public function toArray($notifiable)
     {
         return [
-            $this->content
+            '裝置:'.$this->dev->name.' 號碼:'.$this->dev->number.' 含有關鍵字:',$this->keyword
         ];
     }
 }
