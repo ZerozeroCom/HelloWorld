@@ -26,7 +26,7 @@
                                 通知
                             </h6>
                             @foreach ($notifications as $notification)
-                            <a class="dropdown-item d-flex align-items-center read_notification" data-id="{{$notification->id}}" >
+                            <a class="dropdown-item d-flex align-items-center read_notification" data-id="{{$notification->id}}"  href="/sms-lists">
                                 <div class="mr-3">
                                     <span class="read">
                                         @if ($notification->read_at)

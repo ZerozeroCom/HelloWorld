@@ -48,7 +48,7 @@
                 window.location.reload();
             }
         }
-        //setTimeout('myrefresh()',5000);
+        setTimeout('myrefresh()',5000);
 
         $('#stop_reload').on('click',function(){
             document.getElementById('stop_message').innerHTML="已暫停自動刷新，重開請按F5";
