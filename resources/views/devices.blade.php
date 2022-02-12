@@ -46,7 +46,7 @@
             <div class="card m-2">
                 <h6 class="card-header bg-info py-3 row ml-0 mr-0">批次編輯裝置</h6>
                 <div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-primary" id="se_edit_dev">依照本頁搜尋結果編輯</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-primary" id="se_edit_dev" disabled>依照本頁搜尋結果編輯</button>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-warning" id="make_edit_dev">自訂批次編輯</button>
                 </div>
             </div>
@@ -69,6 +69,7 @@
         //搜索
         $('#search_dev').on('click',function(){
             var table = $('#devices-table').DataTable();
+            document.getElementById("se_edit_dev").disabled = false;
             var data =[
                     "",
                     document.getElementById('sedev-name').value,
