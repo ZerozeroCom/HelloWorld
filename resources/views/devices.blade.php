@@ -46,7 +46,7 @@
             <div class="card m-2">
                 <h6 class="card-header bg-info py-3 row ml-0 mr-0">批次編輯裝置</h6>
                 <div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-warning" id="se_edit_dev">依照本頁搜尋結果編輯</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-primary" id="se_edit_dev">依照本頁搜尋結果編輯</button>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-warning" id="make_edit_dev">自訂批次編輯</button>
                 </div>
             </div>
@@ -204,10 +204,14 @@
         })
         //依照搜尋結果批次編輯
         var sedata =[];
+        var seOrMake =0;
         $('#se_edit_dev').on('click',function(){
             var td = document.getElementsByTagName("td");
+            document.getElementById("manydev").hidden = true;
+
             var i =0;
-            //初始化sedata
+            //初始化sedata ，送出設定為搜尋模式
+            seOrMake =0;
             sedata =[];
             //依照現表取id值裝入sedata
             var id =$(td).each(function( index ) {
@@ -217,42 +221,95 @@
                 }
             });
         })
+       //自訂批次編輯
+       $('#make_edit_dev').on('click',function(){
+            document.getElementById("manydev").hidden = false;
 
+            //初始化sedata ，送出設定為自訂模式
+            seOrMake =1;
+            sedata =[];
+
+
+        })
 
 
        //送出批次編輯部分
         $('.modal-footer').on('click','#manydev_go',function(){
+            var checkboxId =document.getElementsByName("id");
+            var data1 =[];
+            for(i=0,j=0;i<checkboxId.length;i++){
+                if(checkboxId[i].checked == true){
+                    data1[j++]=checkboxId[i].getAttribute('data-id');
+                }
+            }
             var data2 =[
                     document.getElementById('manydev-note').value,
                     document.getElementById('manydev-noti_keywords').value,
                     document.getElementById('manydev-unnoti_keywords').value,
             ];
-            if (confirm("是否真的要編輯?")){
-                //用來檢查表格是否完全沒填
-                var check =data2[0].length+data2[1].length+data2[2].length
-                if ( check >= 1 && sedata != []){
-                        $.ajax({
-                            headers: {
-                                'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                            },
-                                method: 'POST',
-                                url: '/devices/editmany',
-                                data:{  "id": sedata,
-                                        "note": data2[0],
-                                        "noti_keywords": data2[1],
-                                        "unnoti_keywords": data2[2],
-                                },
-                            }).done(function(msg){
-                                    alert('編輯成功')
-                                    location.reload();
-                            }).fail(function(xhr, status, data){
-                                    var error =Object.keys(xhr.responseJSON.errors)
-                                    .map(key=> `${xhr.responseJSON.errors[key]}` )
-                                    .join('&');
-                                    alert(`${error}`);
-                                });
+            //檢查模式
+            if(seOrMake ==0){
+                if (confirm("是否確認編輯"+sedata.length+"項裝置?")){
+                    //用來檢查表格是否完全沒填
+                    var check =data2[0].length+data2[1].length+data2[2].length
+                    if ( check >= 1 && sedata != [] ){
+
+                            //搜尋模式
+                                $.ajax({
+                                    headers: {
+                                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                                    },
+                                        method: 'POST',
+                                        url: '/devices/editmany',
+                                        data:{  "id": sedata,
+                                                "note": data2[0],
+                                                "noti_keywords": data2[1],
+                                                "unnoti_keywords": data2[2],
+                                        },
+                                    }).done(function(msg){
+                                            alert('編輯成功')
+                                            location.reload();
+                                    }).fail(function(xhr, status, data){
+                                            var error =Object.keys(xhr.responseJSON.errors)
+                                            .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                            .join('&');
+                                            alert(`${error}`);
+                                        });
+
+                    }
+                    else {alert('請再次確認是否有填入值')
+                    }
                 }
-                else {alert('請再次確認是否有填入值')
+            }
+            else {
+                //搜尋模式 自訂模式
+                if (confirm("是否確認編輯"+data1.length+"項裝置?")){
+                    //用來檢查表格是否完全沒填
+                    var check =data2[0].length+data2[1].length+data2[2].length
+                    if ( check >= 1 &&  data1 != []){
+                        $.ajax({
+                                headers: {
+                                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                                },
+                                    method: 'POST',
+                                    url: '/devices/editmany',
+                                    data:{  "id": data1,
+                                            "note": data2[0],
+                                            "noti_keywords": data2[1],
+                                            "unnoti_keywords": data2[2],
+                                    },
+                                }).done(function(msg){
+                                        alert('編輯成功')
+                                        location.reload();
+                                }).fail(function(xhr, status, data){
+                                        var error =Object.keys(xhr.responseJSON.errors)
+                                        .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                        .join('&');
+                                        alert(`${error}`);
+                                });
+                    }
+                    else {alert('請再次確認是否有填入值')
+                    }
                 }
             }
         })

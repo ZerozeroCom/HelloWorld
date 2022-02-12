@@ -47,41 +47,41 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="devModalLabel">裝置修改</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title" id="devModalLabel">裝置修改</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <span class="m-3 d-flex justify-content-center">留空將維持原設定值，不會清除數據</span>
         <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="dev-name" class="col-form-label">裝置名稱:</label>
-              <input type="text" class="validate form-control" id="dev-name">
-            </div>
-            <div class="mb-3">
-              <label for="dev-number" class="col-form-label">裝置號碼:</label>
-              <input type="text" class="validate form-control" id="dev-number" minlength="9">
-            </div>
-            <div class="mb-3">
-              <label for="dev-UID" class="col-form-label">裝置UID:</label>
-              <input type="text" class="validate form-control" id="dev-UID">
-            </div>
-            <div class="mb-3">
-              <label for="dev-note" class="col-form-label">備註:</label>
-              <input type="message-text" class="validate form-control" autocomplete="edit-note" id="dev-note">
-            </div>
-            <div class="mb-3">
-              <label for="dev-noti_keywords" class="col-form-label">通知關鍵字:</label>
-              <input type="text" class="validate form-control" autocomplete="edit-noti_keywords" id="dev-noti_keywords">
-            </div>
-            <div class="mb-3">
-                <label for="dev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
-                <input type="text" class="validate form-control" autocomplete="edit-unnoti_keywords" id="dev-unnoti_keywords">
-              </div>
-          </form>
+            <form>
+                <div class="mb-3">
+                    <label for="dev-name" class="col-form-label">裝置名稱:</label>
+                    <input type="text" class="validate form-control" id="dev-name">
+                </div>
+                <div class="mb-3">
+                    <label for="dev-number" class="col-form-label">裝置號碼:</label>
+                    <input type="text" class="validate form-control" id="dev-number" minlength="9">
+                </div>
+                <div class="mb-3">
+                    <label for="dev-UID" class="col-form-label">裝置UID:</label>
+                    <input type="text" class="validate form-control" id="dev-UID">
+                </div>
+                <div class="mb-3">
+                    <label for="dev-note" class="col-form-label">備註:</label>
+                    <input type="message-text" class="validate form-control" autocomplete="edit-note" id="dev-note">
+                </div>
+                <div class="mb-3">
+                    <label for="dev-noti_keywords" class="col-form-label">通知關鍵字:</label>
+                    <input type="text" class="validate form-control" autocomplete="edit-noti_keywords" id="dev-noti_keywords">
+                </div>
+                <div class="mb-3">
+                    <label for="dev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
+                    <input type="text" class="validate form-control" autocomplete="edit-unnoti_keywords" id="dev-unnoti_keywords">
+                </div>
+            </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" id="devedit_go">送出</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" id="devedit_go">送出</button>
         </div>
       </div>
     </div>
@@ -98,21 +98,28 @@
         <span class="m-3 d-flex justify-content-center">留空將維持原設定值，不會清除數據</span>
         <div class="modal-body">
           <form>
-            <div class="mb-3">
-              <label for="manydev" class="col-form-label">批次:</label>
-              <input type="text" class="validate form-control" id="manydev" required>
+            <div class="mb-3 border border-info">
+                <label for="manydev" class="col-form-label">選取裝置:</label>
+                <div  class="form-check  mb-3" id="manydev" >
+                    @foreach ( App\Models\Device::select("id","name")->get() as $value )
+                    <span class=" col-auto " id ="dev-{{$value->id}}">
+                        <label class="col-form-label "><input class="form-check-input" type="checkbox" name="id" data-id="{{$value->id}}" >{{$value->name}}</label>
+                        <span>　</span>
+                    </span>
+                    @endforeach
+                </div>
             </div>
             <div class="mb-3">
-              <label for="manydev-note" class="col-form-label">備註:</label>
-              <input type="message-text" class="validate form-control" autocomplete="edit-note" id="manydev-note">
+                <label for="manydev-note" class="col-form-label">備註:</label>
+                <input type="message-text" class="validate form-control" id="manydev-note">
             </div>
             <div class="mb-3">
-              <label for="manydev-noti_keywords" class="col-form-label">通知關鍵字:</label>
-              <input type="text" class="validate form-control" autocomplete="edit-noti_keywords" id="manydev-noti_keywords">
+                <label for="manydev-noti_keywords" class="col-form-label">通知關鍵字:</label>
+                <input type="text" class="validate form-control" id="manydev-noti_keywords">
             </div>
             <div class="mb-3">
                 <label for="manydev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
-                <input type="text" class="validate form-control" autocomplete="edit-unnoti_keywords" id="manydev-unnoti_keywords">
+                <input type="text" class="validate form-control" id="manydev-unnoti_keywords">
               </div>
           </form>
         </div>
