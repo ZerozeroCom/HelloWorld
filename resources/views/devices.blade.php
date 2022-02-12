@@ -221,6 +221,7 @@
 
                 }
             });
+            document.getElementById("many_dev_name").innerHTML = "(id) "+sedata;
         })
        //自訂批次編輯
        $('#make_edit_dev').on('click',function(){
