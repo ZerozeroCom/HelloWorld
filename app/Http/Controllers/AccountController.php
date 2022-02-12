@@ -26,14 +26,6 @@ class AccountController extends Controller
         $allow_group_list = DB::table('allow_lists')->select('allow_group')->distinct()->get();
         return $dataTable->render('accounts',['allow_group_list' => $allow_group_list]);
     }
-    public function logincheck(Request $request){
-        $user =$request->user();
-            $logins=User::find($user->id);
-            $login=$logins->logins+1;
-            $logins->update(['logins'=> $login,'ip_address'=> $request->ip()]);
-            return redirect('/devices');
-    }
-
 
     //log用刪除多餘字串
     public function deleStr($data){

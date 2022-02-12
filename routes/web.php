@@ -18,10 +18,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-    Route::get('/','AccountController@logincheck');
+    Route::get('/','AccountController@index');
 
     Route::get('/accounts','AccountController@index');
-    Route::get('/logincheck','AccountController@logincheck');
 
     Route::post('/accounts/addNew','AccountController@addNewAcc');
     Route::post('/accounts/edit/{id}','AccountController@editAcc');
