@@ -6,6 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <span class="m-3 d-flex justify-content-center">留空將維持原設定值，不會清除數據</span>
         <form>
             <div class="mb-3">
                 <label for="acc-name" class="col-form-label">帳號名稱:</label>

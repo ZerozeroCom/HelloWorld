@@ -52,15 +52,32 @@ class DeviceController extends Controller
             'unnoti_keywords' => 'nullable|string|max:255',
         ]))->filter();
 
-        dd($user->all());
-        //dd(explode(' ',$request->noti_keywords));
-
         $this->log->editBeforeLog('dev',$user,$data);
         $data->update($dev->all());
         $this->log->editAfterLog('dev',$user,$data);
         return response('ok',200);
     }
 
+    public function editManyDev(Request $request){
+        $user = $request->user()->id;
+            //若有資料 進行驗證
+        $dev = collect($request->validate([
+            'id' => 'required|array|exclude',
+            'note' => 'nullable|string|max:255',
+            'noti_keywords' => 'nullable|string|max:255',
+            'unnoti_keywords' => 'nullable|string|max:255',
+        ]))->filter();
+        $id = $request->id;
+        $data=Device::findMany($id);
+        $this->log->editBeforeLog('dev',$user,$data);
+
+        foreach($id as $value){
+            Device::find($value)->update($dev->all());
+        }
+
+        $this->log->editManyAfterLog('dev',$user,$id,$dev);
+        return response('ok',200);
+    }
 
     public function delete(Request $request,$id){
         $user =$request->user()->id;

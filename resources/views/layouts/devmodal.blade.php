@@ -50,6 +50,7 @@
           <h5 class="modal-title" id="devModalLabel">裝置修改</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <span class="m-3 d-flex justify-content-center">留空將維持原設定值，不會清除數據</span>
         <div class="modal-body">
           <form>
             <div class="mb-3">
@@ -62,25 +63,62 @@
             </div>
             <div class="mb-3">
               <label for="dev-UID" class="col-form-label">裝置UID:</label>
-              <input type="text" class="validate form-control" autocomplete="new-UID" id="dev-UID">
+              <input type="text" class="validate form-control" id="dev-UID">
             </div>
             <div class="mb-3">
               <label for="dev-note" class="col-form-label">備註:</label>
-              <input type="message-text" class="validate form-control" autocomplete="new-note" id="dev-note">
+              <input type="message-text" class="validate form-control" autocomplete="edit-note" id="dev-note">
             </div>
             <div class="mb-3">
               <label for="dev-noti_keywords" class="col-form-label">通知關鍵字:</label>
-              <input type="text" class="validate form-control" autocomplete="new-noti_keywords" id="dev-noti_keywords">
+              <input type="text" class="validate form-control" autocomplete="edit-noti_keywords" id="dev-noti_keywords">
             </div>
             <div class="mb-3">
                 <label for="dev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
-                <input type="text" class="validate form-control" autocomplete="new-unnoti_keywords" id="dev-unnoti_keywords">
+                <input type="text" class="validate form-control" autocomplete="edit-unnoti_keywords" id="dev-unnoti_keywords">
               </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
           <button type="button" class="btn btn-primary" id="devedit_go">送出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--批次編輯用-->
+<div class="modal fade" id="manydevModal" tabindex="-1" aria-labelledby="manydevModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="manydevModalLabel">批次編輯裝置</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <span class="m-3 d-flex justify-content-center">留空將維持原設定值，不會清除數據</span>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="manydev" class="col-form-label">批次:</label>
+              <input type="text" class="validate form-control" id="manydev" required>
+            </div>
+            <div class="mb-3">
+              <label for="manydev-note" class="col-form-label">備註:</label>
+              <input type="message-text" class="validate form-control" autocomplete="edit-note" id="manydev-note">
+            </div>
+            <div class="mb-3">
+              <label for="manydev-noti_keywords" class="col-form-label">通知關鍵字:</label>
+              <input type="text" class="validate form-control" autocomplete="edit-noti_keywords" id="manydev-noti_keywords">
+            </div>
+            <div class="mb-3">
+                <label for="manydev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
+                <input type="text" class="validate form-control" autocomplete="edit-unnoti_keywords" id="manydev-unnoti_keywords">
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="manydev_go">送出</button>
         </div>
       </div>
     </div>
