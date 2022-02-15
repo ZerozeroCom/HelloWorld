@@ -29,26 +29,10 @@ class SMSObserver
         });
         $users = User::find($user);
 
-        //物件轉換為陣列
-        $notikeyword =explode(' ',$dev->noti_keywords);
-        $unnotikeyword =explode(' ',$dev->unnoti_keywords);
-
-        //判斷是否通知 含不通知關鍵字則優先不通知
-        $content = $sms_list->sms_content;
-        foreach($unnotikeyword as $value){
-            if(substr_count($content,$value) != 0){
-                return false;
-            }
-        }
-        $keyword ="";
-        foreach($notikeyword as $value){
-            if(substr_count($content,$value) != 0){
-                $keyword=$keyword.$value." ";
-            }
-        }
-        if($keyword != ""){
+        //通知線上用戶
+        if($sms_list->noticode){
             foreach($users as $value){
-                $value->notify(new SMSCheck($keyword,$dev));
+                $value->notify(new SMSCheck($sms_list->notiword,$dev));
             }
         }
 

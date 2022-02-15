@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\DataTables\Sms_listsDataTable;
+use App\Http\Services\KeywordServe;
 use App\Http\Services\LogServe;
 use App\Models\Device;
 use App\Models\Sms_list;
@@ -20,7 +22,7 @@ class Sms_listController extends Controller
         return $dataTable->render('sms_lists');
     }
 
-    public function newSMSIn(Request $request,$id){
+    public function newSMSIn(Request $request,$id,KeywordServe $keywordServe){
 
         //驗證裝置號碼
         $data= $request->validate([
@@ -28,9 +30,8 @@ class Sms_listController extends Controller
             'send_number' => 'required|string|max:20|min:9',
             'sms_content' => 'required|string|max:255',
         ]);
-        $dev=Device::where('number',$data['number'])->first();
-        $data = array_merge(['device_id'=>$dev->id],$data);
-        unset($data['number']);
+        //檢查關鍵字並處理資料
+        $data = $keywordServe->checkSMSKeyword($data);
         $this->log->newDataLog("sms",$id,$data);
         Sms_list::create($data);
         return response('ok',200);
