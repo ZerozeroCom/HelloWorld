@@ -72,7 +72,7 @@ class DevicesDataTable extends DataTable
             Column::make('UID')->title('裝置UID'),
             Column::make('note')->title('裝置備註'),
             Column::make('noti_keywords')->title('通知關鍵字'),
-            Column::make('unnoti_keywords')->title('不通知關鍵字'),
+            Column::make('unnoti_keywords')->title('忽略關鍵字'),
             new Column(['title' =>'操作',
             'data'=>'action',
             'searchable'=>'false',

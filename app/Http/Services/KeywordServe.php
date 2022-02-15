@@ -14,7 +14,7 @@ class KeywordServe{
             //物件轉換為陣列 以空格為判斷分隔
             $notikeyword =explode(' ',$dev->noti_keywords);
             $unnotikeyword =explode(' ',$dev->unnoti_keywords);
-        //含不通知關鍵字則優先不通知
+        //含忽略關鍵字則優先不通知
         $code = true;
         $content = $data['sms_content'];
         $keyword ="";
@@ -31,8 +31,10 @@ class KeywordServe{
                     $keyword=$keyword.$value." ";
                 }
             }
+            if($keyword == ""){
+                $code =false;
+            }
         }
-
         $data = array_merge(['device_id'=>$dev->id,'keyword'=>$keyword,'noticode'=> $code],$data);
         unset($data['number']);
 

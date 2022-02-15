@@ -26,7 +26,7 @@ class UsersDataTable extends DataTable
                         <button class="btn btn-danger deleteac" data-id="'.$model->id.'">刪除</button>';
                 return $html;
                 })->editColumn('updated_at',function ($model){
-                    $html= $model->updated_at->format("Y/m/d H:i");;
+                    $html= $model->updated_at->format("Y/m/d H:i");
                     return $html;
                     });
     }

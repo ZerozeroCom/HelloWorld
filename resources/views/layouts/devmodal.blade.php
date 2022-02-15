@@ -29,7 +29,7 @@
               <input type="text" class="validate form-control" autocomplete="new-noti_keywords" id="ndev-noti_keywords">
             </div>
             <div class="mb-3">
-                <label for="dev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
+                <label for="dev-unnoti_keywords" class="col-form-label">忽略關鍵字:</label>
                 <input type="text" class="validate form-control" autocomplete="new-unnoti_keywords" id="ndev-unnoti_keywords">
               </div>
           </form>
@@ -74,7 +74,7 @@
                     <input type="text" class="validate form-control" autocomplete="edit-noti_keywords" id="dev-noti_keywords">
                 </div>
                 <div class="mb-3">
-                    <label for="dev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
+                    <label for="dev-unnoti_keywords" class="col-form-label">忽略關鍵字:</label>
                     <input type="text" class="validate form-control" autocomplete="edit-unnoti_keywords" id="dev-unnoti_keywords">
                 </div>
             </form>
@@ -118,7 +118,7 @@
                 <input type="text" class="validate form-control" id="manydev-noti_keywords">
             </div>
             <div class="mb-3">
-                <label for="manydev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
+                <label for="manydev-unnoti_keywords" class="col-form-label">忽略關鍵字:</label>
                 <input type="text" class="validate form-control" id="manydev-unnoti_keywords">
               </div>
           </form>

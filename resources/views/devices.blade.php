@@ -32,7 +32,7 @@
                                     <input type="text" class="col-form-control" id="sedev-noti_keywords">
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="sedev-unnoti_keywords" class="col-form-label">不通知關鍵字:</label>
+                                    <label for="sedev-unnoti_keywords" class="col-form-label">忽略關鍵字:</label>
                                     <input type="text" class="col-form-control" id="sedev-unnoti_keywords">
                                 </div>
                         </div>

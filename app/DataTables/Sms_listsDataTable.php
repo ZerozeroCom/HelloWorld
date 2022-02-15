@@ -22,10 +22,19 @@ class Sms_listsDataTable extends DataTable
                 $html= $model->sms_sendtime->format("Y/m/d H:i");
                 return $html;
                 })
+            ->editColumn('noticode',function ($model){
+                if($model->noticode == 0){
+                    return "忽略:";
+                }else{
+                    return "通知:";
+                }
+
+                })
             ->editColumn('action',function ($model){
                 $html= '<button  class="btn btn-danger deletesms" data-id="'.$model->id.'">刪除</button >';
                 return $html;
                 })
+
             ;
 
     }
@@ -52,7 +61,7 @@ class Sms_listsDataTable extends DataTable
                     ->setTableId('sms_lists-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('plBrtip')
+                    ->dom('pilBrtilp')
                     ->orderBy(0)->parameters([
                         'pageLength' => 100,
                         'language' => config('datatables.i18n.tw')
@@ -74,6 +83,8 @@ class Sms_listsDataTable extends DataTable
             Column::make('device.number')->title('裝置號碼'),
             Column::make('send_number')->title('簡訊發送號碼'),
             Column::make('sms_content')->title('簡訊內容'),
+            Column::make('noticode')->title('分類'),
+            Column::make('keyword')->title('關鍵字'),
             Column::make('device.noti_keywords')->title('裝置通知關鍵字'),
             new Column(['title' =>'操作',
             'data'=>'action',

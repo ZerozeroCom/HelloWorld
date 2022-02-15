@@ -167,7 +167,7 @@ return [
         'number' => '裝置號碼',
         'note'  => '備註',
         'noti_keywords'  => '通知關鍵字',
-        'unnoti_keywords'  => '不通知關鍵字',
+        'unnoti_keywords'  => '忽略關鍵字',
         //user
         'type' => '管理類型',
         'password' => '密碼',

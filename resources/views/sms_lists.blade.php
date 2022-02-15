@@ -6,25 +6,41 @@
         <div >
             <form>
                 <div class="row m-3">
-                        <div class="col-md-6 ">
+                        <div class="col-md-3 ">
                             <label for="sesend_number" class="col-form-label">簡訊發送號碼:</label>
                             <input type="text" class="col-form-control" id="sesend_number">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label for="sesms_content" class="col-form-label">簡訊內容:</label>
                             <input type="text" class="col-form-control" id="sesms_content">
                         </div>
+                        <div class="col-md-3 ">
+                            <label for="sesend_number" class="col-form-label">分類　　:</label>
+                            <select type="text" class="col-form-control col-md-4"  id="sesnoticode" >
+                                <option></option>
+                                <option value="1">通知</option>
+                                <option value="0">忽視</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                                <label for="sesms_content" class="col-form-label">關鍵字　:</label>
+                                <input type="text" class="col-form-control" id="sesms_keyword">
+                        </div>
                 </div>
                 <div class="row m-3">
-                    <div class="col-md-6 ">
-                        <label for="sedev_note" class="col-form-label">裝置　備註　:</label>
+                    <div class="col-md-3 ">
+                        <label for="sedev_name" class="col-form-label">裝置　名稱　:</label>
+                        <input type="text" class="col-form-control" id="sedev_name">
+                    </div>
+                    <div class="col-md-3 ">
+                        <label for="sedev_note" class="col-form-label">裝置備註:</label>
                         <input type="text" class="col-form-control" id="sedev_note">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label for="sedev_number" class="col-form-label">裝置號碼:</label>
                         <input type="text" class="col-form-control" id="sedev_number">
                     </div>
-            </div>
+                </div>
             </form>
         </div>
         <button type="button" class="btn m-2 btn-primary" id="search_sms">搜尋</button>
@@ -44,9 +60,12 @@
         var stop =true;
         function myrefresh()
         {
+
             if(stop){
-                window.location.reload();
+                //window.location.reload();
+                $('#sms_lists-table').DataTable().draw();
             }
+            setTimeout('myrefresh()',5000);
         }
         setTimeout('myrefresh()',5000);
 
@@ -59,16 +78,23 @@
             var table = $('#sms_lists-table').DataTable();
             var data =[
                     "",
-                    "",
+                    document.getElementById('sedev_name').value,
                     document.getElementById('sedev_note').value,
                     document.getElementById('sedev_number').value,
                     document.getElementById('sesend_number').value,
                     document.getElementById('sesms_content').value,
-                    "",
+                    document.getElementById('sesnoticode').value,
+                    document.getElementById('sesms_keyword').value,
                     ]
-            for(var i =2;i<data.length;i++){
-                table.column(i).search(data[i]);
-            }
+            //for(var i =1;i<data.length;i++){
+                table.column(1).search(data[1]);
+                table.column(2).search(data[2]);
+                table.column(3).search(data[3]);
+                table.column(4).search(data[4]);
+                table.column(5).search(data[5]);
+                table.column(6).search(data[6]);
+                table.column(7).search(data[7]);
+            //}
             table.draw();
         })
         //刪除
