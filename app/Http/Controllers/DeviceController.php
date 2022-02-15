@@ -34,6 +34,8 @@ class DeviceController extends Controller
             'unnoti_keywords' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:255',
         ]);
+        //商戶固定順序存入
+        $dev=$this->sortBusinesses($dev);
         $this->log->newDataLog("dev",$user,$dev);
         Device::create($dev);
         return response('ok',200);
@@ -53,7 +55,8 @@ class DeviceController extends Controller
             'unnoti_keywords' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:255',
         ]))->filter();
-
+        //商戶固定順序存入
+        $dev=$this->sortBusinesses($dev);
         $this->log->editBeforeLog('dev',$user,$data);
         $data->update($dev->all());
         $this->log->editAfterLog('dev',$user,$data);
@@ -70,6 +73,8 @@ class DeviceController extends Controller
             'unnoti_keywords' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:255',
         ]))->filter();
+        //商戶固定順序存入
+        $dev=$this->sortBusinesses($dev);
         $id = $request->id;
         $data=Device::findMany($id);
         $this->log->editBeforeLog('dev',$user,$data);
@@ -88,5 +93,18 @@ class DeviceController extends Controller
         $this->log->deleteLog('dev',$user,$data);
         $data->delete();
         return response('ok',200);
+    }
+
+    protected function sortBusinesses($dev){
+        if(isset($dev['businesses'])){
+            //連續空格只保留一個
+            $dev['businesses']=preg_replace("/\s(?=\s)/","\\1",$dev['businesses']);
+            //以空格切割陣列
+            $businesses =explode(' ',$dev['businesses']);
+            //重新排序並放回
+            sort($businesses);
+            $dev['businesses']=implode(" ",$businesses);
+        }
+        return $dev;
     }
 }
