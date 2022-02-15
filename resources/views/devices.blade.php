@@ -24,8 +24,8 @@
                         </div>
                         <div class="row m-3">
                                 <div class="col-md-4">
-                                    <label for="sedev-note" class="col-form-label">備註　　:</label>
-                                    <input type="text" class="col-form-control"  id="sedev-note">
+                                    <label for="sedev-businesses" class="col-form-label">裝置商戶:</label>
+                                    <input type="text" class="col-form-control"  id="sedev-businesses">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="sedev-noti_keywords" class="col-form-label">通知關鍵字:</label>
@@ -75,7 +75,7 @@
                     document.getElementById('sedev-name').value,
                     document.getElementById('sedev-number').value,
                     document.getElementById('sedev-UID').value,
-                    document.getElementById('sedev-note').value,
+                    document.getElementById('sedev-businesses').value,
                     document.getElementById('sedev-noti_keywords').value,
                     document.getElementById('sedev-unnoti_keywords').value,
                     ]
@@ -98,7 +98,8 @@
                         $(tr).children().eq(3).text(),
                         $(tr).children().eq(4).text(),
                         $(tr).children().eq(5).text(),
-                        $(tr).children().eq(6).text(),];
+                        $(tr).children().eq(6).text(),
+                        $(tr).children().eq(7).text(),];
             var button = event.relatedTarget
             id = button.getAttribute('data-id')
             // Extract info from data-bs-* attributes
@@ -113,9 +114,10 @@
                     devModal.querySelector('#dev-name').value = data[0];
                     devModal.querySelector('#dev-number').value = data[1];
                     devModal.querySelector('#dev-UID').value = data[2];
-                    devModal.querySelector('#dev-note').value = data[3];
+                    devModal.querySelector('#dev-businesses').value = data[3];
                     devModal.querySelector('#dev-noti_keywords').value = data[4];
                     devModal.querySelector('#dev-unnoti_keywords').value = data[5];
+                    devModal.querySelector('#dev-note').value = data[6];
         })
 
             //新增資料部分
@@ -126,9 +128,10 @@
                     document.getElementById('ndev-UID').value,
             ];
             var data2 =[
-                    document.getElementById('ndev-note').value,
+                    document.getElementById('ndev-businesses').value,
                     document.getElementById('ndev-noti_keywords').value,
                     document.getElementById('ndev-unnoti_keywords').value,
+                    document.getElementById('ndev-note').value,
             ];
             if (!data1.includes("") && data1[1].length >= 9){
                             $.ajax({
@@ -141,9 +144,10 @@
                                         "name": data1[0],
                                         "number": data1[1],
                                         "UID": data1[2],
-                                        "note": data2[0],
+                                        "businesses": data2[0],
                                         "noti_keywords": data2[1],
                                         "unnoti_keywords": data2[2],
+                                        "note": data2[3],
                                     },
                             })
                             .done(function(msg){
@@ -169,12 +173,13 @@
                     document.getElementById('dev-UID').value,
             ];
             var data2 =[
-                    document.getElementById('dev-note').value,
+                    document.getElementById('dev-businesses').value,
                     document.getElementById('dev-noti_keywords').value,
                     document.getElementById('dev-unnoti_keywords').value,
+                    document.getElementById('dev-note').value,
             ];
             //用來檢查表格是否完全沒填
-            var check =data1[0].length+data1[1].length+data1[2].length+data2[0].length+data2[1].length+data2[2].length
+            var check =data1[0].length+data1[1].length+data1[2].length+data2[0].length+data2[1].length+data2[2].length+data2[3].length
                 if ( check >= 1 && (data1[1].length >= 9 || data1[1] == "")){
                     $.ajax({
                         headers: {
@@ -186,9 +191,10 @@
                                     "name": data1[0],
                                     "number": data1[1],
                                     "UID": data1[2],
-                                    "note": data2[0],
+                                    "businesses": data2[0],
                                     "noti_keywords": data2[1],
                                     "unnoti_keywords": data2[2],
+                                    "note": data2[3],
                             },
                         }).done(function(msg){
                                 alert('編輯成功')
@@ -216,7 +222,7 @@
             sedata =[];
             //依照現表取id值裝入sedata
             var id =$(td).each(function( index ) {
-                if(index==0 || index%8 ==0){
+                if(index==0 || index%9 ==0){
                     sedata[i++] = $( this ).text() ;
 
                 }
@@ -245,15 +251,16 @@
                 }
             }
             var data2 =[
-                    document.getElementById('manydev-note').value,
+                    document.getElementById('manydev-businesses').value,
                     document.getElementById('manydev-noti_keywords').value,
                     document.getElementById('manydev-unnoti_keywords').value,
+                    document.getElementById('manydev-note').value,
             ];
             //檢查模式
             if(seOrMake ==0){
                 if (confirm("是否確認編輯"+sedata.length+"項裝置?")){
                     //用來檢查表格是否完全沒填
-                    var check =data2[0].length+data2[1].length+data2[2].length
+                    var check =data2[0].length+data2[1].length+data2[2].length+data2[3].length
                     if ( check >= 1 && sedata != [] ){
 
                             //搜尋模式
@@ -264,9 +271,10 @@
                                         method: 'POST',
                                         url: '/devices/editmany',
                                         data:{  "id": sedata,
-                                                "note": data2[0],
+                                                "businesses": data2[0],
                                                 "noti_keywords": data2[1],
                                                 "unnoti_keywords": data2[2],
+                                                "note": data2[3],
                                         },
                                     }).done(function(msg){
                                             alert('編輯成功')
@@ -287,7 +295,7 @@
                 //搜尋模式 自訂模式
                 if (confirm("是否確認編輯"+data1.length+"項裝置?")){
                     //用來檢查表格是否完全沒填
-                    var check =data2[0].length+data2[1].length+data2[2].length
+                    var check =data2[0].length+data2[1].length+data2[2].length+data2[3].length
                     if ( check >= 1 &&  data1 != []){
                         $.ajax({
                                 headers: {
@@ -296,9 +304,10 @@
                                     method: 'POST',
                                     url: '/devices/editmany',
                                     data:{  "id": data1,
-                                            "note": data2[0],
+                                            "businesses": data2[0],
                                             "noti_keywords": data2[1],
                                             "unnoti_keywords": data2[2],
+                                            "note": data2[3],
                                     },
                                 }).done(function(msg){
                                         alert('編輯成功')

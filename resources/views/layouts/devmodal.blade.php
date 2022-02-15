@@ -9,28 +9,32 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="dev-name" class="col-form-label">裝置名稱:</label>
+              <label for="ndev-name" class="col-form-label">裝置名稱:</label>
               <input type="text" class="validate form-control" id="ndev-name" required>
             </div>
             <div class="mb-3">
-              <label for="dev-email" class="col-form-label">裝置號碼:</label>
+              <label for="ndev-email" class="col-form-label">裝置號碼:</label>
               <input type="text" class="validate form-control" id="ndev-number" required minlength="9">
             </div>
             <div class="mb-3">
-              <label for="dev-UID" class="col-form-label">裝置UID:</label>
+              <label for="ndev-UID" class="col-form-label">裝置UID:</label>
               <input type="text" class="validate form-control" autocomplete="new-UID" id="ndev-UID" required>
             </div>
             <div class="mb-3">
-              <label for="dev-note" class="col-form-label">備註:</label>
-              <input type="message-text" class="validate form-control" autocomplete="new-note" id="ndev-note">
+              <label for="ndev-businesses" class="col-form-label">商戶:</label>
+              <input type="message-text" class="validate form-control" autocomplete="new-businesses" id="ndev-businesses">
             </div>
             <div class="mb-3">
-              <label for="dev-noti_keywords" class="col-form-label">通知關鍵字:</label>
+              <label for="ndev-noti_keywords" class="col-form-label">通知關鍵字:</label>
               <input type="text" class="validate form-control" autocomplete="new-noti_keywords" id="ndev-noti_keywords">
             </div>
             <div class="mb-3">
-                <label for="dev-unnoti_keywords" class="col-form-label">忽略關鍵字:</label>
+                <label for="ndev-unnoti_keywords" class="col-form-label">忽略關鍵字:</label>
                 <input type="text" class="validate form-control" autocomplete="new-unnoti_keywords" id="ndev-unnoti_keywords">
+              </div>
+              <div class="mb-3">
+                <label for="ndev-note" class="col-form-label">備註:</label>
+                <input type="message-text" class="validate form-control" autocomplete="new-note" id="ndev-note">
               </div>
           </form>
         </div>
@@ -66,9 +70,9 @@
                     <input type="text" class="validate form-control" id="dev-UID">
                 </div>
                 <div class="mb-3">
-                    <label for="dev-note" class="col-form-label">備註:</label>
-                    <input type="message-text" class="validate form-control" autocomplete="edit-note" id="dev-note">
-                </div>
+                    <label for="dev-businesses" class="col-form-label">商戶:</label>
+                    <input type="message-text" class="validate form-control" autocomplete="edit-businesses" id="dev-businesses">
+                  </div>
                 <div class="mb-3">
                     <label for="dev-noti_keywords" class="col-form-label">通知關鍵字:</label>
                     <input type="text" class="validate form-control" autocomplete="edit-noti_keywords" id="dev-noti_keywords">
@@ -76,6 +80,10 @@
                 <div class="mb-3">
                     <label for="dev-unnoti_keywords" class="col-form-label">忽略關鍵字:</label>
                     <input type="text" class="validate form-control" autocomplete="edit-unnoti_keywords" id="dev-unnoti_keywords">
+                </div>
+                <div class="mb-3">
+                    <label for="dev-note" class="col-form-label">備註:</label>
+                    <input type="message-text" class="validate form-control" autocomplete="edit-note" id="dev-note">
                 </div>
             </form>
         </div>
@@ -110,8 +118,8 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="manydev-note" class="col-form-label">備註:</label>
-                <input type="message-text" class="validate form-control" id="manydev-note">
+                <label for="manydev-businesses" class="col-form-label">裝置商戶:</label>
+                <input type="message-text" class="validate form-control" id="manydev-businesses">
             </div>
             <div class="mb-3">
                 <label for="manydev-noti_keywords" class="col-form-label">通知關鍵字:</label>
@@ -120,7 +128,11 @@
             <div class="mb-3">
                 <label for="manydev-unnoti_keywords" class="col-form-label">忽略關鍵字:</label>
                 <input type="text" class="validate form-control" id="manydev-unnoti_keywords">
-              </div>
+            </div>
+            <div class="mb-3">
+                <label for="manydev-note" class="col-form-label">備註:</label>
+                <input type="message-text" class="validate form-control" id="manydev-note">
+            </div>
           </form>
         </div>
         <div class="modal-footer">

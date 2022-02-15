@@ -79,7 +79,7 @@ class Sms_listsDataTable extends DataTable
         return [
             Column::make('sms_sendtime')->title('簡訊發送時間')->type('date'),
             Column::make('device.name')->title('裝置名稱'),
-            Column::make('device.note')->title('裝置備註'),
+            Column::make('device.businesses')->title('裝置商戶'),
             Column::make('device.number')->title('裝置號碼'),
             Column::make('send_number')->title('簡訊發送號碼'),
             Column::make('sms_content')->title('簡訊內容'),

@@ -33,8 +33,8 @@
                         <input type="text" class="col-form-control" id="sedev_name">
                     </div>
                     <div class="col-md-3 ">
-                        <label for="sedev_note" class="col-form-label">裝置備註:</label>
-                        <input type="text" class="col-form-control" id="sedev_note">
+                        <label for="sedev_businesses" class="col-form-label">裝置商戶:</label>
+                        <input type="text" class="col-form-control" id="sedev_businesses">
                     </div>
                     <div class="col-md-3">
                         <label for="sedev_number" class="col-form-label">裝置號碼:</label>
@@ -79,22 +79,16 @@
             var data =[
                     "",
                     document.getElementById('sedev_name').value,
-                    document.getElementById('sedev_note').value,
+                    document.getElementById('sedev_businesses').value,
                     document.getElementById('sedev_number').value,
                     document.getElementById('sesend_number').value,
                     document.getElementById('sesms_content').value,
                     document.getElementById('sesnoticode').value,
                     document.getElementById('sesms_keyword').value,
                     ]
-            //for(var i =1;i<data.length;i++){
-                table.column(1).search(data[1]);
-                table.column(2).search(data[2]);
-                table.column(3).search(data[3]);
-                table.column(4).search(data[4]);
-                table.column(5).search(data[5]);
-                table.column(6).search(data[6]);
-                table.column(7).search(data[7]);
-            //}
+            for(var i =1;i<data.length;i++){
+                table.column(i).search(data[i]);
+            }
             table.draw();
         })
         //刪除
