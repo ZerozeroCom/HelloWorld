@@ -22,7 +22,7 @@
                                 <option value="0">忽視</option>
                             </select>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style="background-color:#82FF82;">
                                 <label for="sesms_content" class="col-form-label">　關鍵字:</label>
                                 <input type="text" class="col-form-control" id="sesms_keyword">
                         </div>
@@ -32,7 +32,7 @@
                         <label for="sedev_name" class="col-form-label">　　裝置名稱:</label>
                         <input type="text" class="col-form-control" id="sedev_name">
                     </div>
-                    <div class="col-md-3 ">
+                    <div class="col-md-3 " style="background-color:#82FF82;">
                         <label for="sedev_businesses" class="col-form-label">裝置商戶:</label>
                         <input type="text" class="col-form-control" id="sedev_businesses">
                     </div>
