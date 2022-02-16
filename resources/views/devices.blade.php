@@ -357,7 +357,7 @@
                     alert('刪除成功')
                     location.reload();
                 }).fail(function(message){
-                    alert(`${message}錯誤`);
+                    alert(`權限不足`);
                 });
             }
         })

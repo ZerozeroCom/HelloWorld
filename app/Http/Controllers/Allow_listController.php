@@ -61,7 +61,11 @@ class Allow_listController extends Controller
     }
 
     public function delete(Request $request,$id){
-        $user =$request->user()->id;
+        $auth = $request->user();
+        $user = $auth->id;
+        if( $auth->type != "admin"){
+            return response(['message'=>'權限不足'],403);
+        }
         $data=Allow_list::find($id);
         $num=count(Allow_list::where('allow_group',$data->allow_group)->get()->toArray());
         if($num == 1){

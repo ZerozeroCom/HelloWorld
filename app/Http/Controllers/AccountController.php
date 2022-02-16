@@ -49,8 +49,13 @@ class AccountController extends Controller
 
     //修改帳號
     public function editAcc(Request $request,$id){
-        $user = $request->user()->id;
+        $auth = $request->user();
+        $user = $auth->id;
         $data=User::find($id);
+
+        if( $auth->type == "trainee"){
+            return response('權限不足',403);
+        }
             //若有資料 進行驗證
         $acc = collect($request->validate([
             'type' => 'nullable|string|max:25',
@@ -85,9 +90,12 @@ class AccountController extends Controller
 
     //刪除帳號
     public function deleteAcc(Request $request,DeleteUser $deleteUser,$id){
-            $user = $request->user()->id;
+            $auth = $request->user();
+            $user = $auth->id;
+            if( $auth->type != "admin"){
+                return response(['message'=>'權限不足'],403);
+            }
             $data=User::find($id);
-
             //刪除使用者
             $this->log->deleteLog('dev',$user,$this->deleStr($data));
             $deleteUser->delete($data);

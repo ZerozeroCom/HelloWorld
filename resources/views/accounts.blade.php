@@ -192,6 +192,8 @@
                 }).done(function(msg){
                     alert('刪除成功')
                     location.reload();
+                }).fail(function(message){
+                    alert(`權限不足`);
                 });
             }else {
             }

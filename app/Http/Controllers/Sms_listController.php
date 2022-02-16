@@ -38,7 +38,11 @@ class Sms_listController extends Controller
     }
 
     public function delete(Request $request,$id){
-        $user =$request->user()->id;
+        $auth = $request->user();
+        $user = $auth->id;
+        if( $auth->type != "admin"){
+            return response(['message'=>'權限不足'],403);
+        }
         $data=Sms_list::find($id);
         $this->log->deleteLog('sms',$user,$data);
         $data->delete();
