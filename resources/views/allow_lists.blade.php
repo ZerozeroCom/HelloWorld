@@ -143,7 +143,7 @@
                         headers: {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"
                         },
-                            method: 'POST',
+                            method: 'PATCH',
                             url: `/allow-lists/edit/${id}`,
                             data:{
                                     "allow_group": data1[0],
@@ -173,7 +173,7 @@
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
                     },
-                    method: 'POST',
+                    method: 'DELETE',
                     url: `/allow-lists/${idx}/delete`,
                 })
                 .done(function(msg){

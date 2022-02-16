@@ -154,7 +154,7 @@
                                 headers: {
                                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
                                 },
-                                method: 'POST',
+                                method: 'PATCH',
                                 url: `/accounts/edit/${id}`,
                                 data:{  "id": id,
                                         "type": type,
@@ -187,7 +187,7 @@
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
                     },
-                    method: 'POST',
+                    method: 'DELETE',
                     url: `/accounts/delete/${idx}`,
                 }).done(function(msg){
                     alert('刪除成功')

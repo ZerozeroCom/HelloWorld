@@ -201,7 +201,7 @@
                         headers: {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"
                         },
-                            method: 'POST',
+                            method: 'PATCH',
                             url: `/devices/edit/${id}`,
                             data:{  "id": id,
                                     "name": data1[0],
@@ -284,7 +284,7 @@
                                     headers: {
                                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
                                     },
-                                        method: 'POST',
+                                        method: 'PATCH',
                                         url: '/devices/editmany',
                                         data:{  "id": sedata,
                                                 "businesses": data2[0],
@@ -317,7 +317,7 @@
                                 headers: {
                                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
                                 },
-                                    method: 'POST',
+                                    method: 'PATCH',
                                     url: '/devices/editmany',
                                     data:{  "id": data1,
                                             "businesses": data2[0],
@@ -349,7 +349,7 @@
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
                     },
-                    method: 'POST',
+                    method: 'DELETE',
                     url: `/devices/${idx}/delete`,
 
                 })

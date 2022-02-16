@@ -23,6 +23,10 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    const ROLE_ADMIN = 'admin';
+    const ROLE_COMMON = 'common';
+    const ROLE_TRAINEE = 'trainee';
+
     protected $fillable = [
         'type',
         'name',

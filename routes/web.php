@@ -18,32 +18,34 @@ use Yajra\DataTables\Facades\DataTables;
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-    Route::get('/','AccountController@index');
+    Route::get('/','Sms_listController@index');
 
-    Route::get('/accounts','AccountController@index');
+    Route::middleware(['can:common'])->group(function(){
+        Route::get('/accounts','AccountController@index');
+        Route::post('/accounts/addNew','AccountController@addNewAcc');
+        Route::patch('/accounts/edit/{id}','AccountController@editAcc');
+        Route::delete('/accounts/delete/{id}','AccountController@deleteAcc')-> middleware('can:admin');
 
-    Route::post('/accounts/addNew','AccountController@addNewAcc');
-    Route::post('/accounts/edit/{id}','AccountController@editAcc');
-    Route::post('/accounts/delete/{id}','AccountController@deleteAcc');
+        Route::get('/allow-lists','Allow_listController@index');
+        Route::post('/allow-lists/addNew','Allow_listController@addNewAL');
+        Route::patch('/allow-lists/edit/{id}','Allow_listController@editAL');
+        Route::delete('/allow-lists/{id}/delete','Allow_listController@delete');
 
-    Route::get('/allow-lists','Allow_listController@index');
-    Route::post('/allow-lists/addNew','Allow_listController@addNewAL');
-    Route::post('/allow-lists/edit/{id}','Allow_listController@editAL');
-    Route::post('/allow-lists/{id}/delete','Allow_listController@delete');
-
-    Route::get('/devices','DeviceController@index');
-    Route::post('/devices/addNew','DeviceController@addNewDev');
-    Route::post('/devices/edit/{id}','DeviceController@editDev');
-    Route::post('/devices/{id}/delete','DeviceController@delete');
-    Route::post('/devices/editmany','DeviceController@editManyDev');
+        Route::get('/devices','DeviceController@index');
+        Route::post('/devices/addNew','DeviceController@addNewDev');
+        Route::patch('/devices/edit/{id}','DeviceController@editDev');
+        Route::delete('/devices/{id}/delete','DeviceController@delete');
+        Route::patch('/devices/editmany','DeviceController@editManyDev');
+    });
 
     Route::get('/sms-lists','Sms_listController@index');
+    Route::delete('/sms-lists/{id}/delete','Sms_listController@delete')-> middleware('can:common');
 
+    Route::post('/sms-lists/{id}','Sms_listController@newSMSIn');
     Route::get('/newapitest', function () {
         return view('new_api_test');
     });
-    Route::post('/sms-lists/{id}','Sms_listController@newSMSIn');
-    Route::post('/sms-lists/{id}/delete','Sms_listController@delete');
+
 
     Route::post('/read-notification','NavController@readOne');
     Route::post('/read-all-notification','NavController@readAll');

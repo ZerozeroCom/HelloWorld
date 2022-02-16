@@ -53,7 +53,7 @@ class AccountController extends Controller
         $user = $auth->id;
         $data=User::find($id);
 
-        if( $auth->type == "trainee"){
+        if( $auth->type == "trainee" || $auth->type == "common" && $auth->id != $id){
             return response('權限不足',403);
         }
             //若有資料 進行驗證

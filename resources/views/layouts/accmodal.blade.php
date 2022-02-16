@@ -19,9 +19,11 @@
             <div class="mb-3">
                 <label for="acc-type" class="col-form-label">管理類型:</label>
                 <select type="text" class="form-control" autocomplete="new-type" id="acc-type" >
+                    @can('admin')
                     <option>common</option>
                     <option>admin</option>
                     <option>trainee</option>
+                    @endcan
                 </select>
             </div>
             <div class="mb-3 password">
@@ -69,14 +71,18 @@
               <label for="acc-email" class="col-form-label">E-MAIL:</label>
               <input type="email" class="validate form-control" id="nemail" placeholder required>
             </div>
+
             <div class="mb-3">
               <label for="acc-type" class="col-form-label">管理類型:</label>
               <select type="text" class="form-control" autocomplete="new-type" id="nacc-type" placeholder required>
                   <option>common</option>
+                  @can('admin')
                   <option>admin</option>
+                  @endcan
                   <option>trainee</option>
               </select>
             </div>
+
             <div class="mb-3 password">
               <label for="acc-password" class="col-form-label">帳號密碼:</label>
               <input type="password" class="validate form-control" autocomplete="new-password" id="nacc-password" placeholder required minlength="8">

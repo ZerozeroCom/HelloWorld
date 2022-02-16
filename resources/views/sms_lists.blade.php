@@ -158,7 +158,7 @@
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
                     },
-                    method: 'POST',
+                    method: 'DELETE',
                     url: `/sms-lists/${id}/delete`,
                 })
                 .done(function(msg){

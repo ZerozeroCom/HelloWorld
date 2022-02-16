@@ -62,6 +62,7 @@
                         </a>
                     </li>
                     <!-- Nav Item - Utilities Collapse Menu -->
+                    @can('common')
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="/accounts"
                             >
@@ -96,6 +97,7 @@
                     <hr class="sidebar-divider">
 
                     </li>
+                    @endcan
                     <hr class="sidebar-divider">
 
                         <div class="text-center d-none d-md-inline position-relative">
