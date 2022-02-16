@@ -14,11 +14,11 @@
                                     <input type="text" class="col-form-control" id="sedev-name">
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="sedev-email" class="col-form-label">裝置號碼　:</label>
+                                    <label for="sedev-email" class="col-form-label">　裝置號碼:</label>
                                     <input type="text" class="col-form-control" id="sedev-number" >
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="sedev-UID" class="col-form-label">裝置UID　　 :</label>
+                                    <label for="sedev-UID" class="col-form-label">　裝置UID :</label>
                                     <input type="text" class="col-form-control" id="sedev-UID">
                                 </div>
                         </div>
@@ -79,12 +79,28 @@
                     document.getElementById('sedev-noti_keywords').value,
                     document.getElementById('sedev-unnoti_keywords').value,
                     ]
-            for(var i =1;i<data.length;i++){
-                table.columns(i).search(data[i]);
-            }
+                //不須分詞搜尋
+                table.columns(1).search(data[1]);
+                table.columns(2).search(data[2]);
+                table.columns(3).search(data[3]);
+                //須分詞搜尋
+                data[4]=stringAddsearch(data[4]);
+                table.columns(4).search(data[4]);
+                data[5]=stringAddsearch(data[5]);
+                table.columns(5).search(data[5]);
+                data[6]=stringAddsearch(data[6]);
+                table.columns(6).search(data[6]);
+
             table.draw();
         })
-
+        function stringAddsearch(string){
+            string=string.replace(/\s+/g,' ');
+            string=string.trim();
+            string=string.split(" ");
+            string=string.sort();
+            string=string.join("%%");
+            return string;
+        }
 
 
         var newOrEdit =null;

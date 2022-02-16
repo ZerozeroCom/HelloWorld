@@ -15,7 +15,7 @@
                             <input type="text" class="col-form-control" id="sesms_content">
                         </div>
                         <div class="col-md-3 ">
-                            <label for="sesend_number" class="col-form-label">分類　　:</label>
+                            <label for="sesend_number" class="col-form-label">　　分類:</label>
                             <select type="text" class="col-form-control col-md-4"  id="sesnoticode" >
                                 <option></option>
                                 <option value="1">通知</option>
@@ -23,13 +23,13 @@
                             </select>
                         </div>
                         <div class="col-md-3">
-                                <label for="sesms_content" class="col-form-label">關鍵字　:</label>
+                                <label for="sesms_content" class="col-form-label">　關鍵字:</label>
                                 <input type="text" class="col-form-control" id="sesms_keyword">
                         </div>
                 </div>
                 <div class="row m-3">
                     <div class="col-md-3 ">
-                        <label for="sedev_name" class="col-form-label">裝置　名稱　:</label>
+                        <label for="sedev_name" class="col-form-label">　　裝置名稱:</label>
                         <input type="text" class="col-form-control" id="sedev_name">
                     </div>
                     <div class="col-md-3 ">
@@ -86,11 +86,30 @@
                     document.getElementById('sesnoticode').value,
                     document.getElementById('sesms_keyword').value,
                     ]
-            for(var i =1;i<data.length;i++){
-                table.column(i).search(data[i]);
-            }
+                //不須分詞搜尋
+                table.columns(1).search(data[1]);
+                //須分詞搜尋
+                data[2]=stringAddsearch(data[2]);
+                table.columns(2).search(data[2]);
+                //不須分詞搜尋
+                table.columns(3).search(data[3]);
+                table.columns(4).search(data[4]);
+                table.columns(5).search(data[5]);
+                table.columns(6).search(data[6]);
+                //須分詞搜尋
+                data[7]=stringAddsearch(data[7]);
+                table.columns(7).search(data[7]);
+
             table.draw();
         })
+        function stringAddsearch(string){
+            string=string.replace(/\s+/g,' ');
+            string=string.trim();
+            string=string.split(" ");
+            string=string.sort();
+            string=string.join("%%");
+            return string;
+        }
         //刪除
         $('table').on('click','.deletesms',function(){
             var id = $(this).data('id');
