@@ -3,12 +3,16 @@
 
     <div class="card row m-2" >
         <h5 class="card-header bg-info py-3 row ml-0 mr-0">搜尋</h5>
-        <div >
+        <div class="col">
             <form>
                 <div class="row m-3">
                         <div class="col-md-3 ">
                             <label for="sesend_number" class="col-form-label">簡訊發送號碼:</label>
                             <input type="text" class="col-form-control" id="sesend_number">
+                        </div>
+                        <div class="col-md-3" style="background-color:#82FF82;">
+                            <label for="sesms_content" class="col-form-label">　關鍵字:</label>
+                            <input type="text" class="col-form-control" id="sesms_keyword">
                         </div>
                         <div class="col-md-3">
                             <label for="sesms_content" class="col-form-label">簡訊內容:</label>
@@ -21,10 +25,6 @@
                                 <option value="1">通知</option>
                                 <option value="0">忽視</option>
                             </select>
-                        </div>
-                        <div class="col-md-3" style="background-color:#82FF82;">
-                                <label for="sesms_content" class="col-form-label">　關鍵字:</label>
-                                <input type="text" class="col-form-control" id="sesms_keyword">
                         </div>
                 </div>
                 <div class="row m-3">
@@ -42,7 +42,21 @@
                     </div>
                 </div>
             </form>
+            <div class="row">
+                <div class="col-md-3 btn-group"  role="group" >
+                    <label for="" class="col-form-label">快速選取:</label>
+                    <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_year">今年</button>
+                    <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_month">今月</button>
+                    <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_day">今日</button>
+                    <button type="button" class="m-2 btn btn-outline-dark" id="sedev_date_clear">清除</button>
+                </div>
+                <div class="col-md-3">
+                    <label for="sedev_number" class="col-form-label">自訂日期:</label>
+                    <input type="date" class="col-form-control" id="sedev_date">
+                </div>
+            </div>
         </div>
+
         <button type="button" class="btn m-2 btn-primary" id="search_sms">搜尋</button>
     </div>
     <div>
@@ -58,9 +72,7 @@
     <script>
         //自動刷新
         var stop =true;
-        function myrefresh()
-        {
-
+        function myrefresh(){
             if(stop){
                 //window.location.reload();
                 $('#sms_lists-table').DataTable().draw();
@@ -74,10 +86,34 @@
             stop = false;
         })
         //搜索
+            //快速選取
+            let date = new Date();
+            date=date.toISOString().split('T')[0];
+            $('#sedev_date_year').on('click',function(){
+                var table = $('#sms_lists-table').DataTable();
+                table.columns(0).search(date.split('-')[0]);
+                table.draw();
+            })
+            $('#sedev_date_month').on('click',function(){
+                var table = $('#sms_lists-table').DataTable();
+                table.columns(0).search(date.slice(0,7));
+                table.draw();
+            })
+            $('#sedev_date_day').on('click',function(){
+                var table = $('#sms_lists-table').DataTable();
+                table.columns(0).search(date);
+                table.draw();
+            })
+            $('#sedev_date_clear').on('click',function(){
+                var table = $('#sms_lists-table').DataTable();
+                table.columns(0).search('%');
+                table.draw();
+            })
         $('#search_sms').on('click',function(){
             var table = $('#sms_lists-table').DataTable();
+            console.log(sedev_date.value);
             var data =[
-                    "",
+                    document.getElementById('sedev_date').value,
                     document.getElementById('sedev_name').value,
                     document.getElementById('sedev_businesses').value,
                     document.getElementById('sedev_number').value,
@@ -86,6 +122,10 @@
                     document.getElementById('sesnoticode').value,
                     document.getElementById('sesms_keyword').value,
                     ]
+                 //日期搜尋
+                 if(data[0]!=""){
+                    table.columns(0).search(data[0]);
+                 }
                 //不須分詞搜尋
                 table.columns(1).search(data[1]);
                 //須分詞搜尋
