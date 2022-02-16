@@ -34,8 +34,8 @@ class DeviceController extends Controller
             'unnoti_keywords' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:255',
         ]);
-        //商戶固定順序存入
-        $dev=$this->sortBusinesses($dev);
+        //商戶 關鍵字固定順序存入
+        $dev=$this->sortWord($dev);
         $this->log->newDataLog("dev",$user,$dev);
         Device::create($dev);
         return response('ok',200);
@@ -55,8 +55,8 @@ class DeviceController extends Controller
             'unnoti_keywords' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:255',
         ]))->filter();
-        //商戶固定順序存入
-        $dev=$this->sortBusinesses($dev);
+        //商戶 關鍵字固定順序存入
+        $dev=$this->sortWord($dev);
         $this->log->editBeforeLog('dev',$user,$data);
         $data->update($dev->all());
         $this->log->editAfterLog('dev',$user,$data);
@@ -73,8 +73,8 @@ class DeviceController extends Controller
             'unnoti_keywords' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:255',
         ]))->filter();
-        //商戶固定順序存入
-        $dev=$this->sortBusinesses($dev);
+        //商戶 關鍵字固定順序存入
+        $dev=$this->sortWord($dev);
         $id = $request->id;
         $data=Device::findMany($id);
         $this->log->editBeforeLog('dev',$user,$data);
@@ -95,16 +95,27 @@ class DeviceController extends Controller
         return response('ok',200);
     }
 
-    protected function sortBusinesses($dev){
+    protected function sortWord($dev){
+
         if(isset($dev['businesses'])){
-            //連續空格只保留一個
-            $dev['businesses']=preg_replace("/\s(?=\s)/","\\1",$dev['businesses']);
-            //以空格切割陣列
-            $businesses =explode(' ',$dev['businesses']);
-            //重新排序並放回
-            sort($businesses);
-            $dev['businesses']=implode(" ",$businesses);
+            $dev['businesses']=$this->sortSomeThing($dev['businesses']);
+        }
+        if(isset($dev['noti_keywords'])){
+            $dev['noti_keywords']=$this->sortSomeThing($dev['noti_keywords']);
+        }
+        if(isset($dev['unnoti_keywords'])){
+            $dev['unnoti_keywords']=$this->sortSomeThing($dev['unnoti_keywords']);
         }
         return $dev;
+    }
+    protected  function sortSomeThing($data){
+        //連續空格只保留一個
+        $data=preg_replace("/\s(?=\s)/","\\1",$data);
+        //以空格切割陣列
+        $businesses =explode(' ',$data);
+        //重新排序並放回
+        sort($businesses);
+        $data=implode(" ",$businesses);
+    return $data;
     }
 }
