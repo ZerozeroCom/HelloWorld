@@ -46,7 +46,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         return view('new_api_test');
     });
 
-
+    Route::post('/get-notification','NavController@getNoti');
     Route::post('/read-notification','NavController@readOne');
     Route::post('/read-all-notification','NavController@readAll');
 });

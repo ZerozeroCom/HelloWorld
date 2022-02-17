@@ -60,7 +60,7 @@
                 <div class="col-md-4">
                     <label for="sedev_month" class="col-form-label">自訂整月搜尋: (例: 2022-01)</label>
                     <div class="col-sm-4">
-                            <input class="form-control" id="sedev_month" placeholder="yyyy-MM" type="text" maxlength="7" oninput = "value=value.replace(/[^\d-]/g,'')">
+                            <input class="form-control " id="sedev_month" placeholder="yyyy-MM" type="text" maxlength="7" oninput = "value=value.replace(/[^\d-]/g,'')">
                     </div>
                 </div>
             </div>
@@ -86,9 +86,9 @@
                 //window.location.reload();
                 $('#sms_lists-table').DataTable().draw();
             }
-            setTimeout('myrefresh()',5000);
+            setTimeout('myrefresh()',6000);
         }
-        setTimeout('myrefresh()',5000);
+        setTimeout('myrefresh()',6000);
 
         $('#stop_reload').on('click',function(){
             document.getElementById('stop_message').innerHTML="已暫停自動刷新，重開請按F5";
@@ -155,7 +155,6 @@
             })
         $('#search_sms').on('click',function(){
             var table = $('#sms_lists-table').DataTable();
-            console.log(sedev_date.value);
             var month =document.getElementById('sedev_month').value;
             var data =[
                     document.getElementById('sedev_date').value,

@@ -43,6 +43,9 @@ class FortifyServiceProvider extends ServiceProvider
 
             $email = (string) $request->email;
             $user = User::where('email', $request->email)->first();
+            if($user == false){
+                return $user;
+            }
             $user->update(['logins'=> $user->logins+1,'ip_address'=> $request->ip()]);
 
             return Limit::perMinute(5)->by($email.$request->ip());

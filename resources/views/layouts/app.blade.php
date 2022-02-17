@@ -124,13 +124,13 @@
             // 在這裡可針對使用者的授權做處理
                 if (permission === 'granted') {
                 // 使用者同意授權
-                var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+                var notification = new Notification('已開啟通知!', notifyConfig); // 建立通知
                 }
             });
         }
         var notifyConfig = {
-        body: '\\ ^o^ /', // 設定內容
-        icon: '', // 設定 icon
+        body: '\\ ^o^ / ', // 設定內容
+        icon: '/icon/send.svg', // 設定 icon
         requireInteraction:true,
         };
 

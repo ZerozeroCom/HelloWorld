@@ -14,11 +14,11 @@
             </div>
             <div class="mb-3">
                 <label for="acc-email" class="col-form-label">E-MAIL:</label>
-                <input type="email" class="validate form-control" id="email">
+                <input type="email" class="validate form-control" autocomplete="off" id="email">
             </div>
             <div class="mb-3">
                 <label for="acc-type" class="col-form-label">管理類型:</label>
-                <select type="text" class="form-control" autocomplete="new-type" id="acc-type" >
+                <select type="text" class="form-control" autocomplete="off" id="acc-type" >
                     @can('admin')
                     <option>common</option>
                     <option>admin</option>
@@ -28,15 +28,15 @@
             </div>
             <div class="mb-3 password">
                 <label for="acc-password" class="col-form-label">帳號密碼:</label>
-                <input type="password" class="validate form-control" autocomplete="new-password" id="acc-password" minlength="8" >
+                <input type="password" class="validate form-control" autocomplete="off" id="acc-password" minlength="8" >
             </div>
             <div class="mb-3 password">
                 <label for="acc-password_confirmation" class="col-form-label">確認密碼:</label>
-                <input type="password" class="validate form-control" autocomplete="new-password" id="acc-password_confirmation" minlength="8" >
+                <input type="password" class="validate form-control" autocomplete="off" id="acc-password_confirmation" minlength="8" >
             </div>
             <div class="mb-3 allow_group">
             <label for="acc-allow_group" class="col-form-label">白名單群組:</label>
-            <select type="text" class="form-control" autocomplete="new-allow_group" id="acc-allow_group" >
+            <select type="text" class="form-control" autocomplete="off" id="acc-allow_group" >
                 <option></option>
                 @foreach ($allow_group_list as $key =>$value)
                     <option>{{$value->allow_group}}</option>
@@ -69,7 +69,7 @@
             </div>
             <div class="mb-3">
               <label for="acc-email" class="col-form-label">E-MAIL:</label>
-              <input type="email" class="validate form-control" id="nemail" placeholder required>
+              <input type="email" class="validate form-control" id="nemail" autocomplete="off" placeholder required>
             </div>
 
             <div class="mb-3">
