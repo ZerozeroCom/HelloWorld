@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="card row m-2" >
+    <div class="card row m-2 " >
         <h5 class="card-header bg-info py-3 row ml-0 mr-0">搜尋</h5>
         <div class="col">
             <form>
@@ -19,8 +19,8 @@
                             <input type="text" class="col-form-control" id="sesms_content">
                         </div>
                         <div class="col-md-3 ">
-                            <label for="sesend_number" class="col-form-label">　　分類:</label>
-                            <select type="text" class="col-form-control col-md-4"  id="sesnoticode" >
+                            <label for="sesnoticode" class="col-form-label">　　分類:</label>
+                            <select type="text" class="col-form-control"  id="sesnoticode" >
                                 <option></option>
                                 <option value="1">通知</option>
                                 <option value="0">忽視</option>
@@ -43,7 +43,7 @@
                 </div>
             </form>
             <div class="row">
-                <div class="col-md-4 btn-group"  role="group" >
+                <div class="col btn-group"  role="group" >
                     <label for="" class="col-form-label">快速選取:</label>
                     <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_year">今年</button>
                     <button type="button" class="m-2 btn btn-outline-info" id="sedev_date_lastmonth">上月</button>
@@ -53,14 +53,14 @@
                     <button type="button" class="m-2 btn btn-outline-dark" id="sedev_date_clear">清除日期</button>
                     <button type="button" class="m-2 btn btn-outline-dark" id="sedev_all_clear">清除條件</button>
                 </div>
-                <div class="col-md-4">
-                    <label for="sedev_number" class="m-3 col-form-label">自訂單日搜尋:</label>
+                <div class="col">
+                    <label for="sedev_number" class="col-form-label">自訂單日搜尋:</label>
                     <input type="date" class="col-form-control" id="sedev_date">
                 </div>
-                <div class="col-md-4">
+                <div class="col">
                     <label for="sedev_month" class="col-form-label">自訂整月搜尋: (例: 2022-01)</label>
-                    <div class="col-sm-4">
-                            <input class="form-control " id="sedev_month" placeholder="yyyy-MM" type="text" maxlength="7" oninput = "value=value.replace(/[^\d-]/g,'')">
+                    <div class="col-md-3">
+                            <input clas4s="form-control " id="sedev_month" placeholder="yyyy-MM" type="text" maxlength="7" oninput = "value=value.replace(/[^\d-]/g,'')">
                     </div>
                 </div>
             </div>
