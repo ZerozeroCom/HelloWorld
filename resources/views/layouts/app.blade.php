@@ -64,6 +64,13 @@
                     <!-- Nav Item - Utilities Collapse Menu -->
                     @can('common')
                     <li class="nav-item">
+                        <a class="nav-link collapsed" href="/devices">
+                            <img src="/icon/phone.svg" class="fas fa-fw">
+                            <span>裝置管理</span>
+                        </a>
+                    </li>
+                     <!-- Nav Item - Utilities Collapse Menu -->
+                    <li class="nav-item">
                         <a class="nav-link collapsed" href="/accounts"
                             >
                             <img src="/icon/people.svg" class="fas fa-fw">
@@ -71,13 +78,7 @@
                         </a>
                     </li>
                      <!-- Nav Item - Utilities Collapse Menu -->
-                     <li class="nav-item">
-                        <a class="nav-link collapsed" href="/devices"
-                            >
-                            <img src="/icon/phone.svg" class="fas fa-fw"><span>裝置管理</span>
-                        </a>
-                    </li>
-                     <!-- Nav Item - Utilities Collapse Menu -->
+
                      <li class="nav-item">
                         <a class="nav-link collapsed" href="/allow-lists"
                             >
