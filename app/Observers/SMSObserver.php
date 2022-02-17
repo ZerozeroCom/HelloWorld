@@ -32,7 +32,7 @@ class SMSObserver
         //通知線上用戶
         if($sms_list->noticode){
             foreach($users as $value){
-                $value->notify(new SMSCheck($sms_list->notiword,$dev));
+                $value->notify(new SMSCheck($sms_list->keyword,$dev));
             }
         }
 

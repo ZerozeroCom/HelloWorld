@@ -43,16 +43,25 @@
                 </div>
             </form>
             <div class="row">
-                <div class="col-md-3 btn-group"  role="group" >
+                <div class="col-md-4 btn-group"  role="group" >
                     <label for="" class="col-form-label">快速選取:</label>
                     <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_year">今年</button>
+                    <button type="button" class="m-2 btn btn-outline-info" id="sedev_date_lastmonth">上月</button>
                     <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_month">今月</button>
+                    <button type="button" class="m-2 btn btn-outline-info" id="sedev_date_yesterday">昨日</button>
                     <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_day">今日</button>
-                    <button type="button" class="m-2 btn btn-outline-dark" id="sedev_date_clear">清除</button>
+                    <button type="button" class="m-2 btn btn-outline-dark" id="sedev_date_clear">清除日期</button>
+                    <button type="button" class="m-2 btn btn-outline-dark" id="sedev_all_clear">清除條件</button>
                 </div>
-                <div class="col-md-3">
-                    <label for="sedev_number" class="col-form-label">自訂日期:</label>
+                <div class="col-md-4">
+                    <label for="sedev_number" class="m-3 col-form-label">自訂單日搜尋:</label>
                     <input type="date" class="col-form-control" id="sedev_date">
+                </div>
+                <div class="col-md-4">
+                    <label for="sedev_month" class="col-form-label">自訂整月搜尋: (例: 2022-01)</label>
+                    <div class="col-sm-4">
+                            <input class="form-control" id="sedev_month" placeholder="yyyy-MM" type="text" maxlength="7" oninput = "value=value.replace(/[^\d-]/g,'')">
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,31 +96,67 @@
         })
         //搜索
             //快速選取
-            let date = new Date();
-            date=date.toISOString().split('T')[0];
+
             $('#sedev_date_year').on('click',function(){
+                let date = new Date();
+                date=date.toISOString().split('T')[0];
                 var table = $('#sms_lists-table').DataTable();
                 table.columns(0).search(date.split('-')[0]);
                 table.draw();
             })
-            $('#sedev_date_month').on('click',function(){
+            $('#sedev_date_lastmonth').on('click',function(){
+                let date = new Date();
+                //避免跨月日期錯誤 將日期設為1
+                date.setDate(1);
+                date.setMonth(date.getMonth() - 1);
+                date=date.toISOString().split('T')[0];
                 var table = $('#sms_lists-table').DataTable();
                 table.columns(0).search(date.slice(0,7));
                 table.draw();
             })
+            $('#sedev_date_month').on('click',function(){
+                let date = new Date();
+                date=date.toISOString().split('T')[0];
+                var table = $('#sms_lists-table').DataTable();
+                table.columns(0).search(date.slice(0,7));
+                table.draw();
+            })
+
+            $('#sedev_date_yesterday').on('click',function(){
+                let date = new Date();
+                date.setDate(date.getDate() - 1);
+                date=date.toISOString().split('T')[0];
+                var table = $('#sms_lists-table').DataTable();
+                table.columns(0).search(date);
+                table.draw();
+            })
             $('#sedev_date_day').on('click',function(){
+                let date = new Date();
+                date=date.toISOString().split('T')[0];
                 var table = $('#sms_lists-table').DataTable();
                 table.columns(0).search(date);
                 table.draw();
             })
             $('#sedev_date_clear').on('click',function(){
+                $('#sedev_month').val('');
+                $('#sedev_date').val('');
                 var table = $('#sms_lists-table').DataTable();
                 table.columns(0).search('%');
                 table.draw();
             })
+            $('#sedev_all_clear').on('click',function(){
+                $('#sedev_name').val('');
+                $('#sedev_businesses').val('');
+                $('#sedev_number').val('');
+                $('#sesend_number').val('');
+                $('#sesms_content').val('');
+                $('#sesnoticode').val('');
+                $('#sesms_keyword').val('');
+            })
         $('#search_sms').on('click',function(){
             var table = $('#sms_lists-table').DataTable();
             console.log(sedev_date.value);
+            var month =document.getElementById('sedev_month').value;
             var data =[
                     document.getElementById('sedev_date').value,
                     document.getElementById('sedev_name').value,
@@ -122,6 +167,7 @@
                     document.getElementById('sesnoticode').value,
                     document.getElementById('sesms_keyword').value,
                     ]
+                 if(month != ""){data[0]=month};
                  //日期搜尋
                  if(data[0]!=""){
                     table.columns(0).search(data[0]);
