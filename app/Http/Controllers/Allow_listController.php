@@ -67,7 +67,7 @@ class Allow_listController extends Controller
             return response(['message'=>'權限不足'],403);
         }
         $data=Allow_list::find($id);
-        $num=count(Allow_list::where('allow_group',$data->allow_group)->get()->toArray());
+        $num=Allow_list::where('allow_group',$data->allow_group)->get()->count();
         if($num == 1){
             return response('請勿刪除最後一個白名單',422);
         }

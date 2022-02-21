@@ -31,6 +31,7 @@ class AccountController extends Controller
     public function deleStr($data){
         $dataA=(string)$data;
         $dataA = substr_replace($dataA,'',stripos($dataA,',"current_team_id"',1))."}";
+        $dataA = json_decode($dataA);
         return $dataA;
     }
 
@@ -42,7 +43,6 @@ class AccountController extends Controller
         $user = $request->user()->id;
         $data=['type'=> $request->type,'name'=> $request->name, 'email'=> $request->email,'allow_group' => $request->allow_group,];
         $this->log->newDataLog("ac",$user,$data);
-
         return response('ok',200);
     }
 
@@ -83,7 +83,7 @@ class AccountController extends Controller
                 $key => $value
             ])->save();
         }
-        $this->log->editAfterLog('ac',$user,$this->deleStr($data));
+        $this->log->editAfterLog('ac',$user,$acc);
         return response('ok',200);
     }
 
