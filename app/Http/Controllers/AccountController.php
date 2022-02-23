@@ -31,7 +31,7 @@ class AccountController extends Controller
     public function deleStr($data){
         $dataA=(string)$data;
         $dataA = substr_replace($dataA,'',stripos($dataA,',"current_team_id"',1))."}";
-        $dataA = json_decode($dataA);
+        $dataA = json_decode($dataA, true);
         return $dataA;
     }
 
