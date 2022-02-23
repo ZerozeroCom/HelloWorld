@@ -97,7 +97,7 @@ class AccountController extends Controller
             }
             $data=User::find($id);
             //刪除使用者
-            $this->log->deleteLog('dev',$user,$this->deleStr($data));
+            $this->log->deleteLog('ac',$user,$this->deleStr($data));
             $deleteUser->delete($data);
             return response('ok',200);
     }
