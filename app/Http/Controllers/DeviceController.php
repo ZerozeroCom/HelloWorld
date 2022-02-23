@@ -77,7 +77,7 @@ class DeviceController extends Controller
         $dev=$this->sortWord($dev);
         $id = $request->id;
         $data=Device::findMany($id);
-        $this->log->editBeforeLog('dev',$user,$data);
+        $this->log->editManyBeforeLog('dev',$user,$data);
 
         foreach($id as $value){
             Device::find($value)->update($dev->all());
