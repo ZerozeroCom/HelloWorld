@@ -14,7 +14,7 @@
             </div>
             <div class="mb-3">
               <label for="ndev-email" class="col-form-label">裝置號碼:</label>
-              <input type="text" class="validate form-control" id="ndev-number" required minlength="9">
+              <input type="number" class="validate form-control" id="ndev-number" required minlength="9">
             </div>
             <div class="mb-3">
               <label for="ndev-UID" class="col-form-label">裝置UID:</label>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="dev-number" class="col-form-label">裝置號碼:</label>
-                    <input type="text" class="validate form-control" id="dev-number" minlength="9">
+                    <input type="number" class="validate form-control" id="dev-number" minlength="9">
                 </div>
                 <div class="mb-3">
                     <label for="dev-UID" class="col-form-label">裝置UID:</label>

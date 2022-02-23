@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="sedev-email" class="col-form-label">　裝置號碼:</label>
-                                    <input type="text" class="col-form-control" id="sedev-number" >
+                                    <input type="number" class="col-form-control" id="sedev-number" >
                                 </div>
                                 <div class="col-md-4">
                                     <label for="sedev-UID" class="col-form-label">　裝置UID :</label>

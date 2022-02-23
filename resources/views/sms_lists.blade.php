@@ -8,7 +8,7 @@
                 <div class="row m-3">
                         <div class="col-md-3 ">
                             <label for="sesend_number" class="col-form-label">簡訊發送號碼:</label>
-                            <input type="text" class="col-form-control" id="sesend_number">
+                            <input type="number" class="col-form-control" id="sesend_number" >
                         </div>
                         <div class="col-md-3" style="background-color:#82FF82;">
                             <label for="sesms_content" class="col-form-label">　關鍵字:</label>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-3">
                         <label for="sedev_number" class="col-form-label">裝置號碼:</label>
-                        <input type="text" class="col-form-control" id="sedev_number">
+                        <input type="number" class="col-form-control" id="sedev_number">
                     </div>
                 </div>
             </form>
@@ -60,7 +60,7 @@
                 <div class="col">
                     <label for="sedev_month" class="col-form-label">自訂整月搜尋: (例: 2022-01)</label>
                     <div class="col-md-3">
-                            <input clas4s="form-control " id="sedev_month" placeholder="yyyy-MM" type="text" maxlength="7" oninput = "value=value.replace(/[^\d-]/g,'')">
+                            <input clas4s="form-control " id="sedev_month" placeholder="yyyy-MM" type="text" maxlength="7" oninput = "value=value.replace(/[^\d-]|-{2}|\d{5}|^\w{1,3}-/g,'')">
                     </div>
                 </div>
             </div>
