@@ -90,7 +90,7 @@ class DeviceController extends Controller
     public function delete(Request $request,$id){
         $auth = $request->user();
         $user = $auth->id;
-        if( $auth->type != "admin"){
+        if( $auth->type != 'admin'){
             return response(['message'=>'權限不足'],403);
         }
         $data=Device::find($id);
@@ -119,7 +119,7 @@ class DeviceController extends Controller
         $businesses =explode(' ',$data);
         //重新排序並放回
         sort($businesses);
-        $data=implode(" ",$businesses);
+        $data=implode(' ',$businesses);
     return $data;
     }
 }

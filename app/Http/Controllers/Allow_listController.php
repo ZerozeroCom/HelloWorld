@@ -42,7 +42,7 @@ class Allow_listController extends Controller
          //資料驗證
         $data=$this->alValidate($request);
 
-        $this->log->newDataLog("al",$user,$data);
+        $this->log->newDataLog('al',$user,$data);
         Allow_list::create($data);
         return response('ok',200);
     }
@@ -54,16 +54,16 @@ class Allow_listController extends Controller
         //資料驗證
         $dataA=$this->alValidate($request);
 
-        $this->log->editBeforeLog("al",$user,$data);
+        $this->log->editBeforeLog('al',$user,$data);
         $data->update($dataA);
-        $this->log->editAfterLog("al",$user,$data);
+        $this->log->editAfterLog('al',$user,$data);
         return response('ok',200);
     }
 
     public function delete(Request $request,$id){
         $auth = $request->user();
         $user = $auth->id;
-        if( $auth->type != "admin"){
+        if( $auth->type != 'admin'){
             return response(['message'=>'權限不足'],403);
         }
         $data=Allow_list::find($id);
@@ -71,7 +71,7 @@ class Allow_listController extends Controller
         if($num == 1){
             return response('請勿刪除最後一個白名單',422);
         }
-        $this->log->deleteLog("al",$user,$data);
+        $this->log->deleteLog('al',$user,$data);
         $data->delete();
         return response('ok',200);
     }

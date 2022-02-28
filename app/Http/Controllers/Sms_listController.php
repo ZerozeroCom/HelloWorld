@@ -32,7 +32,7 @@ class Sms_listController extends Controller
         ]);
         //檢查關鍵字並處理資料
         $data = $keywordServe->checkSMSKeyword($data);
-        $this->log->newDataLog("sms",$id,$data);
+        $this->log->newDataLog('sms',$id,$data);
         Sms_list::create($data);
         return response('ok',200);
     }
@@ -40,7 +40,7 @@ class Sms_listController extends Controller
     public function delete(Request $request,$id){
         $auth = $request->user();
         $user = $auth->id;
-        if( $auth->type != "admin"){
+        if( $auth->type != 'admin'){
             return response(['message'=>'權限不足'],403);
         }
         $data=Sms_list::find($id);

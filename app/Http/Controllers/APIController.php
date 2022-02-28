@@ -28,7 +28,7 @@ class APIController extends Controller
         ]);
         //檢查關鍵字並處理資料
         $data = $keywordServe->checkSMSKeyword($data);
-        $this->log->newDataLog("sms",$id,$data);
+        $this->log->newDataLog('sms',$id,$data);
         Sms_list::create($data);
         return response('ok',200);
     }

@@ -92,7 +92,7 @@ class AccountController extends Controller
     public function deleteAcc(Request $request,DeleteUser $deleteUser,$id){
             $auth = $request->user();
             $user = $auth->id;
-            if( $auth->type != "admin"){
+            if( $auth->type != 'admin'){
                 return response(['message'=>'權限不足'],403);
             }
             $data=User::find($id);
