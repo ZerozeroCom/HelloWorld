@@ -252,7 +252,7 @@
             //初始化sedata ，送出設定為自訂模式
             seOrMake =1;
             sedata =[];
-
+            document.getElementById("many_dev_name").innerHTML = sedata;
 
         })
 
