@@ -26,7 +26,7 @@ class Sms_listController extends Controller
 
         //驗證裝置號碼
         $data= $request->validate([
-            'number' => 'exists:App\Models\Device,number|required|string|max:20|min:9',
+            //'number' => 'exists:App\Models\Device,number|required|string|max:20|min:9',
             'send_number' => 'required|string|max:20|min:9',
             'sms_content' => 'required|string|max:255',
         ]);
