@@ -149,7 +149,7 @@
                     document.getElementById('ndev-unnoti_keywords').value,
                     document.getElementById('ndev-note').value,
             ];
-            if (!data1.includes("") && data1[1].length >= 9){
+            if (!data1.includes("") ){
                             $.ajax({
                                 headers: {
                                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -196,7 +196,7 @@
             ];
             //用來檢查表格是否完全沒填
             var check =data1[0].length+data1[1].length+data1[2].length+data2[0].length+data2[1].length+data2[2].length+data2[3].length
-                if ( check >= 1 && (data1[1].length >= 9 || data1[1] == "")){
+                if ( check >= 1 ){
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"

@@ -9,11 +9,11 @@
         <form>
         <div class="mb-3">
             <label for="dev-email" class="col-form-label">裝置號碼:</label>
-            <input type="text" class="validate form-control"autocomplete="number" id="dev-number" required minlength="9" >
+            <input type="text" class="validate form-control"autocomplete="number" id="dev-number"  >
         </div>
         <div class="mb-3">
             <label for="dev-UID" class="col-form-label">發送號碼:</label>
-            <input type="text" class="validate form-control" autocomplete="send-number" id="send-number" required minlength="9">
+            <input type="text" class="validate form-control" autocomplete="send-number" id="send-number" >
         </div>
         <div class="mb-3">
             <label for="message-text" class="col-form-label">簡訊內容:</label>
