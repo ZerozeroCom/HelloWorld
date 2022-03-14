@@ -8,8 +8,8 @@
     <div class="body">
         <form>
         <div class="mb-3">
-            <label for="dev-email" class="col-form-label">裝置號碼:</label>
-            <input type="text" class="validate form-control"autocomplete="number" id="dev-number"  >
+            <label for="dev-email" class="col-form-label">裝置名稱:</label>
+            <input type="text" class="validate form-control"autocomplete="name" id="dev-name"  >
         </div>
         <div class="mb-3">
             <label for="dev-UID" class="col-form-label">發送號碼:</label>
@@ -30,11 +30,11 @@
             //測試用id號
             var id = 0;
             var data =[
-                    document.getElementById('dev-number').value,
+                    document.getElementById('dev-name').value,
                     document.getElementById('send-number').value,
                     document.getElementById('sms-content').value,];
                 //若必填有空值就不傳資料
-                if ( data[0] != "" && data[1] != "" && data[2] != "" &&  data[0].length >= 9 &&  data[1].length >= 9){
+                if ( data[0] != "" && data[1] != "" && data[2] != ""  &&  data[1].length >= 9){
                     console.log(12)
                             $.ajax({
                                 headers: {
@@ -43,7 +43,7 @@
                                 method: 'POST',
                                 url: `sms-lists/${id}`,
                                 data:{
-                                        "number": data[0],
+                                        "name": data[0],
                                         "send_number": data[1],
                                         "sms_content": data[2],
                                     },

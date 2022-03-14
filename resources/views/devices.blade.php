@@ -140,10 +140,10 @@
         $('.modal').on('click','#devnew_go',function(){
             var data1 =[
                     document.getElementById('ndev-name').value,
-                    document.getElementById('ndev-number').value,
                     document.getElementById('ndev-UID').value,
             ];
             var data2 =[
+                    document.getElementById('ndev-number').value,
                     document.getElementById('ndev-businesses').value,
                     document.getElementById('ndev-noti_keywords').value,
                     document.getElementById('ndev-unnoti_keywords').value,
@@ -158,12 +158,12 @@
                                 url: `/devices/addNew`,
                                 data:{
                                         "name": data1[0],
-                                        "number": data1[1],
-                                        "UID": data1[2],
-                                        "businesses": data2[0],
-                                        "noti_keywords": data2[1],
-                                        "unnoti_keywords": data2[2],
-                                        "note": data2[3],
+                                        "number": data2[0],
+                                        "UID": data1[1],
+                                        "businesses": data2[1],
+                                        "noti_keywords": data2[2],
+                                        "unnoti_keywords": data2[3],
+                                        "note": data2[4],
                                     },
                             })
                             .done(function(msg){

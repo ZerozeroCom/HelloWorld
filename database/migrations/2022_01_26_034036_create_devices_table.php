@@ -15,8 +15,8 @@ class CreateDevicesTable extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 40);
-            $table->string('number', 20);
+            $table->string('name', 40)->unique();
+            $table->string('number', 40)->nullable();
             $table->string('UID');
             $table->string('businesses')->nullable();
             $table->string('noti_keywords')->nullable();
