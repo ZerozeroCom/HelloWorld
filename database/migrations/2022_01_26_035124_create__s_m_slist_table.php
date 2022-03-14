@@ -17,7 +17,7 @@ class CreateSMSlistTable extends Migration
             $table->id();
             $table->timestamp('sms_sendtime');
             $table->foreignId('device_id')->constrained('devices');
-            $table->string('send_number');
+            $table->string('name');
             $table->string('sms_content');
         });
     }

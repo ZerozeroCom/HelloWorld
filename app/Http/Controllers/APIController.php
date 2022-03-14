@@ -19,10 +19,10 @@ class APIController extends Controller
 
     public function newSMSIn(Request $request,$id,KeywordServe $keywordServe){
 
-        //驗證裝置號碼
+        //驗證裝置名稱
         $data= $request->validate([
             'sms_sendtime' => 'required|date',
-            'number' => 'exists:App\Models\Device,number|required|string|max:20|min:9',
+            'name' => 'exists:App\Models\Device,name|required|string',
             'send_number' => 'required|string|max:255',
             'sms_content' => 'required|string',
         ]);

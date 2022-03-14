@@ -8,7 +8,7 @@ class KeywordServe{
     public function checkSMSKeyword($data){
 
         //將號碼改為裝置id
-        $dev=Device::where('number',$data['number'])->first();
+        $dev=Device::where('name',$data['name'])->first();
 
         //判斷是否通知
             //物件轉換為陣列 以空格為判斷分隔
@@ -36,7 +36,7 @@ class KeywordServe{
             }
         }
         $data = array_merge(['device_id'=>$dev->id,'keyword'=>$keyword,'noticode'=> $code],$data);
-        unset($data['number']);
+        unset($data['name']);
 
         return $data;
     }

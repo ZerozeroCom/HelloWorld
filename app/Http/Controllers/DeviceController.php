@@ -27,7 +27,7 @@ class DeviceController extends Controller
         //資料驗證
         $dev= $request->validate([
             'name' => 'required|string|max:40',
-            'number' => 'required|string|max:20|min:9',
+            'number' => 'nullable|string',
             'UID' => 'unique:App\Models\Device,UID|string|max:255',
             'businesses' => 'nullable|string|max:255',
             'noti_keywords' => 'nullable|string|max:255',
@@ -48,7 +48,7 @@ class DeviceController extends Controller
             //若有資料 進行驗證
         $dev = collect($request->validate([
             'name' => 'nullable|string|max:40',
-            'number' => 'nullable|string|max:20|min:9',
+            //'number' => 'nullable|string|max:20|min:9',
             'UID' => 'nullable|string|max:255',
             'businesses' => 'nullable|string|max:255',
             'noti_keywords' => 'nullable|string|max:255',
