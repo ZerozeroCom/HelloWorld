@@ -10,6 +10,11 @@ class KeywordServe{
         //將號碼改為裝置id
         $dev=Device::where('name',$data['name'])->first();
 
+        if($dev->noti_keywords===null){
+            $data = array_merge(['device_id'=>$dev->id,'keyword'=>"",'noticode'=> "0"],$data);
+            unset($data['name']);
+            return $data;
+        }
         //判斷是否通知
             //物件轉換為陣列 以空格為判斷分隔
             $notikeyword =explode(' ',$dev->noti_keywords);
