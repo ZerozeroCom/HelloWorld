@@ -47,7 +47,7 @@ class DeviceController extends Controller
         $data=Device::find($id);
             //若有資料 進行驗證
         $dev = collect($request->validate([
-            'name' => 'unique:App\Models\Device,name|nullable|string|max:40',
+            'name' => 'exists:App\Models\Device,name|nullable|string|max:40',
             //'number' => 'nullable|string|max:20|min:9',
             'UID' => 'nullable|string|max:255',
             'businesses' => 'nullable|string|max:255',
