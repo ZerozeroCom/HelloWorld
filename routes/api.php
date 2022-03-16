@@ -23,6 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->post('/sms-lists/{id}','APIController@newSMSIn');
 
+Route::middleware('auth:sanctum')->post('/newdevices/3345678','APIController@addNewDev');
+
+
 Route::post('/sanctum/for-sms-token', function (Request $request) {
     $request->validate([
         'email' => 'required|email',
