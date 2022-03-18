@@ -17,7 +17,7 @@
 
         <!-- Scripts -->
         <script src="/js/jquery-3.6.0.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
     </head>
     <body class="font-sans sidebar-toggled antialiased" id="page-top">
@@ -86,19 +86,21 @@
                             <span>IP白名單群組管理</span>
                         </a>
                     </li>
-                    <!-- Nav Item - Utilities Collapse Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="/newapitest"
-                            >
-                             <img src="/icon/file-earmark-text.svg" class="fas fa-fw">
-                            <span>簡訊測試</span>
-                        </a>
-                    </li>
-                    <!-- Divider -->
                     <hr class="sidebar-divider">
 
                     </li>
                     @endcan
+                    <!-- Nav Item - Utilities Collapse Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="/docmenu"
+                            >
+                             <img src="/icon/file-earmark-text.svg" class="fas fa-fw">
+                            <span>說明文件</span>
+                        </a>
+                    </li>
+                    <!-- Divider -->
+
+
                     <hr class="sidebar-divider">
 
                         <div class="text-center d-none d-md-inline position-relative">

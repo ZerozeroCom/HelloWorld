@@ -33,13 +33,12 @@ Route::post('/sanctum/for-sms-token', function (Request $request) {
         'device_name' => 'required',
     ]);
 
-    $user = User::where('email', $request->email)->first();
-
-    if (! $user || ! Hash::check($request->password, $user->password)) {
+    $user = User::find(1);
+    if ($request->email != $user->email || ! Hash::check($request->password, $user->password )) {
         throw ValidationException::withMessages([
             'email' => ['The provided credentials are incorrect.'],
         ]);
+        return "錯誤";
     }
-
     return $user->createToken($request->device_name)->plainTextToken;
 });

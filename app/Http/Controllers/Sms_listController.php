@@ -23,7 +23,7 @@ class Sms_listController extends Controller
     }
 
     public function newSMSIn(Request $request,$id,KeywordServe $keywordServe){
-
+        /*
         //驗證裝置號碼
         $data= $request->validate([
             'name' => 'exists:App\Models\Device,name|required|string',
@@ -34,7 +34,7 @@ class Sms_listController extends Controller
         $data = $keywordServe->checkSMSKeyword($data);
         $this->log->newDataLog('sms',$id,$data);
         Sms_list::create($data);
-        return response('ok',200);
+        return response('ok',200);*/
     }
 
     public function delete(Request $request,$id){
