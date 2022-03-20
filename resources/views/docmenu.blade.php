@@ -25,8 +25,13 @@
                             常見問題
                         </a>
                         <div class="bg-info p-3 pl-4" >網頁</div>
-
-                        <a href="#sms" class="list-group-item list-group-item-action mt-2 mx-2 w-auto" data-bs-toggle="list" role="tab">
+                        <a href="#all" class="list-group-item list-group-item-action mt-2 mx-2 w-auto" data-bs-toggle="list" role="tab">
+                            共通:全站操作
+                        </a>
+                        <a href="#noti" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
+                            通知
+                            </a>
+                        <a href="#sms" class="list-group-item list-group-item-action  mx-2 w-auto" data-bs-toggle="list" role="tab">
                             簡訊列表
                         </a>
                         <a href="#device" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
@@ -35,12 +40,10 @@
                         <a href="#user" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
                         管理者權限設定
                         </a>
-                        <a href="#ip" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
+                        <a href="#ip" class="list-group-item list-group-item-action mx-2 mb-2 w-auto" data-bs-toggle="list" role="tab">
                         IP白名單群組管理
                         </a>
-                        <a href="#noti" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
-                        通知
-                        </a>
+
 
                 </div>
         </div>
@@ -249,6 +252,7 @@
                     <div class="p-2">
                         <span>Q:開啟通知權限、應用程式設定按紐沒有跳轉頁面</span>
                         <div class="">A:極少數機型可能發生，一開始有確認簡訊權限的話，只需要手動前往設定開啟通知權限，可以前往權限說明查看設定</div>
+                        <div class="text-black-50 fw-lighter">tip:特殊規格需要一條一條新增例外，不太符合成本效益，若有許多支無法使用再拿該機型來更新</div>
                     </div>
                     <div class="p-2">
                         <span>Q:按註冊顯示 name是必要欄位</span>
@@ -257,7 +261,7 @@
                     </div>
                     <div class="p-2">
                         <span>Q:按註冊顯示 name:此 名稱 已被占用</span>
-                        <div class="">A:表示裝置名稱跟已註冊的重複了，可以1.修改這支名稱並儲存，或是2.在後台的裝置設定中把同名的更名(但手機上顯示還會是舊的)，建議選1
+                        <div class="">A:請先確認畫面是否有顯示已註冊，若已註冊就不需要重複註冊。若未顯示已註冊，表示裝置名稱跟已註冊的重複了，可以1.修改這支名稱並儲存，或是2.在後台的裝置設定中把同名的更名(但手機上顯示還會是舊的)，建議選1
                         </div>
                     </div>
                     <div class="p-2">
@@ -267,23 +271,83 @@
                     </div>
 
                     <div class="p-2">
-                        <span>遇到問題再新增</span>
-                        <div class="text-black-50 fw-lighter">tip:YES</div>
+                        <span>Q:遇到問題再新增</span>
+                        <div class="text-black-50 fw-lighter">A:YES</div>
                     </div>
 
 
                 </div>
+                <!--共通-->
+                <div class="tab-pane " id="all" role="tabpanel" >
 
-                <!--簡訊-->
-                <div class="tab-pane " id="sms" role="tabpanel" >
-                    <h3 class="py-3 text-center "></h3>
-                    <h4 class="py-2 mt-3"></h4>
-
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
+                    <h3 class="py-3 text-center "><b>共通操作</b></h3>
+                    <h4 class="py-2 mt-3"><b>表格操作</b></h4>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/table.PNG>
+                    </div>
+                    <h5 class="pt-5 text-danger"><b>列顯示</b></h5>
                     <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
+                        <span>可改變顯示幾列，通常是配合下載區塊使用</span>
+                        <div class="text-black-50 fw-lighter">tip:不同功能預設顯示列數是不同的，但都只支援25、50、100、500</div>
+                    </div>
+                    <h5 class="pt-2 text-primary"><b>下載列</b></h5>
+                    <div class="p-2">
+                        <span>可以將 <b>目前此頁</b> 的表格全部複製或下載，</span><br>
+                        <span>Copy 是全部複製。</span>
+                        <span>Excel 是以Excel格式下載，CSV是以CSV格式下載本頁表格。</span>
+                        <div class="text-black-50 fw-lighter">tip:如有大量下載需求可改變顯示結果為500再下載</div>
+                    </div>
+                    <h5 class="pt-2 text-success"><b>欄位列</b></h5>
+                    <div class="p-2">
+                        <span>顯示各欄位的名稱，點擊旁邊的小箭頭可改變昇冪排序(從舊到新，箭頭往上)或降冪排序(從新到舊，箭頭往下)</span><br>
+                        <span>目前僅支援用一個欄位排序</span>
+                        <div class="text-black-50 fw-lighter">tip:比如要找今日00點附近的簡訊，可快速選取今日，再點小箭頭改為從舊到新排列</div>
+                    </div>
+                    <h5 class="pt-2 text-warning"><b>分頁列</b></h5>
+                    <div class="p-2">
+                        <span>顯示目前的頁碼，以及換頁</span><br>
+                        <div class="text-black-50 fw-lighter">tip:通常是配合下載列與列顯示，下載只會包含此頁顯示內容，若要調整一個表格的內容就改列顯示數字</div>
+                    </div>
+
+                    <h4 class="py-2 mt-3"><b>權限</b></h4>
+                    <h5 class="pt-2"><b>Admin</b></h5>
+                    <div class="p-2">
+                        <span>可以顯示所有內容，可以編輯、刪除所有內容，可改變其他帳號的權限</span><br>
+                        <div class="text-black-50 fw-lighter">tip:只有Admin帳號可以新增Admin帳號，主要是主管帳號</div>
+                    </div>
+                    <h5 class="pt-2"><b>common</b></h5>
+                    <div class="p-2">
+                        <span>可以新增、編輯，但不具有刪除的權限，也不能編輯、刪除其他的帳號</span><br>
+                        <div class="text-black-50 fw-lighter">tip:若有需要刪除簡訊的權限請再提出。</div>
+                    </div>
+                    <h5 class="pt-2"><b>trainee</b></h5>
+                    <div class="p-2">
+                        <span>只能查看簡訊列表以及說明文件</span><br>
+                        <div class="text-black-50 fw-lighter">tip:主要是給新進人員使用</div>
+                    </div>
+                </div>
+                <!--通知-->
+                <div class="tab-pane " id="noti" role="tabpanel" >
+                    <h3 class="py-3 text-center "><b>通知文件</b></h3>
+                    <h4 class="py-2 mt-3"><b>開啟通知功能</b></h4>
+                    <div class="p-2">
+                        <span>要開啟通知功能，首先要給予網站通知權限，</span><br>
+                        <span>通常第一次進入會詢問，若未開啟可依以下步驟：</span>
+                        <div class="text-black-50 fw-lighter">tip:並非強制開啟，可以自行決定是否需要此功能</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/notiopen1.PNG>
+                        <img class="img-fluid" src=/doc/notiopen2.PNG>
+                    </div>
+                    <h4 class="py-2 mt-3"><b>通知顯示</b></h4>
+                    <h5 class="pt-2"></h5>
+                    <div class="p-2">
+                        <span>開啟通知權限後，之後收到 <b>含有通知關鍵字</b>的 簡訊會收到通知。</span><br>
+                        <span class="text-danger"><b>只有已登入的帳號會收到通知</b>！</span>
+                        <div class="text-black-50 fw-lighter">tip:第一次開啟通知權限時，會顯示測試通知</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/notinow.PNG>
                     </div>
 
                     <h4 class="py-2 mt-3"><b></b></h4>
@@ -291,13 +355,36 @@
                     <div class="p-2">
                         <span></span>
                         <div class="text-black-50 fw-lighter">tip:</div>
+                    </div>
+                </div>
+                <!--簡訊-->
+                <div class="tab-pane " id="sms" role="tabpanel" >
+
+                    <h3 class="py-3 text-center "><b>簡訊列表文件</b></h3>
+                    <h4 class="py-2 mt-3"><b>搜尋</b></h4>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/sms.PNG>
+                    </div>
+                    <h5 class="pt-2"><b>項目</b></h5>
+                    <div class="p-2">
+                        <span>白底的為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字。</span><br>
+                        <span>綠底的具有多項搜尋功能，可以空格分隔多關鍵字，順序可換。</span>
+                        <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果</div>
+                    </div>
+                    <h5 class="pt-2"><b>時間</b></h5>
+                    <div class="p-2">
+                        <span>預設會依照最新簡訊排列，</span><br>
+                        <span>有依照日期搜尋需求時，可以使用左側 <b>快速選取</b>，會立即依照所選區間篩選資料。</span><br>
+                        <span>若需要搜尋特定日期的資料(一日)，請使用 <b>自訂單日搜尋</b>。</span><br>
+                        <span>目前時間區間只支援1個月，使用 <b>自訂整月搜尋</b>。</span>
+                        <div class="text-black-50 fw-lighter">tip:時間區間可與項目共用篩選；若有大量其他時間區間需求，請再提出</div>
                     </div>
                 </div>
                 <!--裝置-->
                 <div class="tab-pane " id="device" role="tabpanel" >
-                    <h3 class="py-3 text-center "></h3>
-                    <h4 class="py-2 mt-3"></h4>
 
+                    <h3 class="py-3 text-center "><b>簡訊列表文件</b></h3>
+                    <h4 class="py-2 mt-3"><b>搜尋</b></h4>
                     <h4 class="py-2 mt-3"><b></b></h4>
                     <h5 class="pt-2"><b></b></h5>
                     <div class="p-2">
@@ -314,9 +401,8 @@
                 </div>
                 <!--管理者-->
                 <div class="tab-pane " id="user" role="tabpanel" >
-                    <h3 class="py-3 text-center "></h3>
-                    <h4 class="py-2 mt-3"></h4>
-
+                    <h3 class="py-3 text-center "><b>管理者權限設定文件</b></h3>
+                    <h4 class="py-2 mt-3"><b>搜尋</b></h4>
                     <h4 class="py-2 mt-3"><b></b></h4>
                     <h5 class="pt-2"><b></b></h5>
                     <div class="p-2">
@@ -333,8 +419,8 @@
                 </div>
                 <!--白名單-->
                 <div class="tab-pane " id="ip" role="tabpanel" >
-                    <h3 class="py-3 text-center "></h3>
-                    <h4 class="py-2 mt-3"></h4>
+                    <h3 class="py-3 text-center "><b>IP白名單群組文件</b></h3>
+                    <h4 class="py-2 mt-3"><b>搜尋</b></h4>
 
                     <h4 class="py-2 mt-3"><b></b></h4>
                     <h5 class="pt-2"><b></b></h5>
@@ -350,25 +436,7 @@
                         <div class="text-black-50 fw-lighter">tip:</div>
                     </div>
                 </div>
-                <!--通知-->
-                <div class="tab-pane " id="noti" role="tabpanel" >
-                    <h3 class="py-3 text-center "></h3>
-                    <h4 class="py-2 mt-3"></h4>
 
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
-                    <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
-                    </div>
-
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
-                    <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="col-xl-2">

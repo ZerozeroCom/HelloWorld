@@ -12,7 +12,7 @@
                 <ul class="navbar-nav ml-auto">
                     <a style="display:none">{{ $notifications =Auth::user()->unreadNotifications ?? []; }}</a>
                     <!-- Nav Item - Alerts -->
-                    <li class="nav-item dropdown no-arrow mx-1">
+                    <li class="nav-item dropdown no-arrow mx-1" id="notiarea">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="/icon/bell.svg" class="fas fa-fw">
@@ -100,7 +100,7 @@
                             top.location.reload()
                         })
                     })
-                    var count0 = "";
+                    var count0 = $('no_read_count').val();
                     function notirefresh(){
                         var $this = $(this)
                         $.ajax({
@@ -112,18 +112,22 @@
                             data: {'count': count0,}
                         })
                         .done(function(notifications){
+                            var end=notifications.countSer-count0;
                             count0 =notifications.countSer;
                             if(notifications.notifications == "nonew"){
                             }else{
                                 var navcount= document.getElementById("no_read_count").hidden = false;
-                                navcount.innerHTML=count0;
-                                for(i=0;i<notifications.notifications.length ;i++){
-                                    console.log(notifications.notifications[i].data);
+                                $('#no_read_count').text(count0);
+                                for(i=0;i<end ;i++){
+                                    //console.log(notifications.notifications[i].data);
+                                    $('#no_read_content').append('<a class="dropdown-item d-flex align-items-center read_notification" data-id="{{'+notifications.notifications[i].id+'"  href="/sms-lists"><div class="mr-3"></div><div><div class="small text-gray-500">'+notifications.notifications[i].created_at+'</div><span class="font-weight-bold">'+notifications.notifications[i].data+'</span></div></a>');
                                     var notification = new Notification(notifications.notifications[i].data, {
                                                                                 icon: '/icon/send.svg',
-                                                                                body: '請前往簡訊列表查看，記得在網頁導覽列已讀以防下次重複跳出',
+                                                                                body: '內文請在簡訊列表查看',
                                                                             });
                                 }
+                                //$('#notiarea').hide();
+                                //$('#notiarea').show();
 
                             }
                         })
