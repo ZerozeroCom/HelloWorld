@@ -126,8 +126,9 @@
                                 var navcount= document.getElementById("no_read_count").hidden = false;
                                 $('#no_read_count').text(count0);
                                 for(i=0;i<end ;i++){
-                                    console.log(notifications.notifications[i].data);
-                                    $('#no_read_content').append('<a class="dropdown-item d-flex align-items-center read_notification" data-id="{{'+notifications.notifications[i].id+'"  href="/sms-lists"><div class="mr-3"></div><div><div class="small text-gray-500">'+notifications.notifications[i].created_at+'</div><span class="font-weight-bold">'+notifications.notifications[i].data+'</span></div></a>');
+                                    //console.log(notifications.notifications[i].data);
+                                    let date = new Date(notifications.notifications[i].created_at);
+                                    $('#no_read_content').append('<a class="dropdown-item d-flex align-items-center read_notification" data-id="{{'+notifications.notifications[i].id+'"  href="/sms-lists"><div class="mr-3"></div><div><div class="small text-gray-500">'+date+'</div><span class="font-weight-bold">'+notifications.notifications[i].data+'</span></div></a>');
                                     var notification = new Notification(notifications.notifications[i].data, {
                                                                                 icon: '/icon/send.svg',
                                                                                 body: '內文請在簡訊列表查看',
