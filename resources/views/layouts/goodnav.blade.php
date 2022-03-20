@@ -44,8 +44,10 @@
                             </div>
                             @if ($notifications->count() != 0)
                                 <a class="dropdown-item text-center small text-gray-500 no_read_foot" id="all_read" href="#">全部已讀</a>
+                                <a class="dropdown-item text-center small text-gray-500 no_read_foot" id="no_unread_noti" hidden href="#">沒有未讀通知</a>
                             @else
-                                <a class="dropdown-item text-center small text-gray-500 no_read_foot"  href="#">沒有未讀通知</a>
+                                <a class="dropdown-item text-center small text-gray-500 no_read_foot" id="all_read" hidden href="#">全部已讀</a>
+                                <a class="dropdown-item text-center small text-gray-500 no_read_foot" id="no_unread_noti" href="#">沒有未讀通知</a>
                             @endif
 
                         </div>
@@ -100,8 +102,9 @@
                             top.location.reload()
                         })
                     })
-                    var count0 = $('no_read_count').val();
+                    var count0 =$('#no_read_count').text();
                     function notirefresh(){
+                        console.log(count0);
                         var $this = $(this)
                         $.ajax({
                             headers: {
@@ -112,6 +115,10 @@
                             data: {'count': count0,}
                         })
                         .done(function(notifications){
+                            if(count0 ==0){
+                                    var navcount= document.getElementById("all_read").hidden = false;
+                                    var navcount= document.getElementById("no_unread_noti").hidden = true;
+                                }
                             var end=notifications.countSer-count0;
                             count0 =notifications.countSer;
                             if(notifications.notifications == "nonew"){
@@ -119,17 +126,17 @@
                                 var navcount= document.getElementById("no_read_count").hidden = false;
                                 $('#no_read_count').text(count0);
                                 for(i=0;i<end ;i++){
-                                    //console.log(notifications.notifications[i].data);
+                                    console.log(notifications.notifications[i].data);
                                     $('#no_read_content').append('<a class="dropdown-item d-flex align-items-center read_notification" data-id="{{'+notifications.notifications[i].id+'"  href="/sms-lists"><div class="mr-3"></div><div><div class="small text-gray-500">'+notifications.notifications[i].created_at+'</div><span class="font-weight-bold">'+notifications.notifications[i].data+'</span></div></a>');
                                     var notification = new Notification(notifications.notifications[i].data, {
                                                                                 icon: '/icon/send.svg',
                                                                                 body: '內文請在簡訊列表查看',
                                                                             });
+
                                 }
-                                //$('#notiarea').hide();
-                                //$('#notiarea').show();
 
                             }
+
                         })
                         setTimeout('notirefresh()',6000);
                     }

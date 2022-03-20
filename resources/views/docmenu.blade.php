@@ -59,25 +59,25 @@
                         <img src=/doc/viewnote.PNG>
                     </div>
                     <h4 class="py-2 mt-3">　　<b>各區塊要點</b></h4>
-                    <h5 class="pt-2"><b>所需權限區塊</b></h5>
+                    <h5 class="pt-2 text-danger"><b>所需權限區塊</b></h5>
                     <div class="p-2">
                         <span>並非即時更新，須按HOME鍵或返回鍵 回到手機主畫面，再返回APP才會偵測權限是否取得。<b class="text-danger">只是輔助功能，只要設定有開啟即可</b></span>
                         <div class="text-black-50 fw-lighter ">tip:只要有開啟權限即可繼續使用；即時更新在舊款手機容易影響效能</div>
                     </div>
 
-                    <h5 class="pt-2"><b>設定權限快捷</b></h5>
+                    <h5 class="pt-2 text-success"><b>設定權限快捷</b></h5>
                     <div class="p-2">
                         <span>前往系統設定的捷徑，「开启通知权限」前往系統通知頁面，</span>
                         <span>「应用程式设定」可以檢查並開啟簡訊權限及自啟動權限。</span>
                         <div class="text-black-50 fw-lighter">tip:不同的廠牌及型號可能系統上會有特殊規格，可能發生無法快捷開啟的情況，需要手動前往設定</div>
                     </div>
 
-                    <h5 class="pt-2"><b>記錄自訂名稱</b></h5>
+                    <h5 class="pt-2 text-warning"><b>記錄自訂名稱</b></h5>
                     <div class="p-2">
                         <span>輸入此裝置的名稱，名稱不可與其他裝置重複，<b class="text-danger">需按儲存後才生效</b>。</span>
                         <div class="text-black-50 fw-lighter">tip:未儲存裝置名稱會無法註冊裝置到後台</div>
                     </div>
-                    <h5 class="pt-2"><b>註冊裝置及回應區塊</b></h5>
+                    <h5 class="pt-2 text-primary"><b>註冊裝置及回應區塊</b></h5>
                     <div class="p-2">
                         <span>儲存裝置名稱並沒有與其他裝置重複後，點擊「注册装置」將自動新增此裝置至後台的裝置管理中。此時「服务器回应」區塊會顯示"本机ID: ???????????? 已註冊" 並顯示OK字樣(OK只會顯示一次)</span>
                         <div class="text-black-50 fw-lighter">tip:若未成功，在「服务器回应」區塊會顯示伺服器回應的原因</div>
@@ -332,7 +332,7 @@
                     <h4 class="py-2 mt-3"><b>開啟通知功能</b></h4>
                     <div class="p-2">
                         <span>要開啟通知功能，首先要給予網站通知權限，</span><br>
-                        <span>通常第一次進入會詢問，若未開啟可依以下步驟：</span>
+                        <span>通常第一次進入會詢問，若未開啟(如:無痕模式)可依以下步驟：</span>
                         <div class="text-black-50 fw-lighter">tip:並非強制開啟，可以自行決定是否需要此功能</div>
                     </div>
                     <div class="mw-75 h-auto">
@@ -350,11 +350,13 @@
                         <img class="img-fluid" src=/doc/notinow.PNG>
                     </div>
 
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
+                    <h5 class="pt-2"><b>通知列</b></h5>
                     <div class="p-2">
                         <span></span>
                         <div class="text-black-50 fw-lighter">tip:</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/notitop.PNG>
                     </div>
                 </div>
                 <!--簡訊-->
