@@ -4,7 +4,7 @@
         <div class="col-3">
             <div class="list-group-item bg-info">APP</div>
 
-                <div class="list-group bg-white" id="list-tab" role="tablist">
+                <div class="list-group bg-white " id="list-tab" role="tablist">
 
                         <a href="#app" class="list-group-item list-group-item-action mt-2 mx-2 w-auto active" data-bs-toggle="list" role="tab">
                             使用說明
@@ -216,6 +216,7 @@
                     <h5 class="pt-2"><b>註冊需求</b></h5>
                     <div class="p-2">
                         <span>手機上已儲存了一個未被註冊的名稱</span>
+                        <span>手機會返回安卓ID，但此值會因為重置原廠設定而改變</span>
                         <div class="text-black-50 fw-lighter">tip:名稱長度最多英文40中文20</div>
                     </div>
                     <div class="p-2">
@@ -428,7 +429,9 @@
                     <h5 class="pt-2"><b>一般編輯</b></h5>
                     <div class="p-2">
                         <span  class="text-danger">多項目請以 <b>空格</b> 分隔</span>
-                        <span class="pb-1">例：太陽 星星 月亮</span><br>
+                        <span >例：太陽 星星 月亮</span><br>
+                        <span>盡量不要修改裝置名稱，若修改請一併修改手機端的名稱並儲存</span><br>
+                        <span>裝置號碼也可以存複數末幾碼，如 2225 4443 可用於搜尋。</span><br>
                         <span>選取表格中的單個裝置按下編輯，出現如下圖畫面：</span>
                         <div class="text-black-50 fw-lighter">tip:留空不會覆蓋設定值，若要刪除請填入符號或替代內容，空格會被忽略，無法用空格來刪除(全形可以)</div>
                     </div>
