@@ -359,7 +359,7 @@
                     <h5 class="pt-5"><b>通知列</b></h5>
                     <div class="p-2">
                         <span>若未給予通知權限，每五秒通知列會偵測是否有新通知，無須手動刷新。</span>
-                        <div class="text-black-50 fw-lighter">tip:點擊全部已讀可以清空通知，但會刷新頁面；若累積過多可能會穿過畫面底部。</div>
+                        <div class="text-black-50 fw-lighter">tip:點擊全部已讀可以清空通知，但會刷新頁面；若累積過多可能會讓點開時畫面變過長。此時可用 End 鍵到畫面底部</div>
                     </div>
                     <div class="mw-75 h-auto">
                         <img class="img-fluid" src=/doc/notitop.PNG>
