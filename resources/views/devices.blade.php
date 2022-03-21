@@ -243,7 +243,10 @@
 
                 }
             });
-            document.getElementById("many_dev_name").innerHTML = "(id) "+sedata;
+            $("#many_dev_name").append('ID 共'+sedata.length+'筆: ');
+            for(i=0;i<sedata.length;i++){
+                $("#many_dev_name").append(' '+sedata[i]);
+            }
         })
        //自訂批次編輯
        $('#make_edit_dev').on('click',function(){

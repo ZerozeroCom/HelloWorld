@@ -139,8 +139,8 @@
                             }
 
                         })
-                        setTimeout('notirefresh()',6000);
+                        setTimeout('notirefresh()',5000);
                     }
-                    setTimeout('notirefresh()',15000);
+                    setTimeout('notirefresh()',6000);
                 </script>
             @stack('modals')

@@ -6,7 +6,7 @@
 
                 <div class="list-group bg-white" id="list-tab" role="tablist">
 
-                        <a href="#app" class="list-group-item list-group-item-action mt-2 mx-2 w-auto" data-bs-toggle="list" role="tab">
+                        <a href="#app" class="list-group-item list-group-item-action mt-2 mx-2 w-auto active" data-bs-toggle="list" role="tab">
                             使用說明
                         </a>
                         <a href="#start" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
@@ -51,7 +51,7 @@
             <div class="tab-content bg-white p-4" >
 
                 <!--app-->
-                <div class="tab-pane " id="app" role="tabpanel" >
+                <div class="tab-pane active" id="app" role="tabpanel" >
                     <h3 class="py-3 text-center "><b>簡訊收發APP使用說明</b></h3>
                     <h4 class="py-2 mt-3">　　<b>介面</b></h4>
                     <span class="p-4">主要分四個區塊</span>
@@ -282,12 +282,13 @@
 
                     <h3 class="py-3 text-center "><b>共通操作</b></h3>
                     <h4 class="py-2 mt-3"><b>表格操作</b></h4>
+                    <span>若改變視窗大小可能會無法完整顯示表格，此時請直接重新整理(F5)，讓版面重新自動調整。但若視窗調整過小可能還是無法完整顯示，此時請將視窗條大</span>
                     <div class="mw-75 h-auto">
                         <img class="img-fluid" src=/doc/table.PNG>
                     </div>
                     <h5 class="pt-5 text-danger"><b>列顯示</b></h5>
                     <div class="p-2">
-                        <span>可改變顯示幾列，通常是配合下載區塊使用</span>
+                        <span>可改變顯示幾列，通常是配合下載區塊使用。</span>
                         <div class="text-black-50 fw-lighter">tip:不同功能預設顯示列數是不同的，但都只支援25、50、100、500</div>
                     </div>
                     <h5 class="pt-2 text-primary"><b>下載列</b></h5>
@@ -295,35 +296,40 @@
                         <span>可以將 <b>目前此頁</b> 的表格全部複製或下載，</span><br>
                         <span>Copy 是全部複製。</span>
                         <span>Excel 是以Excel格式下載，CSV是以CSV格式下載本頁表格。</span>
-                        <div class="text-black-50 fw-lighter">tip:如有大量下載需求可改變顯示結果為500再下載</div>
+                        <div class="text-black-50 fw-lighter">tip:如有大量下載需求可改變顯示結果為500再下載。</div>
                     </div>
                     <h5 class="pt-2 text-success"><b>欄位列</b></h5>
                     <div class="p-2">
                         <span>顯示各欄位的名稱，點擊旁邊的小箭頭可改變昇冪排序(從舊到新，箭頭往上)或降冪排序(從新到舊，箭頭往下)</span><br>
-                        <span>目前僅支援用一個欄位排序</span>
+                        <span>目前僅支援用一個欄位排序。</span>
                         <div class="text-black-50 fw-lighter">tip:比如要找今日00點附近的簡訊，可快速選取今日，再點小箭頭改為從舊到新排列</div>
                     </div>
                     <h5 class="pt-2 text-warning"><b>分頁列</b></h5>
                     <div class="p-2">
-                        <span>顯示目前的頁碼，以及換頁</span><br>
-                        <div class="text-black-50 fw-lighter">tip:通常是配合下載列與列顯示，下載只會包含此頁顯示內容，若要調整一個表格的內容就改列顯示數字</div>
+                        <span>顯示目前的頁碼，以及換頁。</span><br>
+                        <div class="text-black-50 fw-lighter">tip:通常是配合下載列與列顯示，下載只會包含此頁顯示內容，若要調整一個表格的內容就改列顯示數字。</div>
+                    </div>
+                    <h5 class="pt-2 "><b>回到畫面頂部</b></h5>
+                    <div class="p-2">
+                        <span>畫面往下捲動後，左下角會出現^箭頭，點即可返回畫面頂端。</span><br>
+                        <div class="text-black-50 fw-lighter">tip:也可使用鍵盤快捷鍵"Home"回到畫面頂部，通常在方向鍵上方。</div>
                     </div>
 
                     <h4 class="py-2 mt-3"><b>權限</b></h4>
                     <h5 class="pt-2"><b>Admin</b></h5>
                     <div class="p-2">
-                        <span>可以顯示所有內容，可以編輯、刪除所有內容，可改變其他帳號的權限</span><br>
+                        <span>可以顯示所有內容，可以編輯、刪除所有內容，可改變其他帳號的權限。</span><br>
                         <div class="text-black-50 fw-lighter">tip:只有Admin帳號可以新增Admin帳號，主要是主管帳號</div>
                     </div>
                     <h5 class="pt-2"><b>common</b></h5>
                     <div class="p-2">
-                        <span>可以新增、編輯，但不具有刪除的權限，也不能編輯、刪除其他的帳號</span><br>
+                        <span>可以新增、編輯，但不具有刪除的權限，也不能編輯、刪除其他的帳號。</span><br>
                         <div class="text-black-50 fw-lighter">tip:若有需要刪除簡訊的權限請再提出。</div>
                     </div>
                     <h5 class="pt-2"><b>trainee</b></h5>
                     <div class="p-2">
-                        <span>只能查看簡訊列表以及說明文件</span><br>
-                        <div class="text-black-50 fw-lighter">tip:主要是給新進人員使用</div>
+                        <span>只能查看簡訊列表以及說明文件。</span><br>
+                        <div class="text-black-50 fw-lighter">tip:主要是給新進人員使用。</div>
                     </div>
                 </div>
                 <!--通知-->
@@ -333,27 +339,27 @@
                     <div class="p-2">
                         <span>要開啟通知功能，首先要給予網站通知權限，</span><br>
                         <span>通常第一次進入會詢問，若未開啟(如:無痕模式)可依以下步驟：</span>
-                        <div class="text-black-50 fw-lighter">tip:並非強制開啟，可以自行決定是否需要此功能</div>
+                        <div class="text-black-50 fw-lighter">tip:並非強制開啟，可以自行決定是否需要此功能。</div>
                     </div>
                     <div class="mw-75 h-auto">
                         <img class="img-fluid" src=/doc/notiopen1.PNG>
                         <img class="img-fluid" src=/doc/notiopen2.PNG>
                     </div>
-                    <h4 class="py-2 mt-3"><b>通知顯示</b></h4>
+                    <h4 class="py-2 mt-5"><b>通知顯示</b></h4>
                     <h5 class="pt-2"></h5>
                     <div class="p-2">
                         <span>開啟通知權限後，之後收到 <b>含有通知關鍵字</b>的 簡訊會收到通知。</span><br>
-                        <span class="text-danger"><b>只有已登入的帳號會收到通知</b>！</span>
-                        <div class="text-black-50 fw-lighter">tip:第一次開啟通知權限時，會顯示測試通知</div>
+                        <span class="text-danger"><b>只有已登入的帳號會收到windows系統通知，通知如下圖：</b>！</span>
+                        <div class="text-black-50 fw-lighter">tip:第一次開啟通知權限時，會顯示測試通知。</div>
                     </div>
                     <div class="mw-75 h-auto">
                         <img class="img-fluid" src=/doc/notinow.PNG>
                     </div>
 
-                    <h5 class="pt-2"><b>通知列</b></h5>
+                    <h5 class="pt-5"><b>通知列</b></h5>
                     <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
+                        <span>若未給予通知權限，每五秒通知列會偵測是否有新通知，無須手動刷新。</span>
+                        <div class="text-black-50 fw-lighter">tip:點擊全部已讀可以清空通知，但會刷新頁面；若累積過多可能會穿過畫面底部。</div>
                     </div>
                     <div class="mw-75 h-auto">
                         <img class="img-fluid" src=/doc/notitop.PNG>
@@ -367,75 +373,191 @@
                     <div class="mw-75 h-auto">
                         <img class="img-fluid" src=/doc/sms.PNG>
                     </div>
-                    <h5 class="pt-2"><b>項目</b></h5>
+                    <h5 class="pt-2 text-danger"><b>欄位搜尋</b></h5>
                     <div class="p-2">
-                        <span>白底的為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字。</span><br>
-                        <span>綠底的具有多項搜尋功能，可以空格分隔多關鍵字，順序可換。</span>
-                        <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果</div>
+                        <span>白底的為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字，可只搜片段。</span><br>
+                        <span style="background-color:#82FF82">綠底的具有多項搜尋功能，可以 <b>空格</b> 分隔多關鍵字，順序可換。</span><br>
+                        <span style="background-color:#82FF82">範例：白色 黃色；可搜到[黃色 白色、白色黃色、白色 黃色、黃色白色] 關鍵字或裝置商戶</span><br>
+                        <span>右上分類可篩掉通知或忽視簡訊。</span><br>
+                        <span>可用<b class="text-success">快速選取</b>區域內的 <b>清除條件</b> 清除所有<b class="text-danger">欄位搜尋</b>條件。</span><br>
+                        <span>以上功能都需最後按下<b class="text-white" style="background-color:#007BFF">搜尋</b>鈕才生效。<b>請務必注意簡體、繁體無法互相搜尋到</b></span>
+                        <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果，所以請注意錯字、簡繁問題。</div>
                     </div>
-                    <h5 class="pt-2"><b>時間</b></h5>
+                    <h5 class="pt-2"><b>時間搜尋</b></h5>
                     <div class="p-2">
                         <span>預設會依照最新簡訊排列，</span><br>
-                        <span>有依照日期搜尋需求時，可以使用左側 <b>快速選取</b>，會立即依照所選區間篩選資料。</span><br>
-                        <span>若需要搜尋特定日期的資料(一日)，請使用 <b>自訂單日搜尋</b>。</span><br>
-                        <span>目前時間區間只支援1個月，使用 <b>自訂整月搜尋</b>。</span>
-                        <div class="text-black-50 fw-lighter">tip:時間區間可與項目共用篩選；若有大量其他時間區間需求，請再提出</div>
+                        <span>有依照日期搜尋需求時，可以使用左側 <b class="text-success">快速選取</b>，會 <b>立即</b>依照所選區間篩選資料。</span><br>
+                        <span><b class="text-success">快速選取</b>，也可以配合條件搜尋。</span><br>
+                        <div class="text-black-50 fw-lighter">tip:請注意若同時用快速選取及時間搜尋可能會讓結果衝突而不顯示。 例如搜尋</div>
+                        <span>可用<b class="text-success">快速選取</b>區域內的 <b>清除日期</b> 清除所有<b>時間搜尋</b>條件。</span>
+                        <span>若需要搜尋特定日期的資料(一日)，請使用 <b class="text-warning">自訂單日搜尋</b>。</span><br>
+                        <span>目前時間區間只支援1個月，使用 <b class="text-warning">自訂整月搜尋</b>。注意要按照格式輸入。</span><br>
+                        <span><b class="text-warning">自訂單日搜尋 自訂整月搜尋</b>按下<b class="text-white" style="background-color:#007BFF">搜尋</b>紐才生效，可與各<b class="text-danger">欄位搜尋</b>配合使用</span><br>
+
+                        <div class="text-black-50 fw-lighter">tip:時間區間可與項目共用篩選；若有大量其他時間區間需求，請再提出。</div>
                     </div>
+                    <h4 class="py-2 mt-3"><b>刪除簡訊</b></h4>
+                    <span>目前只有admin帳戶可以刪除簡訊</span><br>
+                    <h4 class="py-2 mt-3"><b>停止自動刷新按鈕</b></h4>
+                    <span>若有下載、除錯需求，可按此紐讓此頁停止自動抓取新簡訊。通知並不會暫停，只是不顯示新簡訊，重整頁面後回復正常</span><br>
+                    <span>按下後會顯示如下圖訊息：</span><br>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/smsstop.PNG>
+                    </div>
+
+
                 </div>
                 <!--裝置-->
                 <div class="tab-pane " id="device" role="tabpanel" >
 
                     <h3 class="py-3 text-center "><b>簡訊列表文件</b></h3>
                     <h4 class="py-2 mt-3"><b>搜尋</b></h4>
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
+                    <h5 class="pt-2 text-danger"><b>欄位搜尋</b></h5>
                     <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
+                        <span>白底的為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字，可只搜片段。</span><br>
+                        <span style="background-color:#82FF82">綠底的具有多項搜尋功能，可以 <b>空格</b> 分隔多關鍵字，順序可換。</span><br>
+                        <span style="background-color:#82FF82">範例：白色 黃色；可搜到[黃色 白色、白色黃色、白色 黃色、黃色白色] 關鍵字或裝置商戶</span><br>
+                        <span>以上功能都需最後按下<b class="text-white" style="background-color:#007BFF">搜尋</b>鈕才生效。<b>請務必注意簡體、繁體無法互相搜尋到</b></span>
+                        <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果，所以請注意錯字、簡繁問題。</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/device.PNG>
                     </div>
 
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
+                    <h4 class="py-2 mt-3"><b>編輯裝置</b></h4>
+                    <h5 class="pt-2"><b>一般編輯</b></h5>
                     <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
+                        <span  class="text-danger">多項目請以 <b>空格</b> 分隔</span>
+                        <span class="pb-1">例：太陽 星星 月亮</span><br>
+                        <span>選取表格中的單個裝置按下編輯，出現如下圖畫面：</span>
+                        <div class="text-black-50 fw-lighter">tip:留空不會覆蓋設定值，若要刪除請填入符號或替代內容，空格會被忽略，無法用空格來刪除(全形可以)</div>
+                    </div>
+
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/device2.PNG>
+                    </div>
+
+                    <h5 class="pt-4 text-success"><b>批次編輯</b></h5>
+                    <div class="p-2">
+                        <span>若需要大量修改，可依需求選擇 <b class="text-white bg-primary">依照本頁搜尋結果編輯</b>或用<b class="bg-warning" >自訂批次編輯</b>一一勾選</span>
+                        <div class="text-black-50 fw-lighter">tip:依照本頁搜尋結果編輯，尚未按下搜尋紐是無法按的</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/device.PNG>
+                    </div>
+
+                    <h5 class="pt-4 "><b class="text-white bg-primary">依照本頁搜尋結果編輯</b></h5>
+                    <div class="p-2">
+                        <span  class="text-danger">多項目請以 <b>空格</b> 分隔</span>
+                        <span class="pb-1">例：太陽 星星 月亮</span><br>
+                        <span>配合搜尋功能篩選出要修改的裝置後，出現如下畫面：</span>
+                        <div class="text-black-50 fw-lighter">tip:請確認裝置數量或ID後開始編輯</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/device3.PNG>
+                    </div>
+
+                    <h5 class="pt-4 "><b class="bg-warning">自訂批次編輯</b></h5>
+                    <div class="p-2">
+                        <span  class="text-danger">多項目請以 <b>空格</b> 分隔</span>
+                        <span class="pb-1">例：太陽 星星 月亮</span><br>
+                        <span>此方式可依照 裝置名稱 一一勾選要編輯的裝置，可編輯項目如上圖，這裡省略</span>
+                        <div class="text-black-50 fw-lighter">tip:點擊名稱亦可勾選</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/device4.PNG>
+                    </div>
+
+                    <h4 class="pt-4"><b class="text-white bg-success">　新增裝置　</b></h4>
+                    <div class="p-2">
+                        <span>通常以APP註冊即可，此功能應該不會用到</span>
+                    </div>
+
+                    <h4 class="pt-4"><b class=" bg-danger">刪除</b>裝置</h4>
+                    <div class="p-2">
+                        <span>目前只有admin帳號可以刪除裝置</span>
                     </div>
                 </div>
                 <!--管理者-->
                 <div class="tab-pane " id="user" role="tabpanel" >
                     <h3 class="py-3 text-center "><b>管理者權限設定文件</b></h3>
                     <h4 class="py-2 mt-3"><b>搜尋</b></h4>
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
+                    <h5 class="pt-2 text-danger"><b>欄位搜尋</b></h5>
                     <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
+                        <span>此為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字，可只搜片段。</span><br>
+                        <span>右上，左上為選單式，只出現該選擇類型。</span><br>
+                        <span>以上功能都需最後按下<b class="text-white bg-primary">搜尋</b>鈕才生效。<b>請務必注意簡體、繁體無法互相搜尋到</b></span>
+                        <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果，所以請注意錯字、簡繁問題。</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/user.PNG>
                     </div>
 
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
+                    <h4 class="py-2 mt-3"><b>帳號</b></h4>
+                    <h5 class="pt-2"><b class="bg-success text-white">新增</b></h5>
                     <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
+                        <span>只有admin可以新增admin帳號，密碼需大於8字，Email無法重複</span><br>
+                        <span>新增的帳號都預設為預設(default)白名單群組，若要修改請編輯帳號，若要新增群組請移步IP白名單群組管理</span>
+                        <div class="text-black-50 fw-lighter">tip:請不要設定過於簡單的密碼</div>
                     </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/user2.PNG>
+                    </div>
+
+                    <h5 class="pt-4"><b class="bg-warning">編輯</b></h5>
+                    <div class="p-2">
+                        <span>只有admin可任意修改帳號，common只能修改自己的帳號</span><br>
+                        <div class="text-black-50 fw-lighter">tip:留空不會覆蓋設定值。</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/user3.PNG>
+                    </div>
+
+                    <h5 class="pt-4"><b class="bg-danger text-white">刪除</b></h5>
+                    <div class="p-2">
+                        <span>只有admin可以刪除帳號</span>
+                    </div>
+
                 </div>
                 <!--白名單-->
                 <div class="tab-pane " id="ip" role="tabpanel" >
                     <h3 class="py-3 text-center "><b>IP白名單群組文件</b></h3>
                     <h4 class="py-2 mt-3"><b>搜尋</b></h4>
-
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
+                    <h5 class="pt-2 text-danger"><b>欄位搜尋</b></h5>
                     <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
+                        <span>此為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字，可只搜片段。</span><br>
+                        <span>以上功能都需最後按下<b class="text-white bg-primary">搜尋</b>鈕才生效。<b>請務必注意簡體、繁體無法互相搜尋到</b></span>
+                        <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果，所以請注意錯字、簡繁問題。</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/iplist.PNG>
                     </div>
 
-                    <h4 class="py-2 mt-3"><b></b></h4>
-                    <h5 class="pt-2"><b></b></h5>
+                    <h4 class="py-2 mt-3"><b>白名單</b></h4>
+                    <h5 class="pt-2"><b class="bg-success text-white">新增群組</b></h5>
                     <div class="p-2">
-                        <span></span>
-                        <div class="text-black-50 fw-lighter">tip:</div>
+                        <span>群組名稱若重複，新增的IP將併入原本的群組</span><br>
+                        <span>IP必須是有效的地址。</span><br>
+                        <div class="text-black-50 fw-lighter">tip:若要將舊群組新增IP可在舊群組按編輯</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/iplist2.PNG>
+                    </div>
+
+                    <h5 class="pt-4"><b class="bg-warning">編輯</b></h5>
+                    <div class="p-2">
+                        <span><b class="bg-success text-white">新建送出</b>，會自動將舊群組新增一組新的登入IP。</span><br>
+                        <span><b class="bg-primary text-white">送出編輯</b>，會將此欄位的IP更新。</span><br>
+                        <div class="text-black-50 fw-lighter">tip:若要新增舊IP至新群組，請複製IP，然後使用新增群組功能。</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src=/doc/iplist3.PNG>
+                    </div>
+
+                    <h5 class="pt-4"><b class="bg-danger text-white">刪除</b></h5>
+                    <div class="p-2">
+                        <span>只有admin可以刪除白名單。</span><br>
+                        <span>admin也不可刪除最後一個白名單。</span>
                     </div>
                 </div>
 

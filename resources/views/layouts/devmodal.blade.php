@@ -107,7 +107,7 @@
         <div class="modal-body">
           <form>
             <div class="mb-3 border border-info">
-                <label for="manydev" class="col-form-label">選取裝置:<span id="many_dev_name"></span></label>
+                <label for="manydev" class="col-form-label">選取裝置:<div id="many_dev_name"></div></label>
                 <div  class="form-check  mb-3" id="manydev" >
                     @foreach ( App\Models\Device::select("id","name")->get() as $value )
                     <span class=" col-auto " id ="dev-{{$value->id}}">
