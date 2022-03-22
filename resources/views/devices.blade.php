@@ -360,7 +360,7 @@
                     alert('刪除成功')
                     location.reload();
                 }).fail(function(message){
-                    alert(`權限不足`);
+                    alert(`權限不足或已存在裝置簡訊`);
                 });
             }
         })
