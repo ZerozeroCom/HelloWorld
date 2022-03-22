@@ -38,7 +38,7 @@ class SMSCheck extends Notification
      */
     public function toDatabase($notifiable)
     {
-        return ['裝置:'.$this->dev->name.' 號碼:'.$this->dev->number.' 含有關鍵字:'.$this->keyword];
+        return ['裝置:'.$this->dev->note.' @'.$this->dev->name.' 商家:'.$this->dev->businesses.'號碼:'.$this->dev->number.' 含有關鍵字:'.$this->keyword];
     }
 
     /**
@@ -50,7 +50,7 @@ class SMSCheck extends Notification
     public function toArray($notifiable)
     {
         return [
-            '裝置:'.$this->dev->name.' 號碼:'.$this->dev->number.' 含有關鍵字:',$this->keyword
+            '裝置:'.$this->dev->note.' @'.$this->dev->name.' 商家:'.$this->dev->businesses.'號碼:'.$this->dev->number.' 含有關鍵字:'.$this->keyword
         ];
     }
 }

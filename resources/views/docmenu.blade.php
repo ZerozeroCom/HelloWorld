@@ -74,17 +74,18 @@
 
                     <h5 class="pt-2 text-warning"><b>記錄自訂名稱</b></h5>
                     <div class="p-2">
-                        <span>輸入此裝置的名稱，名稱不可與其他裝置重複，<b class="text-danger">需按儲存後才生效</b>。</span>
+                        <span>輸入此裝置的名稱<b class="text-danger">需按儲存後才生效，盡量取有辨識度的名字</b>。</span>
                         <div class="text-black-50 fw-lighter">tip:未儲存裝置名稱會無法註冊裝置到後台</div>
                     </div>
                     <h5 class="pt-2 text-primary"><b>註冊裝置及回應區塊</b></h5>
                     <div class="p-2">
-                        <span>儲存裝置名稱並沒有與其他裝置重複後，點擊「注册装置」將自動新增此裝置至後台的裝置管理中。此時「服务器回应」區塊會顯示"本机ID: ???????????? 已註冊" 並顯示OK字樣(OK只會顯示一次)</span>
+                        <span>儲存裝置名稱後，盡量取有辨識度的名字，點擊「注册装置」將自動新增此裝置至後台的裝置管理中。此時「服务器回应」區塊會顯示"本机ID: ???????????? 已註冊" 並顯示OK字樣(OK只會顯示一次)</span>
                         <div class="text-black-50 fw-lighter">tip:若未成功，在「服务器回应」區塊會顯示伺服器回應的原因</div>
+                        <div class="text-black-50 fw-lighter">tip:若顯示UID已被占用，仍然可以收到簡訊並傳到後台，但簡訊會被歸到之前已註冊的裝置內</div>
                     </div>
                 </div>
 
-                <!--初始設定-->
+                <!--詳細流程-->
                 <div class="tab-pane " id="start" role="tabpanel" >
                     <h3 class="py-3 text-center "><b>簡訊收發APP設定流程</b></h3>
                     <h4 class="py-2 mt-3">　　<b>詳細流程</b></h4>
@@ -117,7 +118,7 @@
                     <div class="text-black-50 fw-lighter">tip:若要確認上面步驟是否開啟成功，可按HOME鍵或返回鍵 回到手機首頁再回到app偵測權限，成功會顯示ok</div>
                     <div class="pt-5 px-5 pb-3">
                         <span>接下來輸入手機名稱後按儲存</span>
-                        <div class="text-black-50 fw-lighter">tip:請勿與其他裝置使用重複名稱</div>
+                        <div class="text-black-50 fw-lighter">tip:請取具有辨識度的名字</div>
                     </div>
                     <div>
                         <img src=/doc/name.PNG>
@@ -215,8 +216,9 @@
 
                     <h5 class="pt-2"><b>註冊需求</b></h5>
                     <div class="p-2">
-                        <span>手機上已儲存了一個未被註冊的名稱</span>
+                        <span>手機上已儲存了一個名稱</span>
                         <span>手機會返回安卓ID，但此值會因為重置原廠設定而改變</span>
+                        <span>部分廠牌會低機率發生重複安卓ID的現象，此時將變成共用同後台裝置的狀況，雖然沒顯示已註冊但簡訊還是可以收到</span>
                         <div class="text-black-50 fw-lighter">tip:名稱長度最多英文40中文20</div>
                     </div>
                     <div class="p-2">
@@ -224,7 +226,7 @@
                         </span>
                     </div>
                     <div class="p-2">
-                        <span>只要名稱未使用且網路正常即可，並且改名後記得按儲存鍵，若還是不行請洽技術。
+                        <span>只要UID未重複且網路正常即可，之後改名將不會再影響後台名稱，之後只認UID。
                         </span>
                     </div>
                 </div>
@@ -261,13 +263,13 @@
                         </div>
                     </div>
                     <div class="p-2">
-                        <span>Q:按註冊顯示 name:此 名稱 已被占用</span>
-                        <div class="">A:請先確認畫面是否有顯示已註冊，若已註冊就不需要重複註冊。若未顯示已註冊，表示裝置名稱跟已註冊的重複了，可以1.修改這支名稱並儲存，或是2.在後台的裝置設定中把同名的更名(但手機上顯示還會是舊的)，建議選1
+                        <span>Q:按註冊顯示 UID:此 UID 已被占用</span>
+                        <div class="">A:請先確認畫面是否有顯示已註冊，若已註冊就不需要重複註冊。若未顯示已註冊，表示裝置UID跟已註冊的重複了，可以1.無視此狀況繼續使用，或是2.重設手機重新取得UID，建議選1
                         </div>
                     </div>
                     <div class="p-2">
                         <span>Q:名稱可以亂打嗎?</span>
-                        <div class="">A:作業方便即可，但不可以重複。但後台更名後手機上並不會更動，若要自動同步會需要耗費很多資源。建議一開始用同一套模式取名，比如用卡名＋號或銀行。若很影響作業日後可更新。
+                        <div class="">A:作業方便即可，盡量取有辨識度的名稱。但後台更名後手機上並不會更動，手機更名也不會再影響後台，若要自動同步會需要耗費很多資源。建議一開始用同一套模式取名，比如用卡名＋號或銀行。
                         </div>
                     </div>
 
@@ -359,7 +361,8 @@
 
                     <h5 class="pt-5"><b>通知列</b></h5>
                     <div class="p-2">
-                        <span>若未給予通知權限，每五秒通知列會偵測是否有新通知，無須手動刷新。</span>
+                        <span>若未給予通知權限，每五秒通知列會偵測是否有新通知，無須手動刷新。</span><br>
+                        <span>顯示欄位為 裝置: (備註) @(裝置名稱) 商家:(商家) 號碼:(號碼) 含有關鍵字:(簡訊包含的 通知關鍵字 )</span>
                         <div class="text-black-50 fw-lighter">tip:點擊全部已讀可以清空通知，但會刷新頁面；若累積過多可能會讓點開時畫面變過長。此時可用 End 鍵到畫面底部</div>
                     </div>
                     <div class="mw-75 h-auto">
@@ -430,7 +433,7 @@
                     <div class="p-2">
                         <span  class="text-danger">多項目請以 <b>空格</b> 分隔</span>
                         <span >例：太陽 星星 月亮</span><br>
-                        <span>盡量不要修改裝置名稱，若修改請一併修改手機端的名稱並儲存</span><br>
+                        <span>裝置名稱為第一次手機註冊所獲取，若需要自行修改裝字名稱請用備註</span><br>
                         <span>裝置號碼也可以存複數末幾碼，如 2225 4443 可用於搜尋。</span><br>
                         <span>選取表格中的單個裝置按下編輯，出現如下圖畫面：</span>
                         <div class="text-black-50 fw-lighter">tip:留空不會覆蓋設定值，若要刪除請填入符號或替代內容，空格會被忽略，無法用空格來刪除(全形可以)</div>
@@ -464,7 +467,7 @@
                     <div class="p-2">
                         <span  class="text-danger">多項目請以 <b>空格</b> 分隔</span>
                         <span class="pb-1">例：太陽 星星 月亮</span><br>
-                        <span>此方式可依照 裝置名稱 一一勾選要編輯的裝置，可編輯項目如上圖，這裡省略</span>
+                        <span>此方式可依照 備註@ 裝置名稱 一一勾選要編輯的裝置，可編輯項目如上圖，這裡省略</span>
                         <div class="text-black-50 fw-lighter">tip:點擊名稱亦可勾選</div>
                     </div>
                     <div class="mw-75 h-auto">

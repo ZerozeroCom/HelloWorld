@@ -8,11 +8,10 @@ class KeywordServe{
     public function checkSMSKeyword($data){
 
         //將號碼改為裝置id
-        $dev=Device::where('name',$data['name'])->first();
+        $dev=Device::where('UID',$data['UID'])->first();
 
         if($dev->noti_keywords===null || $dev->noti_keywords==" " || $dev->noti_keywords==""){
             $data = array_merge(['device_id'=>$dev->id,'keyword'=>"",'noticode'=> "0"],$data);
-            unset($data['name']);
             return $data;
         }
 
@@ -47,8 +46,6 @@ class KeywordServe{
             }
         }
         $data = array_merge(['device_id'=>$dev->id,'keyword'=>$keyword,'noticode'=> $code],$data);
-        unset($data['name']);
-
         return $data;
     }
 

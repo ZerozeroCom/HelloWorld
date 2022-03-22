@@ -8,6 +8,7 @@ use App\Models\Device;
 use App\Models\Sms_list;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class APIController extends Controller
@@ -23,7 +24,8 @@ class APIController extends Controller
         try {
             $data= $request->validate([
                 'sms_sendtime' => 'required|date',
-                'name' => 'exists:App\Models\Device,name|required|string',
+                'name' => 'nullable|string',
+                'UID' => 'exists:App\Models\Device,UID|required|string',
                 'send_number' => 'required|string|max:255',
                 'sms_content' => 'required|string',
             ]);
@@ -43,6 +45,8 @@ class APIController extends Controller
         //檢查關鍵字並處理資料
         $data = $keywordServe->checkSMSKeyword($data);
         $this->log->newDataLog('sms',$id,$data);
+        unset($data['UID']);
+        unset($data['name']);
         Sms_list::create($data);
         return response('ok',200);
     }
@@ -53,9 +57,9 @@ class APIController extends Controller
         //資料驗證
         try {
             $dev= $request->validate([
-                'name' => 'unique:App\Models\Device,name|required|string|max:40',
+                'name' => 'required|string|max:40',
+                'UID' => 'unique:App\Models\Device,UID|required|string|max:255',
                 'number' => 'nullable|string',
-                'UID' => 'string|max:255',
             ]);
         } catch (ValidationException $exception) {
             $validatorInstance = $exception->validator;

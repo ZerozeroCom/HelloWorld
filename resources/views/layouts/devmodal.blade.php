@@ -109,9 +109,9 @@
             <div class="mb-3 border border-info">
                 <label for="manydev" class="col-form-label">選取裝置:<div id="many_dev_name"></div></label>
                 <div  class="form-check  mb-3" id="manydev" >
-                    @foreach ( App\Models\Device::select("id","name")->get() as $value )
+                    @foreach ( App\Models\Device::select("id","name","note")->get() as $value )
                     <span class=" col-auto " id ="dev-{{$value->id}}">
-                        <label class="col-form-label "><input class="form-check-input" type="checkbox" name="id" data-id="{{$value->id}}" >{{$value->name}}</label>
+                        <label class="col-form-label "><input class="form-check-input" type="checkbox" name="id" data-id="{{$value->id}}" >{{$value->note}}@ {{$value->name}}</label>
                         <span>　</span>
                     </span>
                     @endforeach

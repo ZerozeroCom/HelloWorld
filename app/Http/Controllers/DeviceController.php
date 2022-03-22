@@ -8,6 +8,7 @@ use App\Models\Device;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class DeviceController extends Controller
 {
@@ -47,7 +48,11 @@ class DeviceController extends Controller
         $data=Device::find($id);
             //若有資料 進行驗證
         $dev = collect($request->validate([
-            'name' => 'exists:App\Models\Device,name|nullable|string|max:40',
+            'name' => [
+                'nullable',
+                'string',
+                'max:40',
+                Rule::unique('App\Models\Device')->ignore($data->id),],
             //'number' => 'nullable|string|max:20|min:9',
             'UID' => 'nullable|string|max:255',
             'businesses' => 'nullable|string|max:255',
