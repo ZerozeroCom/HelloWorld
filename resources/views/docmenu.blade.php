@@ -54,7 +54,7 @@
                 <div class="tab-pane active" id="app" role="tabpanel" >
                     <h3 class="py-3 text-center "><b>簡訊收發APP使用說明</b></h3>
                     <h4 class="py-2 mt-3">　　<b>介面</b></h4>
-                    <span class="p-4">主要分四個區塊</span>
+                    <span class="p-4">主要分四個區塊，還有說明頁面</span>
                     <div>
                         <img src=/doc/viewnote.PNG>
                     </div>
@@ -68,7 +68,7 @@
                     <h5 class="pt-2 text-success"><b>設定權限快捷</b></h5>
                     <div class="p-2">
                         <span>前往系統設定的捷徑，「开启通知权限」前往系統通知頁面，</span>
-                        <span>「应用程式设定」可以檢查並開啟簡訊權限及自啟動權限。</span>
+                        <span>「应用程式设置」可以檢查並開啟簡訊權限及自啟動權限。</span>
                         <div class="text-black-50 fw-lighter">tip:不同的廠牌及型號可能系統上會有特殊規格，可能發生無法快捷開啟的情況，需要手動前往設定</div>
                     </div>
 
@@ -79,9 +79,14 @@
                     </div>
                     <h5 class="pt-2 text-primary"><b>註冊裝置及回應區塊</b></h5>
                     <div class="p-2">
-                        <span>儲存裝置名稱後，盡量取有辨識度的名字，點擊「注册装置」將自動新增此裝置至後台的裝置管理中。此時「服务器回应」區塊會顯示"本机ID: ???????????? 已註冊" 並顯示OK字樣(OK只會顯示一次)</span>
+                        <span>儲存裝置名稱後，盡量取有辨識度的名字，點擊「注册设备」將自動新增此裝置至後台的裝置管理中。此時「服务器回应」區塊會顯示"本机ID: ???????????? 已註冊" 並顯示OK字樣(OK只會顯示一次)</span>
                         <div class="text-black-50 fw-lighter">tip:若未成功，在「服务器回应」區塊會顯示伺服器回應的原因</div>
                         <div class="text-black-50 fw-lighter">tip:若顯示UID已被占用，仍然可以收到簡訊並傳到後台，但簡訊會被歸到之前已註冊的裝置內</div>
+                    </div>
+                    <h5 class="pt-2 "><b>說明頁面</b></h5>
+                    <span>點主畫面右上角可進入說明頁面，右下角有影片示範，影片內容在APP下載中</span>
+                    <div>
+                        <img src=/doc/note.PNG>
                     </div>
                 </div>
 
@@ -125,7 +130,7 @@
                     </div>
                     <div class="text-black-50 fw-lighter">tip:點擊儲存後，畫面下半部會短暫顯示已儲存的名稱</div>
                     <div class="pt-5 px-5 pb-3">
-                        <span>最後點擊註冊裝置，顯示如下圖畫面則完成所有設定</span>
+                        <span>最後點擊註冊設備，顯示如下圖畫面則完成所有設定</span>
                         <div class="text-black-50 fw-lighter">tip:這個步驟遇到問題請參考註冊裝置頁面</div>
                     </div>
                     <div>
@@ -165,10 +170,11 @@
                         <span>非必要權限，許可後，若手機自行重新啟動(自動更新或充電時突然電壓大改變)，APP可以自行重新開啟，無須人工作業</span>
                         <div class="text-black-50 fw-lighter">tip:部分廠牌或型號有鎖定開機廣播，此功能若未一一測試並不可靠</div>
                     </div>
-                    <h5 class="pt-2"><b>電話權限</b></h5>
+                    <s><h5 class="pt-2"><b>電話權限</b></h5>
                     <div class="p-2">
                         <span>非必要權限，許可後，APP可獲取手機資訊以及通話狀態...等，通常要獲取的都是手機資訊，比如型號，UUID之類，但它跟通話相關的權限綁在一起</span>
-                        <div class="text-black-50 fw-lighter">tip:目前已用其他方式取得ID，未來不一定會用到，但先許可也沒問題</div>
+                        <div class="text-black-50 fw-lighter">tip:目前已用其他方式取得ID，未來不一定會用到，但先許可也沒問題</s></div>
+                        <span>現版本已拿掉，未來有需求才會加入</span>
                     </div>
                     <h4 class="py-2 mt-3"><b>權限開啟參考</b></h4>
                     <div class="p-2">
@@ -226,7 +232,7 @@
                         </span>
                     </div>
                     <div class="p-2">
-                        <span>只要UID未重複且網路正常即可，之後改名將不會再影響後台名稱，之後只認UID。
+                        <span>只要UID未重複且網路正常即可，之後改名將不會再影響後台名稱，未來簡訊只認UID。
                         </span>
                     </div>
                 </div>
@@ -270,6 +276,11 @@
                     <div class="p-2">
                         <span>Q:名稱可以亂打嗎?</span>
                         <div class="">A:作業方便即可，盡量取有辨識度的名稱。但後台更名後手機上並不會更動，手機更名也不會再影響後台，若要自動同步會需要耗費很多資源。建議一開始用同一套模式取名，比如用卡名＋號或銀行。
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <span>Q:說明裡的視頻怎麼不能暫停回放啊?</span>
+                        <div class="">A:重複按視頻演示可以重新播放，要倒回暫停要重寫撥放器太累了。
                         </div>
                     </div>
 
