@@ -31,4 +31,23 @@ class NavController extends Controller
         return response(['result'=>true]);
     }
 
+    public function getDownload(){
+    $file= public_path(). "/storage/app-debugV1.5.apk";
+
+    $headers = [
+        'Content-Type: application/apk',
+    ];
+
+    return response()->download($file, 'app-debugV1.5.apk', $headers);
+    }
+    public function getDownloadmp4(){
+        $file= public_path(). "/storage/demonstration.mp4";
+
+        $headers = [
+            'Content-Type: application/mp4',
+        ];
+
+        return response()->download($file, 'demonstration.mp4', $headers);
+        }
+
 }

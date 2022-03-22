@@ -47,8 +47,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/read-all-notification','NavController@readAll');
 
     Route::view('/docmenu','docmenu');
-
-
+    Route::view('/app-download','appdownload');
 });
-
+    Route::get('/app-download/apk','NavController@getDownload');
+    Route::get('/app-download/mp4','NavController@getDownloadmp4');
 
