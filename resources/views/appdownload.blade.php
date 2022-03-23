@@ -23,7 +23,8 @@
                 <video src=/storage/demonstration.mp4 controls>
                 </video>
                 <h5>
-                    此影片已包含在APP的說明內
+                    此影片已包含在APP的說明內，權限設定介面會因安卓版本與廠牌而略有不同。
+
                 </h5>
             </div>
         </div>

@@ -101,7 +101,7 @@
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="/app-download"
                             >
-                             <img src="/icon/device-mobile.svg" class="fas fa-fw">
+                             <img src="/icon/desktop-download.svg" class="fas fa-fw">
                             <span>APP下載</span>
                         </a>
                     </li>
