@@ -53,7 +53,7 @@ class DeviceController extends Controller
                 'string',
                 'max:40',
                 Rule::unique('App\Models\Device')->ignore($data->id),],
-            //'number' => 'nullable|string|max:20|min:9',
+            'number' => 'nullable|string|max:40',
             'UID' => 'nullable|string|max:255',
             'businesses' => 'nullable|string|max:255',
             'noti_keywords' => 'nullable|string|max:255',
@@ -73,7 +73,7 @@ class DeviceController extends Controller
             //若有資料 進行驗證
         $dev = collect($request->validate([
             'id' => 'required|array|exclude',
-            'number' =>'nullable|string|max:40',
+            //'number' =>'nullable|string|max:40',
             'businesses' => 'nullable|string|max:255',
             'noti_keywords' => 'nullable|string|max:255',
             'unnoti_keywords' => 'nullable|string|max:255',
