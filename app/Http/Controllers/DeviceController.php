@@ -73,6 +73,7 @@ class DeviceController extends Controller
             //若有資料 進行驗證
         $dev = collect($request->validate([
             'id' => 'required|array|exclude',
+            'number' =>'nullable|string|max:40',
             'businesses' => 'nullable|string|max:255',
             'noti_keywords' => 'nullable|string|max:255',
             'unnoti_keywords' => 'nullable|string|max:255',
