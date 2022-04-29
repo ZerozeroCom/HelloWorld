@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
+
         <div class="col-3" style="border-radius:10px!important;">
             <div class="list-group-item bg-infoCool" style="border-radius:10px 10px 0px 0px!important;">APP</div>
 
@@ -633,8 +634,9 @@
 
 
     </div>
-
-    <script>
+    <script >
+    </script>
+    <script   >
         x=1;
         function change(){
             x++;
@@ -650,6 +652,7 @@
         $('#oppo').on('click',function(){
             $('#smsiframe').attr('src','/doc/oppo')
         });
+
     </script>
 
 @endsection
