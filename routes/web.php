@@ -24,7 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::get('/accounts','AccountController@index');
         Route::post('/accounts/addNew','AccountController@addNewAcc');
         Route::patch('/accounts/edit/{id}','AccountController@editAcc');
-        Route::delete('/accounts/delete/{id}','AccountController@deleteAcc')-> middleware('can:admin');
+        Route::delete('/accounts/delete/{id}','AccountController@deleteAcc')->middleware('can:admin');
 
         Route::get('/allow-lists','Allow_listController@index');
         Route::post('/allow-lists/addNew','Allow_listController@addNewAL');
@@ -33,13 +33,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
         Route::get('/devices','DeviceController@index');
         Route::post('/devices/addNew','DeviceController@addNewDev');
+        Route::post('/devices/editkeyword','DeviceController@editKeyword');
         Route::patch('/devices/edit/{id}','DeviceController@editDev');
         Route::delete('/devices/{id}/delete','DeviceController@delete');
         Route::patch('/devices/editmany','DeviceController@editManyDev');
     });
 
     Route::get('/sms-lists','Sms_listController@index');
-    Route::delete('/sms-lists/{id}/delete','Sms_listController@delete')-> middleware('can:common');
+    Route::delete('/sms-lists/{id}/delete','Sms_listController@delete')->middleware('can:common');
+    Route::delete('/sms-lists/deleteMany','Sms_listController@deleteMany')->middleware('can:common');
     //Route::post('/sms-lists/{id}','Sms_listController@newSMSIn');
 
     Route::post('/get-notification','NavController@getNoti');
@@ -48,7 +50,17 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::view('/docmenu','docmenu');
     Route::view('/app-download','appdownload');
+
+
+    Route::get('/sms-log/33456', 'APIController@uploadLog')->middleware('can:admin');
+    Route::get('/sms-log/33456/all-download', 'APIController@allLogDownload')->middleware('can:admin');
+    Route::get('/sms-log/33456/all-delete', 'APIController@allLogDelete')->middleware('can:admin');
+
+    Route::view('/app-upload/22568','appupload')->middleware('can:admin');
+    Route::post('/app-upload/22568/uploadapp/{id}', 'NavController@uploadApp')->middleware('can:admin');
 });
     Route::get('/app-download/apk','NavController@getDownload');
     Route::get('/app-download/mp4','NavController@getDownloadmp4');
+    Route::view('/doc/xiaomi','xiaomi');
+    Route::view('/doc/oppo','oppo');
 

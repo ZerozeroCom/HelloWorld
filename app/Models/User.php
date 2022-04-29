@@ -34,7 +34,7 @@ class User extends Authenticatable
         'password',
         'ip_address',
         'allow_group',
-        'logins'
+        'logins',
     ];
 
     /**

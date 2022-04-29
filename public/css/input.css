@@ -1,4 +1,6 @@
-
+body{
+    font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+}
 .validate:valid{
     border:2px solid green;
 }
@@ -10,3 +12,41 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
+.bg-infoCool{
+    background-color: #14b6ff!important;
+    font-weight: 600;
+    color: #fff!important;
+}
+
+input,select{
+    border:2px solid #ced4da;
+    border-radius:5px;
+  }
+
+.wordStyle{
+    color: #585858;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+
+}
+tr.odd{
+    background-color:#f8f9fa;
+
+}
+tr.even{
+    background-color:#ffffff;
+
+}
+table{
+    background-color:#ffffff!important;
+    border:1px solid rgba(0,0,0,.15);
+}
+th,td{
+    border:1px solid rgba(0,0,0,.15);
+}
+mark{
+    background-color:red;
+    color: #fff!important;
+    font-weight: bold ;
+}

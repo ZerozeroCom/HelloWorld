@@ -54,7 +54,7 @@
             <h5 class="modal-title" id="devModalLabel">裝置修改</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <span class="m-3 d-flex justify-content-center">留空將維持原設定值，不會清除數據</span>
+        <span class="m-3 d-flex justify-content-center">注意！留空將清除數據</span>
         <div class="modal-body">
             <form>
                 <div class="mb-3">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="dev-number" class="col-form-label">裝置號碼:</label>
-                    <input type="number" class="validate form-control" id="dev-number" >
+                    <input type="text" class="validate form-control" id="dev-number" >
                 </div>
                 <div class="mb-3">
                     <label for="dev-UID" class="col-form-label">裝置UID:</label>
@@ -138,6 +138,31 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
           <button type="button" class="btn btn-primary" id="manydev_go">送出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!--編輯共用關鍵字用-->
+<div class="modal fade" id="editkeyword" tabindex="-1" aria-labelledby="editkeywordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editkeywordModalLabel">編輯共用關鍵字</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <span class="m-3 d-flex justify-content-center">關鍵字用空格分隔</span>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+                <label for="editkeyword-note" class="col-form-label">共用關鍵字:</label>
+                <textarea type="message-text" class="validate form-control" id="editkeyword-note" style="height: 300pt">{{ $allKeyWord }}</textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="editkeyword_go">送出</button>
         </div>
       </div>
     </div>

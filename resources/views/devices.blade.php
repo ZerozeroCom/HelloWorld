@@ -3,65 +3,83 @@
 
     <div class="">
         <div class="row">
-        <div class="col-sm-8">
-            <div class="card   m-2" >
-                <h5 class="card-header bg-info py-3 ml-0 mr-0">搜尋</h5>
-                <div class=" g-2">
-                    <form>
-                        <div class="row m-3 ">
-                                <div class="col-md-4 ">
-                                    <label for="sedev-name" class="col-form-label">裝置名稱:</label>
-                                    <input type="text" class="col-form-control" id="sedev-name">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="sedev-email" class="col-form-label">　裝置號碼:</label>
-                                    <input type="number" class="col-form-control" id="sedev-number" >
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="sedev-UID" class="col-form-label">　裝置UID :</label>
-                                    <input type="text" class="col-form-control" id="sedev-UID">
-                                </div>
-                        </div>
-                        <div class="row m-3"  style="background-color:#82FF82;" >
-                                <div class="col-md-4">
-                                    <label for="sedev-businesses" class="col-form-label">裝置商戶:</label>
-                                    <input type="text" class="col-form-control"  id="sedev-businesses">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="sedev-noti_keywords" class="col-form-label">通知關鍵字:</label>
-                                    <input type="text" class="col-form-control" id="sedev-noti_keywords">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="sedev-unnoti_keywords" class="col-form-label">忽略關鍵字:</label>
-                                    <input type="text" class="col-form-control" id="sedev-unnoti_keywords">
-                                </div>
-                        </div>
-                    </form>
-                </div>
-                <button type="button" class="btn  m-3 btn-primary" id="search_dev">搜尋</button>
-            </div>
-
-        </div>
-        <div class="col-sm-4">
-            <div class="card m-2">
-                <h6 class="card-header bg-info py-3 row ml-0 mr-0">批次編輯裝置</h6>
-                <div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-primary" id="se_edit_dev" disabled>依照本頁搜尋結果編輯</button>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-warning" id="make_edit_dev">自訂批次編輯</button>
+            <div class="col-sm-8">
+                <div class="card   m-2" style="border-radius:10px!important;">
+                    <h5 class="card-header bg-infoCool py-3 ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">搜尋</h5>
+                    <div class="wordStyle g-2">
+                        <form>
+                            <div class="row m-3 ">
+                                    <div class="col-md-4 ">
+                                        <label for="sedev-name" class="col-form-label">裝置名稱　</label>
+                                        <input type="text" class="col-form-control" id="sedev-name">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="sedev-email" class="col-form-label">　裝置號碼　</label>
+                                        <input type="number" class="col-form-control" id="sedev-number" >
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="sedev-UID" class="col-form-label">　裝置UID　</label>
+                                        <input type="text" class="col-form-control" id="sedev-UID">
+                                    </div>
+                            </div>
+                            <div class="row m-3"   >
+                                    <div class="col-md-4">
+                                        <label for="sedev-businesses" class="col-form-label">裝置商戶　</label>
+                                        <input type="text" class="col-form-control"  id="sedev-businesses">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="sedev-noti_keywords" class="col-form-label">通知關鍵字　</label>
+                                        <input type="text" class="col-form-control" id="sedev-noti_keywords">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="sedev-unnoti_keywords" class="col-form-label">忽略關鍵字　</label>
+                                        <input type="text" class="col-form-control" id="sedev-unnoti_keywords">
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button" class="btn  m-3 btn-primary" id="search_dev" style="font-weight: 600;">送出</button>
                 </div>
             </div>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#newdevModal" class="btn m-4 btn-success" id="make_new_dev">新增裝置</button>
+            <div class="col-sm-4">
+                <div class="card m-2" style="border-radius:10px!important;">
+                    <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">批次編輯裝置</h5>
+                    <div>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-primary" id="se_edit_dev" disabled>依照本頁搜尋結果編輯</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#manydevModal" class="btn m-3 btn-warning" id="make_edit_dev">自訂批次編輯</button>
+                    </div>
+                </div>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#newdevModal" class="btn m-4 btn-success" id="make_new_dev">新增裝置</button>
+            </div>
         </div>
+        <div class="row m-2 p-3 bg-white" style="border-style:solid;border-color:#14b6ff;border-width:1px 3px 1px 3px;">
+            <div class="my-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                </svg>
+                    <span style="font-weight:400;">　<b>共用關鍵字： </b></span>
 
+            </div>
+            <div class="my-auto">
+                {{ $allKeyWord }}
+            </div>
+            <div class="" style="position:sticky;left:100%;">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#editkeyword" class="btn btn-warning align-bottom" id="edit_keyword">編輯</button>
+            </div>
         </div>
 
     </div>
 
-
-    <div >
-        {{$dataTable->table()}}
+    <div class="">
+        <div class="card m-2" style="border-radius:10px!important;">
+            <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">裝置列表</h5>
+            <div class=" m-4">
+                {{$dataTable->table()}}
+                {{$dataTable->scripts()}}
+            </div>
+        </div>
     </div>
-        {{$dataTable->scripts()}}
+
 
         @include('layouts.devmodal')
 
@@ -178,6 +196,33 @@
                 }else {alert('請再次確認，前三項為必填或裝置號碼需超過8碼')}
         })
 
+        //編輯共通關鍵字部分
+        $('.modal').on('click','#editkeyword_go',function(){
+            var data1 =document.getElementById('editkeyword-note').value;
+            console.log(data1);
+            if(data1!=""){
+                            $.ajax({
+                                headers: {
+                                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                                },
+                                method: 'POST',
+                                url: '/devices/editkeyword',
+                                data:{
+                                        "allkeyword": data1,
+                                    },
+                            })
+                            .done(function(msg){
+                            location.reload()
+                            alert(`${msg}新建成功`);
+                            }).fail(function(xhr, status, data){
+                                var error =Object.keys(xhr.responseJSON.errors)
+                                .map(key=> `${xhr.responseJSON.errors[key]}` )
+                                .join('&');
+                                alert(`${error}`);
+                            });
+                }else {alert('內容不可為空')}
+        })
+
 
               //編輯資料部分
         $('.modal-footer').on('click','#devedit_go',function(){
@@ -234,8 +279,10 @@
 
             var i =0;
             //初始化sedata ，送出設定為搜尋模式
+
             seOrMake =0;
             sedata =[];
+            document.getElementById("many_dev_name").innerHTML = sedata;
             //依照現表取id值裝入sedata
             var id =$(td).each(function( index ) {
                 if(index==0 || index%9 ==0){
@@ -360,7 +407,7 @@
                     alert('刪除成功')
                     location.reload();
                 }).fail(function(message){
-                    alert(`權限不足或已存在裝置簡訊`);
+                    alert('已存在裝置簡訊或權限不足，\n\n若存在簡訊請利用搜尋功能批次刪除\n\n盡量搜尋完整 名稱/號碼 以避免誤刪其他簡訊');
                 });
             }
         })

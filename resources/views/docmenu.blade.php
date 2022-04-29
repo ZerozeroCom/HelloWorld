@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-3">
-            <div class="list-group-item bg-info">APP</div>
+        <div class="col-3" style="border-radius:10px!important;">
+            <div class="list-group-item bg-infoCool" style="border-radius:10px 10px 0px 0px!important;">APP</div>
 
-                <div class="list-group bg-white " id="list-tab" role="tablist">
+                <div class="list-group bg-white " id="list-tab" role="tablist" style="border-radius:10px!important;">
 
                         <a href="#app" class="list-group-item list-group-item-action mt-2 mx-2 w-auto active" data-bs-toggle="list" role="tab">
                             使用說明
@@ -21,11 +21,14 @@
                         <a href="#use" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
                             開始使用
                         </a>
-                        <a href="#ect" class="list-group-item list-group-item-action mb-2 mx-2 w-auto" data-bs-toggle="list" role="tab">
+                        <a href="#error" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
+                            收不到簡訊...
+                        </a>
+                        <a href="#ect" class="list-group-item list-group-item-action mb-2 mx-2 w-auto" data-bs-toggle="list" role="tab" style="border-radius:0px 0px 10px 10px!important;">
                             常見問題
                         </a>
-                        <div class="bg-info p-3 pl-4" >網頁</div>
-                        <a href="#all" class="list-group-item list-group-item-action mt-2 mx-2 w-auto" data-bs-toggle="list" role="tab">
+                        <div class="bg-infoCool p-3 pl-4" >網頁</div>
+                        <a href="#all" class="list-group-item list-group-item-action mt-2 mx-2 w-auto" data-bs-toggle="list" role="tab" style="border-radius:10px 10px 0px 0px!important;">
                             共通:全站操作
                         </a>
                         <a href="#noti" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
@@ -34,11 +37,11 @@
                         <a href="#sms" class="list-group-item list-group-item-action  mx-2 w-auto" data-bs-toggle="list" role="tab">
                             簡訊列表
                         </a>
+                        <a href="#user" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
+                            管理者權限設定
+                        </a>
                         <a href="#device" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
                         裝置管理
-                        </a>
-                        <a href="#user" class="list-group-item list-group-item-action mx-2 w-auto" data-bs-toggle="list" role="tab">
-                        管理者權限設定
                         </a>
                         <a href="#ip" class="list-group-item list-group-item-action mx-2 mb-2 w-auto" data-bs-toggle="list" role="tab">
                         IP白名單群組管理
@@ -56,7 +59,7 @@
                     <h4 class="py-2 mt-3">　　<b>介面</b></h4>
                     <span class="p-4">主要分四個區塊，還有說明頁面</span>
                     <div>
-                        <img src=/doc/viewnote.PNG>
+                        <img src="/doc/viewnote.PNG">
                     </div>
                     <h4 class="py-2 mt-3">　　<b>各區塊要點</b></h4>
                     <h5 class="pt-2 text-danger"><b>所需權限區塊</b></h5>
@@ -86,7 +89,7 @@
                     <h5 class="pt-2 "><b>說明頁面</b></h5>
                     <span>點主畫面右上角可進入說明頁面，右下角有影片示範，影片內容在APP下載中</span>
                     <div>
-                        <img src=/doc/note.PNG>
+                        <img src="/doc/note.PNG">
                     </div>
                 </div>
 
@@ -102,13 +105,13 @@
                         <span >安裝完成APP後開啟，通常會出現權限要求畫面，如下圖：</span>
                     </div>
                     <div>
-                        <img src=/doc/firstopen.PNG>
+                        <img src="/doc/firstopen.PNG">
                     </div>
                     <div class="pt-5 px-5 pb-3">
                         <span>允許後進入app介面，如下圖：</span>
                     </div>
                     <div>
-                        <img src=/doc/view.PNG>
+                        <img src="/doc/view.PNG">
                     </div>
                     <div class="pt-5 px-5 pb-3">
                         <span>此時需開啟通知權限，若上頁 簡訊權限 點歪按到拒絕也請在以下流程一併設定，流程如下：</span>
@@ -118,7 +121,7 @@
                     <p class="text-danger">點擊圖片換頁，圖片中紅色圈是使用APP點擊位置</p>
                     <span id="step-page">第1頁</span><span> 共7頁</span>
                     <div>
-                        <img id="step"class="mw-40 h-auto" src=/doc/step/001.PNG onclick="change()">
+                        <img id="step"class="mw-40 h-auto" src="/doc/step/001.PNG" onclick="change()">
                     </div>
                     <div class="text-black-50 fw-lighter">tip:若要確認上面步驟是否開啟成功，可按HOME鍵或返回鍵 回到手機首頁再回到app偵測權限，成功會顯示ok</div>
                     <div class="pt-5 px-5 pb-3">
@@ -126,7 +129,7 @@
                         <div class="text-black-50 fw-lighter">tip:請取具有辨識度的名字</div>
                     </div>
                     <div>
-                        <img src=/doc/name.PNG>
+                        <img src="/doc/name.PNG">
                     </div>
                     <div class="text-black-50 fw-lighter">tip:點擊儲存後，畫面下半部會短暫顯示已儲存的名稱</div>
                     <div class="pt-5 px-5 pb-3">
@@ -134,7 +137,7 @@
                         <div class="text-black-50 fw-lighter">tip:這個步驟遇到問題請參考註冊裝置頁面</div>
                     </div>
                     <div>
-                        <img src=/doc/sign.PNG>
+                        <img src="/doc/sign.PNG">
                     </div>
                 </div>
 
@@ -151,8 +154,8 @@
                         <div class="text-black-50 fw-lighter">tip:需按HOME鍵或返回鍵依照裝置有所不同，若未改變就試另一個</div>
                     </div>
                     <div>
-                        <img src=/doc/permission01.PNG>
-                        <img src=/doc/permission02.PNG>
+                        <img src="/doc/permission01.PNG">
+                        <img src="/doc/permission02.PNG">
                     </div>
                     <h4 class="py-2 mt-3"><b>權限內容</b></h4>
                     <h5 class="pt-2"><b>簡訊權限</b></h5>
@@ -165,15 +168,15 @@
                         <span>必須權限，需要許可才能讓此APP維持開啟狀態，並在手機休眠時持續運作</span>
                         <div class="text-black-50 fw-lighter">tip:若未開啟，手機畫面暗掉後，有機會因APP被系統抹除而後台收不到簡訊。</div>
                     </div>
-                    <h5 class="pt-2"><b>自啟動權限</b></h5>
+                    <h5 class="pt-2"><b>開機啟動權限</b></h5>
                     <div class="p-2">
                         <span>非必要權限，許可後，若手機自行重新啟動(自動更新或充電時突然電壓大改變)，APP可以自行重新開啟，無須人工作業</span>
                         <div class="text-black-50 fw-lighter">tip:部分廠牌或型號有鎖定開機廣播，此功能若未一一測試並不可靠</div>
                     </div>
-                    <s><h5 class="pt-2"><b>電話權限</b></h5>
+                    <h5 class="pt-2"><b>電話權限</b></h5>
                     <div class="p-2">
                         <span>非必要權限，許可後，APP可獲取手機資訊以及通話狀態...等，通常要獲取的都是手機資訊，比如型號，UUID之類，但它跟通話相關的權限綁在一起</span>
-                        <div class="text-black-50 fw-lighter">tip:目前已用其他方式取得ID，未來不一定會用到，但先許可也沒問題</s></div>
+                        <div class="text-black-50 fw-lighter">tip:目前已用其他方式取得ID，型號將會註冊在備註欄，方便除錯用。</div>
                         <span>現版本已拿掉，未來有需求才會加入</span>
                     </div>
                     <h4 class="py-2 mt-3"><b>權限開啟參考</b></h4>
@@ -183,8 +186,8 @@
                     </div>
                     <h5 class="pt-2"><b>Google</b></h5>
                     <div>
-                        <img src=/doc/step/002.PNG>
-                        <img src=/doc/step/006.PNG>
+                        <img src="/doc/step/002.PNG">
+                        <img src="/doc/step/006.PNG">
                     </div>
 
                     <h5 class="pt-2"><b>捷徑失效的場合</b></h5>
@@ -194,8 +197,8 @@
                         </div>
                     </div>
                     <div>
-                        <img src=/doc/000.PNG>
-                        <img src=/doc/001.PNG>
+                        <img src="/doc/000.PNG">
+                        <img src="/doc/001.PNG">
                     </div>
 
                 </div>
@@ -211,13 +214,13 @@
                         <span >註冊成功的手機會看到如下畫面：</span>
                     </div>
                     <div>
-                        <img src=/doc/sign.PNG>
+                        <img src="/doc/sign.PNG">
                     </div>
                     <div class="pt-5 px-5 pb-3">
                         <span >失敗會顯示如下畫面：</span>
                     </div>
                     <div>
-                        <img src=/doc/fail.PNG>
+                        <img src="/doc/fail.PNG">
                     </div>
 
                     <h5 class="pt-2"><b>註冊需求</b></h5>
@@ -246,9 +249,34 @@
                         <p>持續運行中，以及權限正常就可以收簡訊</p>
                     </div>
                     <div>
-                        <img src=/doc/check.PNG>
-                        <img src=/doc/check2.PNG>
+                        <img src="/doc/check.PNG">
+                        <img src="/doc/check2.PNG">
                     </div>
+                </div>
+                <!--收不到簡訊-->
+                <div class="tab-pane " id="error" role="tabpanel" >
+                    <h3 class="py-3 text-center "><b>簡訊收發APP錯誤</b></h3>
+                    <h4 class="py-2 mt-3">　　<b>收不到簡訊...</b></h4>
+                    <div class="p-2">
+                        <span>通常是手機APP被系統內建的程序阻擋</span><br>
+                        <span>隱私設置/隱私保護/個人隱私保護/個人資訊保護 </span><br>
+                        <span>資訊安全/手機保護/手機管家</span><br>
+                        <span>短信設置/智能省電</span><br>
+                        <p>這類的東西 裡面可能會有阻擋第三方軟件獲取銀行簡訊或私人簡訊的功能</p>
+                    </div>
+                    <h4 class="py-2 mt-3">　　<b>設定範例</b></h4>
+                    <div class="p-2">
+                        <span>同廠牌不同型號會有差別，僅供參考，可將網址直接傳給使用者，會顯示按鈕按下後的網頁</span><br>
+                        <span><a href="https://coolbananaboy.com/doc/xiaomi">https://coolbananaboy.com/doc/xiaomi</a></span><br>
+                        <span><a href="https://coolbananaboy.com/doc/oppo">https://coolbananaboy.com/doc/oppo</a></span>
+                    </div>
+                    <button id="xiaomi" class="btn btn-primary m-2">小米</button><button id="oppo"class="btn btn-primary m-2">OPPO</button><button class="btn btn-primary m-2">保留</button>
+                    <div>
+                        <iframe id="smsiframe" src="" width="100%" height="1200px">
+
+                        </iframe>
+                    </div>
+
                 </div>
                 <!--常見問題-->
                 <div class="tab-pane " id="ect" role="tabpanel" >
@@ -283,7 +311,10 @@
                         <div class="">A:重複按視頻演示可以重新播放，要倒回暫停要重寫撥放器太累了。
                         </div>
                     </div>
-
+                    <div class="p-2">
+                        <span>Q:安裝後收不到簡訊</span>
+                        <div class="">A:請參考左側：收不到簡訊...分頁，逐項排查。</div>
+                    </div>
                     <div class="p-2">
                         <span>Q:遇到問題再新增</span>
                         <div class="text-black-50 fw-lighter">A:YES</div>
@@ -298,7 +329,7 @@
                     <h4 class="py-2 mt-3"><b>表格操作</b></h4>
                     <span>若改變視窗大小可能會無法完整顯示表格，此時請直接重新整理(F5)，讓版面重新自動調整。但若視窗調整過小可能還是無法完整顯示，此時請將視窗條大</span>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/table.PNG>
+                        <img class="img-fluid" src="/doc/table.PNG">
                     </div>
                     <h5 class="pt-5 text-danger"><b>列顯示</b></h5>
                     <div class="p-2">
@@ -328,7 +359,10 @@
                         <span>畫面往下捲動後，左下角會出現^箭頭，點即可返回畫面頂端。</span><br>
                         <div class="text-black-50 fw-lighter">tip:也可使用鍵盤快捷鍵"Home"回到畫面頂部，通常在方向鍵上方。</div>
                     </div>
-
+                    <h5 class="pt-2" style="color: #A349A4"><b>側邊欄摺疊</b></h5>
+                    <div class="p-2">
+                        <span>頂端摺疊可完全隱藏，左側摺疊可變小變大</span><br>
+                    </div>
                     <h4 class="py-2 mt-3"><b>權限</b></h4>
                     <h5 class="pt-2"><b>Admin</b></h5>
                     <div class="p-2">
@@ -356,8 +390,8 @@
                         <div class="text-black-50 fw-lighter">tip:並非強制開啟，可以自行決定是否需要此功能。</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/notiopen1.PNG>
-                        <img class="img-fluid" src=/doc/notiopen2.PNG>
+                        <img class="img-fluid" src="/doc/notiopen1.png">
+                        <img class="img-fluid" src="/doc/notiopen2.png">
                     </div>
                     <h4 class="py-2 mt-5"><b>通知顯示</b></h4>
                     <h5 class="pt-2"></h5>
@@ -367,7 +401,7 @@
                         <div class="text-black-50 fw-lighter">tip:第一次開啟通知權限時，會顯示測試通知。</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/notinow.PNG>
+                        <img class="img-fluid" src="/doc/notinow.PNG">
                     </div>
 
                     <h5 class="pt-5"><b>通知列</b></h5>
@@ -377,7 +411,7 @@
                         <div class="text-black-50 fw-lighter">tip:點擊全部已讀可以清空通知，但會刷新頁面；若累積過多可能會讓點開時畫面變過長。此時可用 End 鍵到畫面底部</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/notitop.PNG>
+                        <img class="img-fluid" src="/doc/notitop.PNG">
                     </div>
                 </div>
                 <!--簡訊-->
@@ -386,13 +420,13 @@
                     <h3 class="py-3 text-center "><b>簡訊列表文件</b></h3>
                     <h4 class="py-2 mt-3"><b>搜尋</b></h4>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/sms.PNG>
+                        <img class="img-fluid" src="/doc/sms.PNG">
                     </div>
                     <h5 class="pt-2 text-danger"><b>欄位搜尋</b></h5>
                     <div class="p-2">
                         <span>白底的為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字，可只搜片段。</span><br>
-                        <span style="background-color:#82FF82">綠底的具有多項搜尋功能，可以 <b>空格</b> 分隔多關鍵字，順序可換。</span><br>
-                        <span style="background-color:#82FF82">範例：白色 黃色；可搜到[黃色 白色、白色黃色、白色 黃色、黃色白色] 關鍵字或裝置商戶</span><br>
+                        <span style="background-color:#b5e61d">綠色的區域具有多項搜尋功能，可以 <b>空格</b> 分隔多關鍵字，順序可換。</span><br>
+                        <span style="background-color:#b5e61d">範例：白色 黃色；可搜到[黃色 白色、白色黃色、白色 黃色、黃色白色] 關鍵字或裝置商戶</span><br>
                         <span>右上分類可篩掉通知或忽視簡訊。</span><br>
                         <span>可用<b class="text-success">快速選取</b>區域內的 <b>清除條件</b> 清除所有<b class="text-danger">欄位搜尋</b>條件。</span><br>
                         <span>以上功能都需最後按下<b class="text-white" style="background-color:#007BFF">搜尋</b>鈕才生效。<b>請務必注意簡體、繁體無法互相搜尋到</b></span>
@@ -417,9 +451,57 @@
                     <span>若有下載、除錯需求，可按此紐讓此頁停止自動抓取新簡訊。通知並不會暫停，只是不顯示新簡訊，重整頁面後回復正常</span><br>
                     <span>按下後會顯示如下圖訊息：</span><br>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/smsstop.PNG>
+                        <img class="img-fluid" src="/doc/smsstop.PNG">
+                    </div>
+                    <h4 class="py-2 mt-3"><b>停止自動刷新按鈕</b></h4>
+                    <span>若有下載、除錯需求，可按此紐讓此頁停止自動抓取新簡訊。通知並不會暫停，只是不顯示新簡訊，重整頁面後回復正常</span><br>
+                    <span>按下後會顯示如下圖訊息：</span><br>
+
+                    <h4 class="py-2 mt-3 text-danger"><b>批次刪除按鈕</b></h4>
+                    <span>若需要大量刪除，可利用搜尋篩選功能，及改變列顯示欄位數，將本頁內容一次刪除</span><br>
+                    <div class="text-black-50 fw-lighter">tip:需要按下送出按鈕才能使用批次刪除，請注意篩選條件。</div>
+
+                </div>
+
+                <!--管理者-->
+                <div class="tab-pane " id="user" role="tabpanel" >
+                    <h3 class="py-3 text-center "><b>管理者權限設定文件</b></h3>
+                    <h4 class="py-2 mt-3"><b>搜尋</b></h4>
+                    <h5 class="pt-2 text-danger"><b>欄位搜尋</b></h5>
+                    <div class="p-2">
+                        <span>此為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字，可只搜片段。</span><br>
+                        <span>右上，左上為選單式，只出現該選擇類型。</span><br>
+                        <span>以上功能都需最後按下<b class="text-white bg-primary">搜尋</b>鈕才生效。<b>請務必注意簡體、繁體無法互相搜尋到</b></span>
+                        <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果，所以請注意錯字、簡繁問題。</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src="/doc/user.PNG">
                     </div>
 
+                    <h4 class="py-2 mt-3"><b>帳號</b></h4>
+                    <h5 class="pt-2"><b class="bg-success text-white">新增</b></h5>
+                    <div class="p-2">
+                        <span>只有admin可以新增admin帳號，密碼需大於8字，Email無法重複</span><br>
+                        <span>新增的帳號都預設為預設(default)白名單群組，若要修改請編輯帳號，若要新增群組請移步IP白名單群組管理</span>
+                        <div class="text-black-50 fw-lighter">tip:請不要設定過於簡單的密碼</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src="/doc/user2.PNG">
+                    </div>
+
+                    <h5 class="pt-4"><b class="bg-warning">編輯</b></h5>
+                    <div class="p-2">
+                        <span>只有admin可任意修改帳號，common只能修改自己的帳號</span><br>
+                        <div class="text-black-50 fw-lighter">tip:留空不會覆蓋設定值。</div>
+                    </div>
+                    <div class="mw-75 h-auto">
+                        <img class="img-fluid" src="/doc/user3.PNG">
+                    </div>
+
+                    <h5 class="pt-4"><b class="bg-danger text-white">刪除</b></h5>
+                    <div class="p-2">
+                        <span>只有admin可以刪除帳號</span>
+                    </div>
 
                 </div>
                 <!--裝置-->
@@ -430,13 +512,18 @@
                     <h5 class="pt-2 text-danger"><b>欄位搜尋</b></h5>
                     <div class="p-2">
                         <span>白底的為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字，可只搜片段。</span><br>
-                        <span style="background-color:#82FF82">綠底的具有多項搜尋功能，可以 <b>空格</b> 分隔多關鍵字，順序可換。</span><br>
-                        <span style="background-color:#82FF82">範例：白色 黃色；可搜到[黃色 白色、白色黃色、白色 黃色、黃色白色] 關鍵字或裝置商戶</span><br>
+                        <span style="background-color:#b5e61d">綠色的區域具有多項搜尋功能，可以 <b>空格</b> 分隔多關鍵字，順序可換。</span><br>
+                        <span style="background-color:#b5e61d">範例：白色 黃色；可搜到[黃色 白色、白色黃色、白色 黃色、黃色白色] 關鍵字或裝置商戶</span><br>
                         <span>以上功能都需最後按下<b class="text-white" style="background-color:#007BFF">搜尋</b>鈕才生效。<b>請務必注意簡體、繁體無法互相搜尋到</b></span>
                         <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果，所以請注意錯字、簡繁問題。</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/device.PNG>
+                        <img class="img-fluid" src="/doc/device.PNG">
+                    </div>
+                    <h5 class="pt-2"><b>共用關鍵字</b></h5>
+                    <div class="p-2">
+                        <span>註冊的所有裝置之簡訊，若內含已設定文字都會通知</span><br>
+                        <span>須注意忽視關鍵字依然優先於共用關鍵字，同時存在的情況不會通知</span><br>
                     </div>
 
                     <h4 class="py-2 mt-3"><b>編輯裝置</b></h4>
@@ -451,7 +538,7 @@
                     </div>
 
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/device2.PNG>
+                        <img class="img-fluid" src="/doc/device2.PNG">
                     </div>
 
                     <h5 class="pt-4 text-success"><b>批次編輯</b></h5>
@@ -460,7 +547,7 @@
                         <div class="text-black-50 fw-lighter">tip:依照本頁搜尋結果編輯，尚未按下搜尋紐是無法按的</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/device.PNG>
+                        <img class="img-fluid" src="/doc/device.PNG">
                     </div>
 
                     <h5 class="pt-4 "><b class="text-white bg-primary">依照本頁搜尋結果編輯</b></h5>
@@ -471,7 +558,7 @@
                         <div class="text-black-50 fw-lighter">tip:請確認裝置數量或ID後開始編輯</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/device3.PNG>
+                        <img class="img-fluid" src="/doc/device3.PNG">
                     </div>
 
                     <h5 class="pt-4 "><b class="bg-warning">自訂批次編輯</b></h5>
@@ -482,7 +569,7 @@
                         <div class="text-black-50 fw-lighter">tip:點擊名稱亦可勾選</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/device4.PNG>
+                        <img class="img-fluid" src="/doc/device4.PNG">
                     </div>
 
                     <h4 class="pt-4"><b class="text-white bg-success">　新增裝置　</b></h4>
@@ -495,47 +582,6 @@
                         <span>目前只有admin帳號可以刪除裝置</span>
                     </div>
                 </div>
-                <!--管理者-->
-                <div class="tab-pane " id="user" role="tabpanel" >
-                    <h3 class="py-3 text-center "><b>管理者權限設定文件</b></h3>
-                    <h4 class="py-2 mt-3"><b>搜尋</b></h4>
-                    <h5 class="pt-2 text-danger"><b>欄位搜尋</b></h5>
-                    <div class="p-2">
-                        <span>此為嚴格搜尋，會在該欄位篩選與輸入內容一模一樣的文字，可只搜片段。</span><br>
-                        <span>右上，左上為選單式，只出現該選擇類型。</span><br>
-                        <span>以上功能都需最後按下<b class="text-white bg-primary">搜尋</b>鈕才生效。<b>請務必注意簡體、繁體無法互相搜尋到</b></span>
-                        <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果，所以請注意錯字、簡繁問題。</div>
-                    </div>
-                    <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/user.PNG>
-                    </div>
-
-                    <h4 class="py-2 mt-3"><b>帳號</b></h4>
-                    <h5 class="pt-2"><b class="bg-success text-white">新增</b></h5>
-                    <div class="p-2">
-                        <span>只有admin可以新增admin帳號，密碼需大於8字，Email無法重複</span><br>
-                        <span>新增的帳號都預設為預設(default)白名單群組，若要修改請編輯帳號，若要新增群組請移步IP白名單群組管理</span>
-                        <div class="text-black-50 fw-lighter">tip:請不要設定過於簡單的密碼</div>
-                    </div>
-                    <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/user2.PNG>
-                    </div>
-
-                    <h5 class="pt-4"><b class="bg-warning">編輯</b></h5>
-                    <div class="p-2">
-                        <span>只有admin可任意修改帳號，common只能修改自己的帳號</span><br>
-                        <div class="text-black-50 fw-lighter">tip:留空不會覆蓋設定值。</div>
-                    </div>
-                    <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/user3.PNG>
-                    </div>
-
-                    <h5 class="pt-4"><b class="bg-danger text-white">刪除</b></h5>
-                    <div class="p-2">
-                        <span>只有admin可以刪除帳號</span>
-                    </div>
-
-                </div>
                 <!--白名單-->
                 <div class="tab-pane " id="ip" role="tabpanel" >
                     <h3 class="py-3 text-center "><b>IP白名單群組文件</b></h3>
@@ -547,7 +593,7 @@
                         <div class="text-black-50 fw-lighter">tip:所有輸入內容都包含才會找到結果，所以請注意錯字、簡繁問題。</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/iplist.PNG>
+                        <img class="img-fluid" src="/doc/iplist.PNG">
                     </div>
 
                     <h4 class="py-2 mt-3"><b>白名單</b></h4>
@@ -558,7 +604,7 @@
                         <div class="text-black-50 fw-lighter">tip:若要將舊群組新增IP可在舊群組按編輯</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/iplist2.PNG>
+                        <img class="img-fluid" src="/doc/iplist2.PNG">
                     </div>
 
                     <h5 class="pt-4"><b class="bg-warning">編輯</b></h5>
@@ -568,7 +614,7 @@
                         <div class="text-black-50 fw-lighter">tip:若要新增舊IP至新群組，請複製IP，然後使用新增群組功能。</div>
                     </div>
                     <div class="mw-75 h-auto">
-                        <img class="img-fluid" src=/doc/iplist3.PNG>
+                        <img class="img-fluid" src="/doc/iplist3.PNG">
                     </div>
 
                     <h5 class="pt-4"><b class="bg-danger text-white">刪除</b></h5>
@@ -598,6 +644,12 @@
                 x=0;
             }
         }
+        $('#xiaomi').on('click',function(){
+            $('#smsiframe').attr('src','/doc/xiaomi')
+        });
+        $('#oppo').on('click',function(){
+            $('#smsiframe').attr('src','/doc/oppo')
+        });
     </script>
 
 @endsection

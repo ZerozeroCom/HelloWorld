@@ -1,35 +1,38 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="card row m-2" >
-        <h5 class="card-header bg-info py-3 row ml-0 mr-0">搜尋</h5>
-        <div >
+    <div class="card row m-2" style="border-radius:10px!important;">
+        <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">搜尋</h5>
+        <div class="wordStyle">
             <form>
                 <div class="row m-3">
                         <div class="col-md-6 ">
-                            <label for="seallow_group" class="col-form-label">群組名稱:</label>
+                            <label for="seallow_group" class="col-form-label">群組名稱　　</label>
                             <input type="text" class="col-form-control" id="seallow_group">
                         </div>
                         <div class="col-md-6 ">
-                            <label for="seallow_ip_addr" class="col-form-label">IP位址:</label>
+                            <label for="seallow_ip_addr" class="col-form-label">IP位址　　</label>
                             <input type="text" class="col-form-control" id="seallow_ip_addr">
                         </div>
                 </div>
             </form>
         </div>
-        <button type="button" class="btn m-2 btn-primary" id="search_al">搜尋</button>
+        <button type="button" class="btn m-3 btn-primary" id="search_al" style="font-weight: 600;">送出</button>
     </div>
     <div>
         <button type="button" data-bs-toggle="modal" data-bs-target="#nalModal" class="btn  m-2 btn-success" id="make_new_al">新增群組</button>
     </div>
 
 
-    <div >
-    {{$dataTable->table()}}
+    <div class="">
+        <div class="card m-2" style="border-radius:10px!important;">
+            <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">白名單列表</h5>
+            <div class=" m-4">
+                {{$dataTable->table()}}
+                {{$dataTable->scripts()}}
+            </div>
+        </div>
     </div>
-
-
-    {{$dataTable->scripts()}}
 
     @include('layouts.almodal')
 

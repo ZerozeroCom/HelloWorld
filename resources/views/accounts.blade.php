@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="card row m-2" >
-        <h5 class="card-header bg-info py-3 row ml-0 mr-0">搜尋</h5>
+    <div class="card row m-2" style="border-radius:10px!important;">
+        <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">搜尋</h5>
         <div >
             <form>
-                <div class="row m-3">
+                <div class="row m-3 wordStyle">
                         <div class="col-md-3 ">
-                            <label for="seacc-type" class="col-form-label">管理者類型:</label>
+                            <label for="seacc-type" class="col-form-label">管理者類型　</label>
                             <select type="text" class="col-form-control col-md-4"  id="seacc-type" >
                                 <option></option>
                                 <option>common</option>
@@ -16,15 +16,15 @@
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <label for="seacc-name" class="col-form-label">帳號名稱:</label>
+                            <label for="seacc-name" class="col-form-label">帳號名稱　</label>
                             <input type="text" class="col-form-control" id="seacc-name" >
                         </div>
                         <div class="col-md-3">
-                            <label for="seemail" class="col-form-label">E-MAIL:</label>
+                            <label for="seemail" class="col-form-label">E-MAIL　</label>
                             <input type="text" class="col-form-control" id="seemail">
                         </div>
                         <div class="col-md-3">
-                            <label for="seacc-allow_group" class="col-form-label">白名單群組:</label>
+                            <label for="seacc-allow_group" class="col-form-label">白名單群組　</label>
                             <select type="text" class="col-form-control col-md-4" id="seacc-allow_group" >
                                 <option></option>
                                 @foreach ($allow_group_list as $key =>$value)
@@ -35,18 +35,22 @@
                 </div>
             </form>
         </div>
-        <button type="button" class="btn  m-3 btn-primary" id="search_acc">搜尋</button>
+        <button type="button" class="btn  m-3 btn-primary" id="search_acc" style="font-weight: 600;">送出</button>
     </div>
 
     <div>
           <button type="button" data-bs-toggle="modal" data-bs-target="#naccModal" class="btn  m-2 btn-success" id="make_new_acc">新增帳號</button>
     </div>
 
-    <div >
-    {{$dataTable->table()}}
+    <div class="">
+        <div class="card m-2" style="border-radius:10px!important;">
+            <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">帳號列表</h5>
+            <div class=" m-4">
+                {{$dataTable->table()}}
+                {{$dataTable->scripts()}}
+            </div>
+        </div>
     </div>
-
-    {{$dataTable->scripts()}}
 
     @include('layouts.accmodal')
     <script>

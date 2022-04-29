@@ -50,7 +50,9 @@ class Allow_listsDataTable extends DataTable
                     ->setTableId('allow_lists-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('plBrtip')
+                    ->dom("<'row'<'col'il><'col-2 my-auto'B><'col-6'p>>".
+                    "<'row'<'col-sm-12'tr>>".
+                    "<'row'<'col'il><'col-6'p>>")
                     ->orderBy(0)->parameters([
                         'pageLength' => 25,
                         'language' => config('datatables.i18n.tw')
@@ -66,13 +68,14 @@ class Allow_listsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
+            Column::make('id')->width("40px"),
             Column::make('allow_group')->title('群組名稱'),
             Column::make('allow_ip_addr')->title('IP位址'),
             new Column(['title' =>'操作',
                         'data'=>'action',
                         'searchable'=>'false',
-                        'orderable'=>false]),
+                        'orderable'=>false,
+                        'width'=>"128px"]),
         ];
     }
 

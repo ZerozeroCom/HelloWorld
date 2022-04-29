@@ -20,16 +20,19 @@ class LogServe {
             unset($value['updated_at']);
             $dataS[$key]=$value;
         }
-        Log::channel("change_$name")->info('beforeData',['userid'=>$id,'data'=> $dataS] );
+        Log::channel("change_$name")->info('manybeforeData',['userid'=>$id,'data'=> $dataS] );
     }
 
     public function editAfterLog(string $name,$id,$data){
         Log::channel("change_$name")->info('AfterData',['userid'=>$id,'data'=> $this->arrayCheck($data)] );
     }
     public function editManyAfterLog(string $name,$id,$many,$data){
-        Log::channel("change_$name")->info('AfterData',['userid'=>$id,'changeId'=>$many,'data'=> $this->arrayCheck($data)] );
+        Log::channel("change_$name")->info('manyAfterData',['userid'=>$id,'changeId'=>$many,'data'=> $this->arrayCheck($data)] );
     }
 
+    public function deleteManyLog(string $name,$id,$data){
+        Log::channel("delete_$name")->info('manydeleteData',['userid'=>$id,'data'=> $this->arrayCheck($data)] );
+    }
     public function deleteLog(string $name,$id,$data){
         Log::channel("delete_$name")->info('deleteData',['userid'=>$id,'data'=> $this->arrayCheck($data)] );
     }

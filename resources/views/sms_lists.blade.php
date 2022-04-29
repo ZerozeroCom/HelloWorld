@@ -1,25 +1,25 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="card row m-2 " >
-        <h5 class="card-header bg-info py-3 row ml-0 mr-0">搜尋</h5>
-        <div class="col">
+    <div class="card row m-2 " style="border-radius:10px!important;">
+        <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0 " style="border-radius:10px 10px 0px 0px!important;">搜尋</h5>
+        <div class="col wordStyle">
             <form>
                 <div class="row m-3">
                         <div class="col-md-3 ">
-                            <label for="sesend_number" class="col-form-label">簡訊發送號碼:</label>
+                            <label for="sesend_number" class="col-form-label">簡訊發送號碼　</label>
                             <input type="number" class="col-form-control" id="sesend_number" >
                         </div>
-                        <div class="col-md-3" style="background-color:#82FF82;">
-                            <label for="sesms_content" class="col-form-label">　關鍵字:</label>
+                        <div class="col-md-3" >
+                            <label for="sesms_content" class="col-form-label">　關鍵字　</label>
                             <input type="text" class="col-form-control" id="sesms_keyword">
                         </div>
                         <div class="col-md-3">
-                            <label for="sesms_content" class="col-form-label">簡訊內容:</label>
+                            <label for="sesms_content" class="col-form-label">簡訊內容　</label>
                             <input type="text" class="col-form-control" id="sesms_content">
                         </div>
-                        <div class="col-md-3 ">
-                            <label for="sesnoticode" class="col-form-label">　　分類:</label>
+                        <div class="col-md-3 " >
+                            <label for="sesnoticode" class="col-form-label">　　分類　</label>
                             <select type="text" class="col-form-control"  id="sesnoticode" >
                                 <option></option>
                                 <option value="1">通知</option>
@@ -29,79 +29,97 @@
                 </div>
                 <div class="row m-3">
                     <div class="col-md-3 ">
-                        <label for="sedev_name" class="col-form-label">　　裝置名稱:</label>
+                        <label for="sedev_name" class="col-form-label">　　裝置名稱　</label>
                         <input type="text" class="col-form-control" id="sedev_name">
                     </div>
-                    <div class="col-md-3 " style="background-color:#82FF82;">
-                        <label for="sedev_businesses" class="col-form-label">裝置商戶:</label>
+                    <div class="col-md-3 ">
+                        <label for="sedev_businesses" class="col-form-label">裝置商戶　</label>
                         <input type="text" class="col-form-control" id="sedev_businesses">
                     </div>
                     <div class="col-md-3">
-                        <label for="sedev_number" class="col-form-label">裝置號碼:</label>
+                        <label for="sedev_number" class="col-form-label">裝置號碼　</label>
                         <input type="number" class="col-form-control" id="sedev_number">
                     </div>
                 </div>
             </form>
             <div class="row">
-                <div class="col btn-group"  role="group" >
-                    <label for="" class="col-form-label">快速選取:</label>
-                    <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_year">今年</button>
+                <div class="col-8 btn-group"  role="group" >
+                    <label for="" class="col-form-label my-auto">快速選取:</label>
                     <button type="button" class="m-2 btn btn-outline-info" id="sedev_date_lastmonth">上月</button>
                     <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_month">今月</button>
+                    <button type="button" class="m-2 btn btn-outline-primary" id="sedev_date_before_yesterday">前日</button>
                     <button type="button" class="m-2 btn btn-outline-info" id="sedev_date_yesterday">昨日</button>
                     <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_day">今日</button>
                     <button type="button" class="m-2 btn btn-outline-dark" id="sedev_date_clear">清除日期</button>
                     <button type="button" class="m-2 btn btn-outline-dark" id="sedev_all_clear">清除條件</button>
                 </div>
-                <div class="col">
+                <div class="col my-auto">
                     <label for="sedev_number" class="col-form-label">自訂單日搜尋:</label>
                     <input type="date" class="col-form-control" id="sedev_date">
                 </div>
-                <div class="col">
+                <div class="col-1" hidden>
                     <label for="sedev_month" class="col-form-label">自訂整月搜尋: (例: 2022-01)</label>
-                    <div class="col-md-3">
+                    <div class="col-md-1">
                             <input clas4s="form-control " id="sedev_month" placeholder="yyyy-MM" type="text" maxlength="7" oninput = "value=value.replace(/[^\d-]|-{2}|\d{5}|^\w{1,3}-/g,'')">
                     </div>
                 </div>
             </div>
         </div>
 
-        <button type="button" class="btn m-2 btn-primary" id="search_sms">搜尋</button>
+        <button type="button" class="btn m-3 btn-primary " id="search_sms" style="font-weight: 600;">送出</button>
     </div>
     <div>
-        <button type="button" class="btn m-2 btn btn-dark" id="stop_reload">停止自動刷新</button>
+        <button type="button" class="btn m-3 btn-danger" id="se_del_sms" disabled>依照本頁搜尋結果刪除</button>
+        <button type="button" class="btn m-2 btn btn-dark " id="stop_reload">停止自動刷新</button>
         <label id="stop_message" style="color: red"></label>
+
+
     </div>
 
-    <div>
-    {{$dataTable->table()}}
+    <div class="">
+        <div class="card m-2" style="border-radius:10px!important;">
+            <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">簡訊列表</h5>
+            <div class=" m-4">
+                {{$dataTable->table()}}
+                {{$dataTable->scripts()}}
+            </div>
+        </div>
     </div>
-    {{$dataTable->scripts()}}
 
     <script>
+        setTimeout('markUpall();',900);
         //自動刷新
         var stop =true;
         function myrefresh(){
             if(stop){
                 //window.location.reload();
                 $('#sms_lists-table').DataTable().draw();
+                setTimeout('markUpall();',900);
             }
             setTimeout('myrefresh()',6000);
         }
         setTimeout('myrefresh()',6000);
 
+        //setTimeout('markUpall()',800);
+
         $('#stop_reload').on('click',function(){
-            document.getElementById('stop_message').innerHTML="已暫停自動刷新，重開請按F5";
+            if(stop){
+            document.getElementById('stop_message').innerHTML="已暫停自動刷新，重開請再次點擊或按F5";
             stop = false;
+            }else{
+                document.getElementById('stop_message').innerHTML="";
+                stop = true;
+            }
         })
         //搜索
             //快速選取
 
-            $('#sedev_date_year').on('click',function(){
+            $('#sedev_date_before_yesterday').on('click',function(){
                 let date = new Date();
+                date.setDate(date.getDate() - 2);
                 date=date.toISOString().split('T')[0];
                 var table = $('#sms_lists-table').DataTable();
-                table.columns(0).search(date.split('-')[0]);
+                table.columns(0).search(date);
                 table.draw();
             })
             $('#sedev_date_lastmonth').on('click',function(){
@@ -154,6 +172,7 @@
                 $('#sesms_keyword').val('');
             })
         $('#search_sms').on('click',function(){
+            document.getElementById("se_del_sms").disabled = false;
             var table = $('#sms_lists-table').DataTable();
             var month =document.getElementById('sedev_month').value;
             var data =[
@@ -215,6 +234,57 @@
             }else {
             }
         })
+
+        //搜尋批次刪除
+        $('#se_del_sms').on('click',function(){
+                    var td = document.getElementsByTagName("td");
+                    var i =0;
+                    var data1 =[];
+                    //依照現表取id值裝入data1
+                    var id =$(td).each(function(index) {
+                        if( index%9 ==8){
+                            data1[i++] = $(this).find("button").data('id');
+                        }
+                    });
+                    if (confirm("是否真的要刪除本頁簡訊?\n \n＊並不會實際刪除手機的簡訊，\n　　但後台不會再看到此簡訊\n")){
+                        if (confirm("*****!!批次刪除本頁所有簡訊 再次確認!!*****")){
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                            },
+                            method: 'DELETE',
+                            url: '/sms-lists/deleteMany',
+                            data:{
+                                "id":data1
+                            }
+                        })
+                        .done(function(msg){
+                            alert('刪除成功')
+                            location.reload();
+                        }).fail(function(message){
+                            alert(`權限不足`);
+                        });
+                        }else {
+                    }
+                    }else {
+                    }
+                })
+        function markUpall(){
+            var noticode=$(".noticode:contains('通知:')");
+            var keywordOoO ="";
+            var smsContentOoO=null;
+            for (var i = 0; i < noticode.length; i++ ) {
+                keywordOoO=noticode.eq(i).next().text().trim().split(' ');
+                smsContentOoO=noticode.eq(i).prev().text();
+                for(var j =0;j<keywordOoO.length;j++){
+                    console.log(keywordOoO[j]);
+
+                    var re = new RegExp(keywordOoO[j],"g");
+                    smsContentOoO=smsContentOoO.replace(re, '<mark>'+keywordOoO[j]+'</mark>');
+                    noticode.eq(i).prev().html(smsContentOoO);
+                }
+            }
+        }
 
     </script>
 @endsection

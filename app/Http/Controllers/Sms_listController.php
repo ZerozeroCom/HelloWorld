@@ -43,9 +43,24 @@ class Sms_listController extends Controller
         if( $auth->type != 'admin'){
             return response(['message'=>'權限不足'],403);
         }
-        $data=Sms_list::find($id);
+        $data=Sms_list::where('smsid',$id);
         $this->log->deleteLog('sms',$user,$data);
         $data->delete();
+        return response('ok',200);
+    }
+
+    public function deleteMany(Request $request){
+        $auth = $request->user();
+        $id=$request->id;
+        $user = $auth->id;
+        if( $auth->type != 'admin'){
+            return response(['message'=>'權限不足'],403);
+        }
+        $data=Sms_list::whereIn('smsid',$id);
+        $this->log->deleteManyLog('sms',$user,$data);
+        foreach($id as $value){
+            Sms_list::where('smsid',$value)->delete();
+        }
         return response('ok',200);
     }
 }

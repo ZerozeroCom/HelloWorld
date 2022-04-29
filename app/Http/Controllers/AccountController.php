@@ -62,7 +62,7 @@ class AccountController extends Controller
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|email|max:255',
             'password' => 'nullable|string|confirmed|min:8|max:255',
-            'allow_group' => 'nullable|string|max:255|exists:App\Models\allow_list,allow_group',
+            'allow_group' => 'nullable|string|max:255|exists:App\Models\Allow_list,allow_group',
         ]))->filter();
 
             //若改變密碼 加密 並額外處理
@@ -92,10 +92,11 @@ class AccountController extends Controller
     public function deleteAcc(Request $request,DeleteUser $deleteUser,$id){
             $auth = $request->user();
             $user = $auth->id;
-            if( $auth->type != 'admin'){
+            if( $auth->type != 'admin' || $id == 1){
                 return response(['message'=>'權限不足'],403);
             }
             $data=User::find($id);
+
             //刪除使用者
             $this->log->deleteLog('ac',$user,$this->deleStr($data));
             $deleteUser->delete($data);

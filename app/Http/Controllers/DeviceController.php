@@ -18,8 +18,11 @@ class DeviceController extends Controller
     }
 
     public function index(DevicesDataTable $dataTable){
-
-        return $dataTable->render('devices');
+        $allKeyWord=DB::table('allkeyword')->first();
+        if($allKeyWord===null){
+        }else{
+            $allKeyWord=$allKeyWord->allkeyword;}
+        return $dataTable->render('devices',['allKeyWord' => $allKeyWord]);
     }
 
     public function addNewDev(Request $request){
@@ -28,7 +31,7 @@ class DeviceController extends Controller
         //資料驗證
         $dev= $request->validate([
             'name' => 'unique:App\Models\Device,name|required|string|max:40',
-            'number' => 'nullable|string',
+            'number' => 'nullable|string|max:40',
             'UID' => 'unique:App\Models\Device,UID|string|max:255',
             'businesses' => 'nullable|string|max:255',
             'noti_keywords' => 'nullable|string|max:255',
@@ -41,7 +44,20 @@ class DeviceController extends Controller
         Device::create($dev);
         return response('ok',200);
     }
+    public function editKeyword(Request $request){
+        $allKeyWord=DB::table('allkeyword');
 
+        $data= $request->validate([
+            'allkeyword' => 'required|string|max:2048',
+        ]);
+        if($allKeyWord->first()===null){
+            $allKeyWord= DB::table('allkeyword')->insert($data);
+        }else{$allKeyWord->update($data);
+        }
+
+        //dd($allKeyWord,$data);
+        return response('ok',200);
+    }
 
     public function editDev(Request $request,$id){
         $user = $request->user()->id;
@@ -51,15 +67,15 @@ class DeviceController extends Controller
             'name' => [
                 'nullable',
                 'string',
-                'max:40',
-                Rule::unique('App\Models\Device')->ignore($data->id),],
+                'max:40',],
+                //Rule::unique('App\Models\Device')->ignore($data->id),],
             'number' => 'nullable|string|max:40',
             'UID' => 'nullable|string|max:255',
             'businesses' => 'nullable|string|max:255',
             'noti_keywords' => 'nullable|string|max:255',
             'unnoti_keywords' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:255',
-        ]))->filter();
+            ]));
         //商戶 關鍵字固定順序存入
         $dev=$this->sortWord($dev);
         $this->log->editBeforeLog('dev',$user,$data);
@@ -73,7 +89,6 @@ class DeviceController extends Controller
             //若有資料 進行驗證
         $dev = collect($request->validate([
             'id' => 'required|array|exclude',
-            //'number' =>'nullable|string|max:40',
             'businesses' => 'nullable|string|max:255',
             'noti_keywords' => 'nullable|string|max:255',
             'unnoti_keywords' => 'nullable|string|max:255',

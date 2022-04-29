@@ -52,7 +52,9 @@ class UsersDataTable extends DataTable
         return $this->builder()
                     ->setTableId('users-table')
                     ->columns($this->getColumns())
-                    ->dom('plBrtip')
+                    ->dom("<'row'<'col'il><'col-2 my-auto'B><'col-6'p>>".
+                    "<'row'<'col-sm-12'tr>>".
+                    "<'row'<'col'il><'col-6'p>>")
                     ->orderBy(0)->parameters([
                         'pageLength' => 50,
                         'language' => config('datatables.i18n.tw')
@@ -68,8 +70,8 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
-            Column::make('type')->title('管理者類型'),
+            Column::make('id')->width("40px"),
+            Column::make('type')->title('管理者類型')->width("90px"),
             Column::make('name')->title('帳號名稱'),
             Column::make('email')->title('E-MAIL'),
             Column::make('updated_at')->title('最後登入時間')->type('date'),
@@ -79,7 +81,8 @@ class UsersDataTable extends DataTable
             new Column(['title' =>'操作',
                         'data'=>'action',
                         'searchable'=>'false',
-                        'orderable'=>false]),
+                        'orderable'=>false,
+                        'width'=>"128px"]),
         ];
     }
 
