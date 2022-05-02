@@ -40,6 +40,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     });
 
     Route::get('/sms-lists','Sms_listController@index');
+    Route::view('/sms-lists2','sms_list2');
+    Route::post('/sms-lists2','Sms_listController@index2');
     Route::delete('/sms-lists/{id}/delete','Sms_listController@delete')->middleware('can:common');
     Route::delete('/sms-lists/deleteMany','Sms_listController@deleteMany')->middleware('can:common');
     //Route::post('/sms-lists/{id}','Sms_listController@newSMSIn');

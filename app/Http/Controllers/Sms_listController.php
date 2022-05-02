@@ -22,6 +22,13 @@ class Sms_listController extends Controller
         return $dataTable->render('sms_lists');
     }
 
+    public function index2(){
+        $data=Sms_list::get();
+
+        return response($data);
+    }
+
+
     public function newSMSIn(Request $request,$id,KeywordServe $keywordServe){
         /*
         //驗證裝置號碼
