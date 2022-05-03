@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<div id="myapptable">
 <div class="card row m-2 " style="border-radius:10px!important;">
     <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0 " style="border-radius:10px 10px 0px 0px!important;">搜尋</h5>
     <div class="col wordStyle">
@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-8 btn-group"  role="group" >
                 <label for="" class="col-form-label my-auto">快速選取:</label>
-                <button type="button" class="m-2 btn btn-outline-info" v-on:click="lastmonth">上月</button>
+                <button type="button" class="m-2 btn btn-outline-info" v-on:click="lastmonth()">上月</button>
                 <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_month">今月</button>
                 <button type="button" class="m-2 btn btn-outline-primary" id="sedev_date_before_yesterday">前日</button>
                 <button type="button" class="m-2 btn btn-outline-info" id="sedev_date_yesterday">昨日</button>
@@ -79,7 +79,7 @@
 <div class="">
     <div class="card m-2" style="border-radius:10px!important;">
         <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">簡訊列表</h5>
-        <div class=" m-4" id="myapptable" >
+        <div class=" m-4"  >
             <table >
                 <thead>
                     <tr>
@@ -94,7 +94,7 @@
                     </tr>
                 </thead>
                 <tbody >
-                    <tr class="item" v-for="item in dataA">
+                    <tr class="item" v-for="item in dataA" :key="item.smsid">
                         <td class="smsid" >@{{item.smsid}}</td>
                         <td class="sms_sendtime" >@{{item.sms_sendtime | timeString('YYYY-MM-DD HH:mm:ss')}}</td>
                         <td class="device_id" >@{{item.device_id}}</td>
@@ -108,6 +108,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="{{ mix('/js/app.js') }}" >
