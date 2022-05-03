@@ -46,10 +46,10 @@
             <div class="col-8 btn-group"  role="group" >
                 <label for="" class="col-form-label my-auto">快速選取:</label>
                 <button type="button" class="m-2 btn btn-outline-info" v-on:click="lastmonth()">上月</button>
-                <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_month">今月</button>
-                <button type="button" class="m-2 btn btn-outline-primary" id="sedev_date_before_yesterday">前日</button>
-                <button type="button" class="m-2 btn btn-outline-info" id="sedev_date_yesterday">昨日</button>
-                <button type="button" class="m-2 btn btn-outline-success" id="sedev_date_day">今日</button>
+                <button type="button" class="m-2 btn btn-outline-success" v-on:click="thismonth()">今月</button>
+                <button type="button" class="m-2 btn btn-outline-primary" v-on:click="before_yesterday()">前日</button>
+                <button type="button" class="m-2 btn btn-outline-info" v-on:click="date_yesterday()">昨日</button>
+                <button type="button" class="m-2 btn btn-outline-success" v-on:click="date_today()">今日</button>
                 <button type="button" class="m-2 btn btn-outline-dark" id="sedev_date_clear">清除日期</button>
                 <button type="button" class="m-2 btn btn-outline-dark" id="sedev_all_clear">清除條件</button>
             </div>
@@ -91,6 +91,7 @@
                         <th>keyword</th>
                         <th>noticode</th>
                         <th>status</th>
+                        <th>op</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -103,6 +104,7 @@
                         <td class="keyword" >@{{item.keyword}}</td>
                         <td class="noticode" >@{{item.noticode}}</td>
                         <td class="status" >@{{item.status}}</td>
+                        <td><button class="btn btn-danger " :data-id="item.smsid" v-on:click="deletesms(item)">刪除</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -115,6 +117,25 @@
 </script>
 
 <script >
+$('table').on('click','.deletesms',function(){
+            var id = $(this).data('id');
+            if (confirm("是否真的要刪除簡訊?\n ＊並不會實際刪除手機的簡訊，\n　　但後台不會再看到此簡訊")){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    method: 'DELETE',
+                    url: `/sms-lists/${id}/delete`,
+                })
+                .done(function(msg){
+                    alert('刪除成功')
+                    location.reload();
+                }).fail(function(message){
+                    alert(`權限不足`);
+                });
+            }else {
+            }
+        })
 
 </script>
 

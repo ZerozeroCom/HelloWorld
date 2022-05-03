@@ -55,7 +55,73 @@ const myapptable = new Vue({
                 } );
                 this.dataA=data;
 
-        }
+        },
+        thismonth(){
+            this.dataA=this.dataB;
+            let data=this.dataA.filter(function (v) {
+                let date = new Date();
+                date.setDate(1);
+                date=date.toISOString().split('T')[0].split('-')[1];
+
+                let table = v.sms_sendtime.split('T')[0].split('-')[1];
+                return table==date;
+                } );
+                this.dataA=data;
+        },
+        before_yesterday(){
+            this.dataA=this.dataB;
+            let data=this.dataA.filter(function (v) {
+                let date = new Date();
+                date.setDate(date.getDate() - 2);
+                date=date.toISOString().split('T')[0];
+                let table = v.sms_sendtime.split('T')[0];
+                return table==date;
+                } );
+                this.dataA=data;
+        },
+        date_yesterday(){
+            this.dataA=this.dataB;
+            let data=this.dataA.filter(function (v) {
+                let date = new Date();
+                date.setDate(date.getDate() - 1);
+                date=date.toISOString().split('T')[0];
+                let table = v.sms_sendtime.split('T')[0];
+                return table==date;
+                } );
+                this.dataA=data;
+        },
+        date_today(){
+            this.dataA=this.dataB;
+            let data=this.dataA.filter(function (v) {
+                let date = new Date();
+                date=date.toISOString().split('T')[0];
+                let table = v.sms_sendtime.split('T')[0];
+                return table==date;
+                } );
+                this.dataA=data;
+        },
+        deletesms(a){
+            let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
+            if (confirm("是否真的要刪除簡訊?\n ＊並不會實際刪除手機的簡訊，\n　　但後台不會再看到此簡訊")){
+            $.ajax({
+                headers: {
+                                'X-CSRF-TOKEN': csrfToken.content
+                            },
+                type:"post",
+                method: 'DELETE',
+                url: `/sms-lists/${a.smsid}/delete`,
+                data:{
+
+                },
+                }).done(function(msg){
+                    alert('刪除成功')
+                    myapptable.dataA.splice(myapptable.dataA.indexOf(a),1);
+                }).fail(function(message){
+                    alert(`權限不足`);
+                });
+            }else {
+            }
+        },
     },
     mounted(){
         this.$nextTick(()=>{
