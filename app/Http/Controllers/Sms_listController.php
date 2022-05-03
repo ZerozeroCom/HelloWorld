@@ -23,7 +23,8 @@ class Sms_listController extends Controller
     }
 
     public function index2(){
-        $data=Sms_list::get();
+        $data=Sms_list::with('device')->get();
+        //d($data);
 
         return response($data);
     }

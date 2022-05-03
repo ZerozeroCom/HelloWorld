@@ -39,6 +39,14 @@ const myapptable = new Vue({
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             dataA:null,
             dataB:null,
+            send_number:null,
+            sms_keyword:null,
+            sms_content:null,
+            noticode:null,
+            dev_name:null,
+            dev_businesses:null,
+            dev_number:null,
+
         }
     },
     methods:{

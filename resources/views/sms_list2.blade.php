@@ -8,19 +8,19 @@
             <div class="row m-3">
                     <div class="col-md-3 ">
                         <label for="sesend_number" class="col-form-label">簡訊發送號碼　</label>
-                        <input type="number" class="col-form-control" id="sesend_number" >
+                        <input type="number" class="col-form-control" v-model="send_number" >
                     </div>
                     <div class="col-md-3" >
                         <label for="sesms_content" class="col-form-label">　關鍵字　</label>
-                        <input type="text" class="col-form-control" id="sesms_keyword">
+                        <input type="text" class="col-form-control" v-model="sms_keyword">
                     </div>
                     <div class="col-md-3">
                         <label for="sesms_content" class="col-form-label">簡訊內容　</label>
-                        <input type="text" class="col-form-control" id="sesms_content">
+                        <input type="text" class="col-form-control" v-model="sms_content">
                     </div>
                     <div class="col-md-3 " >
                         <label for="sesnoticode" class="col-form-label">　　分類　</label>
-                        <select type="text" class="col-form-control"  id="sesnoticode" >
+                        <select type="text" class="col-form-control"  v-model="noticode" >
                             <option></option>
                             <option value="1">通知</option>
                             <option value="0">忽視</option>
@@ -30,15 +30,15 @@
             <div class="row m-3">
                 <div class="col-md-3 ">
                     <label for="sedev_name" class="col-form-label">　　裝置名稱　</label>
-                    <input type="text" class="col-form-control" id="sedev_name">
+                    <input type="text" class="col-form-control" v-model="dev_name">
                 </div>
                 <div class="col-md-3 ">
                     <label for="sedev_businesses" class="col-form-label">裝置商戶　</label>
-                    <input type="text" class="col-form-control" id="sedev_businesses">
+                    <input type="text" class="col-form-control" v-model="dev_businesses">
                 </div>
                 <div class="col-md-3">
                     <label for="sedev_number" class="col-form-label">裝置號碼　</label>
-                    <input type="number" class="col-form-control" id="sedev_number">
+                    <input type="number" class="col-form-control" v-model="dev_number">
                 </div>
             </div>
         </form>
@@ -83,27 +83,29 @@
             <table >
                 <thead>
                     <tr>
-                        <th>smsid</th>
-                        <th>sms_sendtime</th>
-                        <th>device_id</th>
-                        <th>send_number</th>
-                        <th>sms_content</th>
-                        <th>keyword</th>
-                        <th>noticode</th>
-                        <th>status</th>
-                        <th>op</th>
+                        <th>發送時間</th>
+                        <th>裝置名稱</th>
+                        <th>商戶</th>
+                        <th>裝置號碼</th>
+                        <th>發送號碼</th>
+                        <th>簡訊內容</th>
+                        <th>分類</th>
+                        <th>關鍵字</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody >
                     <tr class="item" v-for="item in dataA" :key="item.smsid">
-                        <td class="smsid" >@{{item.smsid}}</td>
+
                         <td class="sms_sendtime" >@{{item.sms_sendtime | timeString('YYYY-MM-DD HH:mm:ss')}}</td>
-                        <td class="device_id" >@{{item.device_id}}</td>
+                        <td class="device_id" >@{{item.device.name}}</td>
+                        <td class="smsid" >@{{item.device.businesses}}</td>
+                        <td class="status" >@{{item.device.number}}</td>
                         <td class="send_number" >@{{item.send_number}}</td>
                         <td class="sms_content" >@{{item.sms_content}}</td>
                         <td class="keyword" >@{{item.keyword}}</td>
                         <td class="noticode" >@{{item.noticode}}</td>
-                        <td class="status" >@{{item.status}}</td>
+
                         <td><button class="btn btn-danger " :data-id="item.smsid" v-on:click="deletesms(item)">刪除</button></td>
                     </tr>
                 </tbody>
