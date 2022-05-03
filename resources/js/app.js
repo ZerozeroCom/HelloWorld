@@ -38,17 +38,23 @@ const myapptable = new Vue({
     	return {
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             dataA:null,
+            dataB:null,
         }
     },
     methods:{
         lastmonth(){
-            return this.dataA.filter(function (v) {
+            this.dataA=this.dataB;
+            let data=this.dataA.filter(function (v) {
                 let date = new Date();
                 date.setDate(1);
                 date.setMonth(date.getMonth() - 1);
-                date=date.toISOString().split('T')[0];
-                var table = this.dataA.sms_sendtime;
-                return v.dataA.indexOf(this.name) !== -1} );
+                date=date.toISOString().split('T')[0].split('-')[1];
+
+                let table = v.sms_sendtime.split('T')[0].split('-')[1];
+                return table==date;
+                } );
+                this.dataA=data;
+
         }
     },
     mounted(){
@@ -65,6 +71,7 @@ const myapptable = new Vue({
                 data:{},
                 success:function(data){
                     that.dataA=data;
+                    that.dataB=data;
                 }
             })
         })
