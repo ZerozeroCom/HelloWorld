@@ -197,8 +197,9 @@ const myapptable = new Vue({
                             if(data==''){
                             }else{
                                 data.forEach(element => {
+                                    that.dataB.unshift(element);
                                 });
-                                that.dataB.unshift(data);
+
                             }
 
 
