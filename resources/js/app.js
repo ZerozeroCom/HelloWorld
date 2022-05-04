@@ -40,6 +40,7 @@ const myapptable = new Vue({
             dataA:null,
             dataB:null,
             tablecode:0,
+            sms_date:'',
             dev_name:'',
             dev_businesses:'',
             dev_number:'',
@@ -47,6 +48,7 @@ const myapptable = new Vue({
             sms_content:'',
             noticode:'',
             sms_keyword:'',
+            stop:true,
 
 
 
@@ -133,8 +135,22 @@ const myapptable = new Vue({
             }else {
             }
         },
+        date_clear(){
+            sms_date='';
+            this.dataA=this.dataB;
+        },
+        all_clear(){
+            this.dev_name='';
+            this.dev_businesses='';
+            this.dev_number='';
+            this.send_number='';
+            this.sms_content='';
+            this.noticode='';
+            this.sms_keyword='';
+            this.dataA=this.dataB;
+        },
         allsearch(){
-            let dataO=[this.dev_name,this.dev_businesses,this.dev_number.toString(),this.send_number.toString(),this.sms_content,this.noticode.toString(),this.sms_keyword];
+            let dataO=[this.dev_name,this.dev_businesses,this.dev_number,this.send_number,this.sms_content,this.noticode,this.sms_keyword];
             let check =dataO[0].length+dataO[1].length+dataO[2].length+dataO[3].length+dataO[4].length+dataO[5].length+dataO[6].length
             if(check<1){
                 return
@@ -145,17 +161,41 @@ const myapptable = new Vue({
             let data=this.dataA.filter(function (v) {
                 let dataM=[v.device.name,v.device.businesses,v.device.number.toString(), v.send_number.toString(),v.sms_content,v.noticode.toString(),v.keyword];
                 for(let i=0;i<7;i++){
-                    if(dataO[i]!=''&&dataM[i]!=null){
-                        if(dataM[i].includes(dataO[i])){
-                            console.log(dataM[i]);
-                            console.log(dataO[i]);
-                            return true;
-                        }
+                    if((dataO[i]!=''&&dataM[i]!=null)&&dataM[i].includes(dataO[i])){
+                        return true;
                     }
                 }
                 return false;
             });
             this.dataA=data;
+        },
+        switch_stop(){
+            if(this.stop){
+                this.stop=false;
+            }else{
+                this.stop=true;
+            }
+        },
+        refresh(){
+            setTimeout(() => {
+            	this.refresh();
+            },6000);
+            if(this.stop){
+                console.log('A_A');
+                var that=this;
+                let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
+                $.ajax({
+                    headers: {
+                                    'X-CSRF-TOKEN': csrfToken.content
+                                },
+                    type:"post",
+                    url:"/sms-lists2",
+                    data:{},
+                    success:function(data){
+                        that.dataB=data;
+                    }
+                })
+            }
         },
     },
     mounted(){
@@ -175,7 +215,10 @@ const myapptable = new Vue({
                     that.dataB=data;
                 }
             })
-        })
+        });
+        this.refresh();
+
+
     }
 
 });

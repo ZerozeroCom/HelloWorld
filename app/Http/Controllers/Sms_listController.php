@@ -23,7 +23,7 @@ class Sms_listController extends Controller
     }
 
     public function index2(){
-        $data=Sms_list::with('device')->get();
+        $data=Sms_list::with('device')->orderByDesc('sms_sendtime')->get();
         //d($data);
 
         return response($data);

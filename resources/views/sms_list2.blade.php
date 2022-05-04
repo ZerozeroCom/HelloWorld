@@ -9,7 +9,6 @@
                     <div class="col-md-3 ">
                         <label for="sesend_number" class="col-form-label">簡訊發送號碼　</label>
                         <input type="number" class="col-form-control" v-model.trim="send_number" @keydown.enter="allsearch">
-                        @{{send_number}}
                     </div>
                     <div class="col-md-3" >
                         <label for="sesms_content" class="col-form-label">　關鍵字　</label>
@@ -51,12 +50,13 @@
                 <button type="button" class="m-2 btn btn-outline-primary" v-on:click="before_yesterday()">前日</button>
                 <button type="button" class="m-2 btn btn-outline-info" v-on:click="date_yesterday()">昨日</button>
                 <button type="button" class="m-2 btn btn-outline-success" v-on:click="date_today()">今日</button>
-                <button type="button" class="m-2 btn btn-outline-dark" id="sedev_date_clear">清除日期</button>
-                <button type="button" class="m-2 btn btn-outline-dark" id="sedev_all_clear">清除條件</button>
+                <button type="button" class="m-2 btn btn-outline-dark" v-on:click="date_clear()">清除日期</button>
+                <button type="button" class="m-2 btn btn-outline-dark" v-on:click="all_clear()">清除條件</button>
             </div>
             <div class="col my-auto">
                 <label for="sedev_number" class="col-form-label">自訂單日搜尋:</label>
-                <input type="date" class="col-form-control" id="sedev_date">
+                <input type="date" class="col-form-control" v-model.trim="sms_date" @keydown.enter="allsearch">
+
             </div>
             <div class="col-1" hidden>
                 <label for="sedev_month" class="col-form-label">自訂整月搜尋: (例: 2022-01)</label>
@@ -71,8 +71,8 @@
 </div>
 <div>
     <button type="button" class="btn m-3 btn-danger" id="se_del_sms" disabled>依照本頁搜尋結果刪除</button>
-    <button type="button" class="btn m-2 btn btn-dark " id="stop_reload">停止自動刷新</button>
-    <label id="stop_message" style="color: red"></label>
+    <button type="button" class="btn m-2 btn btn-dark " v-on:click="switch_stop()">停止自動刷新</button>
+    <label v-if="stop==false" style="color: red">已暫停自動刷新，重開請再次點擊或按F5</label>
 
 
 </div>
