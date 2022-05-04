@@ -50,8 +50,6 @@ const myapptable = new Vue({
             sms_keyword:'',
             stop:true,
 
-
-
         }
     },
     methods:{
@@ -181,20 +179,35 @@ const myapptable = new Vue({
             	this.refresh();
             },6000);
             if(this.stop){
-                console.log('A_A');
                 var that=this;
-                let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
-                $.ajax({
-                    headers: {
-                                    'X-CSRF-TOKEN': csrfToken.content
-                                },
-                    type:"post",
-                    url:"/sms-lists2",
-                    data:{},
-                    success:function(data){
-                        that.dataB=data;
-                    }
-                })
+                try {
+                    const a =this.dataB[0].smsid;
+
+                    let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
+                    $.ajax({
+                        headers: {
+                                        'X-CSRF-TOKEN': csrfToken.content
+                                    },
+                        type:"post",
+                        url:"/sms-lists3",
+                        data:{
+                            id:a,
+                        },
+                        success:function(data){
+                            if(data==''){
+                            }else{
+                                data.forEach(element => {
+                                });
+                                that.dataB.unshift(data);
+                            }
+
+
+
+                        }
+                    })
+                }
+                catch(err) {
+                }
             }
         },
     },
@@ -216,9 +229,11 @@ const myapptable = new Vue({
                 }
             })
         });
-        this.refresh();
 
 
-    }
+
+    },
+
 
 });
+setTimeout(myapptable.refresh(),6000);

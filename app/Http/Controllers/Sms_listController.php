@@ -24,11 +24,13 @@ class Sms_listController extends Controller
 
     public function index2(){
         $data=Sms_list::with('device')->orderByDesc('sms_sendtime')->get();
-        //d($data);
-
         return response($data);
     }
-
+    public function index3(Request $request){
+        //dd($request);
+        $data=Sms_list::where('smsid','>',$request->id)->with('device')->orderByDesc('sms_sendtime')->get();
+        return response($data);
+    }
 
     public function newSMSIn(Request $request,$id,KeywordServe $keywordServe){
         /*
