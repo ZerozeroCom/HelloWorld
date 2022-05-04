@@ -8,19 +8,20 @@
             <div class="row m-3">
                     <div class="col-md-3 ">
                         <label for="sesend_number" class="col-form-label">簡訊發送號碼　</label>
-                        <input type="number" class="col-form-control" v-model="send_number" >
+                        <input type="number" class="col-form-control" v-model.trim="send_number" @keydown.enter="allsearch">
+                        @{{send_number}}
                     </div>
                     <div class="col-md-3" >
                         <label for="sesms_content" class="col-form-label">　關鍵字　</label>
-                        <input type="text" class="col-form-control" v-model="sms_keyword">
+                        <input type="text" class="col-form-control" v-model.trim="sms_keyword" @keydown.enter="allsearch">
                     </div>
                     <div class="col-md-3">
                         <label for="sesms_content" class="col-form-label">簡訊內容　</label>
-                        <input type="text" class="col-form-control" v-model="sms_content">
+                        <input type="text" class="col-form-control" v-model.trim="sms_content" @keydown.enter="allsearch">
                     </div>
                     <div class="col-md-3 " >
                         <label for="sesnoticode" class="col-form-label">　　分類　</label>
-                        <select type="text" class="col-form-control"  v-model="noticode" >
+                        <select type="text" class="col-form-control"  v-model.trim="noticode" @keydown.enter="allsearch">
                             <option></option>
                             <option value="1">通知</option>
                             <option value="0">忽視</option>
@@ -30,15 +31,15 @@
             <div class="row m-3">
                 <div class="col-md-3 ">
                     <label for="sedev_name" class="col-form-label">　　裝置名稱　</label>
-                    <input type="text" class="col-form-control" v-model="dev_name">
+                    <input type="text" class="col-form-control" v-model.trim="dev_name" @keydown.enter="allsearch">
                 </div>
                 <div class="col-md-3 ">
                     <label for="sedev_businesses" class="col-form-label">裝置商戶　</label>
-                    <input type="text" class="col-form-control" v-model="dev_businesses">
+                    <input type="text" class="col-form-control" v-model.trim="dev_businesses" @keydown.enter="allsearch">
                 </div>
                 <div class="col-md-3">
                     <label for="sedev_number" class="col-form-label">裝置號碼　</label>
-                    <input type="number" class="col-form-control" v-model="dev_number">
+                    <input type="number" class="col-form-control" v-model.trim="dev_number" @keydown.enter="allsearch">
                 </div>
             </div>
         </form>
@@ -66,7 +67,7 @@
         </div>
     </div>
 
-    <button type="button" class="btn m-3 btn-primary " id="search_sms" style="font-weight: 600;">送出</button>
+    <button type="button" class="btn m-3 btn-primary " v-on:click="allsearch()" style="font-weight: 600;">送出</button>
 </div>
 <div>
     <button type="button" class="btn m-3 btn-danger" id="se_del_sms" disabled>依照本頁搜尋結果刪除</button>
@@ -103,8 +104,8 @@
                         <td class="status" >@{{item.device.number}}</td>
                         <td class="send_number" >@{{item.send_number}}</td>
                         <td class="sms_content" >@{{item.sms_content}}</td>
-                        <td class="keyword" >@{{item.keyword}}</td>
                         <td class="noticode" >@{{item.noticode}}</td>
+                        <td class="keyword" >@{{item.keyword}}</td>
 
                         <td><button class="btn btn-danger " :data-id="item.smsid" v-on:click="deletesms(item)">刪除</button></td>
                     </tr>

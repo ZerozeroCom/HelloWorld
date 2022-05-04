@@ -39,13 +39,16 @@ const myapptable = new Vue({
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             dataA:null,
             dataB:null,
-            send_number:null,
-            sms_keyword:null,
-            sms_content:null,
-            noticode:null,
-            dev_name:null,
-            dev_businesses:null,
-            dev_number:null,
+            tablecode:0,
+            dev_name:'',
+            dev_businesses:'',
+            dev_number:'',
+            send_number:'',
+            sms_content:'',
+            noticode:'',
+            sms_keyword:'',
+
+
 
         }
     },
@@ -129,6 +132,30 @@ const myapptable = new Vue({
                 });
             }else {
             }
+        },
+        allsearch(){
+            let dataO=[this.dev_name,this.dev_businesses,this.dev_number.toString(),this.send_number.toString(),this.sms_content,this.noticode.toString(),this.sms_keyword];
+            let check =dataO[0].length+dataO[1].length+dataO[2].length+dataO[3].length+dataO[4].length+dataO[5].length+dataO[6].length
+            if(check<1){
+                return
+            }
+            console.log(dataO);
+
+            this.dataA=this.dataB;
+            let data=this.dataA.filter(function (v) {
+                let dataM=[v.device.name,v.device.businesses,v.device.number.toString(), v.send_number.toString(),v.sms_content,v.noticode.toString(),v.keyword];
+                for(let i=0;i<7;i++){
+                    if(dataO[i]!=''&&dataM[i]!=null){
+                        if(dataM[i].includes(dataO[i])){
+                            console.log(dataM[i]);
+                            console.log(dataO[i]);
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            });
+            this.dataA=data;
         },
     },
     mounted(){
