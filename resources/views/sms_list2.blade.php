@@ -81,7 +81,23 @@
     <div class="card m-2" style="border-radius:10px!important;">
         <h5 class="card-header bg-infoCool py-3 row ml-0 mr-0" style="border-radius:10px 10px 0px 0px!important;">簡訊列表</h5>
         <div class=" m-4"  >
-            <table >
+
+            <div class="row">
+                <div class="col">顯示第 @{{pagefirst}} 至 @{{pagelast}}項結果，共 @{{pagelen}}項 <label v-if="pagelen < alllen"> (從 @{{alllen}} 項結果過濾)</label><br>
+                    顯示<select type="text" class=""  v-model="pagenum" >
+                        <option>50</option>
+                        <option>100</option>
+                        <option>500</option>
+                        <option>5</option>
+                    </select>項結果
+                </div>
+                <div class="col">@{{nowpage}}</div>
+                <div class="col">
+                    <button class="btn" v-on:click="nowpage=1">首頁</button><button class="btn" v-on:click="nowpagepre()" >上一頁</button><template v-for="a in totalpage"><button class="btn" v-on:click="nowpage=a">@{{a}}</button></template><button class="btn" v-on:click="nowpagenext()" >下一頁</button><button class="btn" v-on:click="nowpage=totalpage">尾頁</button>
+                </div>
+            </div>
+
+            <table>
                 <thead>
                     <tr>
                         <th>發送時間</th>
@@ -95,8 +111,8 @@
                         <th>操作</th>
                     </tr>
                 </thead>
-                <tbody >
-                    <tr class="item" v-for="item in dataA" :key="item.smsid">
+                <tbody>
+                    <tr class="item" v-for="item in showfield" :key="item.smsid">
 
                         <td class="sms_sendtime" >@{{item.sms_sendtime | timeString('YYYY-MM-DD HH:mm:ss')}}</td>
                         <td class="device_id" >@{{item.device.name}}</td>
@@ -111,6 +127,20 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col">顯示第 @{{pagefirst}} 至 @{{pagelast}} 項結果，共 @{{pagelen}}項 <label v-if="pagelen < alllen"> (從 @{{alllen}} 項結果過濾)</label><br>
+                    顯示<select type="text" class=""  v-model="pagenum" >
+                        <option>50</option>
+                        <option>100</option>
+                        <option>500</option>
+                        <option>5</option>
+                    </select>項結果
+                </div>
+                <div class="col">@{{nowpage}}</div>
+                <div class="col">
+                    <button class="btn" v-on:click="nowpage=1">首頁</button><button class="btn" v-on:click="nowpagepre()" >上一頁</button><template v-for="a in totalpage"><button class="btn" v-on:click="nowpage=a">@{{a}}</button></template><button class="btn" v-on:click="nowpagenext()" >下一頁</button><button class="btn" v-on:click="nowpage=totalpage">尾頁</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

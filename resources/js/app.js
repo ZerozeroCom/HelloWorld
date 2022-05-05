@@ -49,10 +49,96 @@ const myapptable = new Vue({
             noticode:'',
             sms_keyword:'',
             stop:true,
+            pagenum:50,
+            nowpage:1,
+
 
         }
     },
+    computed: {
+        pagefirst:function(){
+            try{
+                return 1+(this.nowpage-1)*this.pagenum;
+             }catch{
+
+             }
+             return 1;
+
+        },
+        pagelast:function(){
+            try{
+                if(this.nowpage != this.totalpage){
+                    return this.nowpage*this.pagenum;
+                }
+                return this.pagelen;
+
+             }catch{
+
+             }
+             return this.pagenum;
+
+        },
+        pagelen:function(){
+            try{
+                return Object.keys(this.dataA).length;
+
+             }catch{
+
+             }
+             return;
+
+        },
+        alllen:function(){
+            try{
+                return Object.keys(this.dataB).length;
+
+             }catch{
+
+             }
+             return;
+
+        },
+        totalpage:function(){
+            try{
+                let ddd =parseInt(this.pagelen/this.pagenum)+1;
+                console.log(ddd);
+                if(ddd){
+                    return ddd;
+                }
+            }catch{
+
+            }
+            return 5;
+
+        },
+        showfield:function(){
+            let a =this.pagelen;
+            let b =this.pagenum;
+            let c =this.nowpage;
+            try{
+            if(a < b){
+                return this.dataA;
+            }
+            let data= this.dataA.filter(function (index,val) {
+                if(val<c*b && val>= (c-1)*b ){
+                    return true;
+                }
+            });
+            return data;
+            }catch{}
+        },
+    },
     methods:{
+        nowpagenext(){
+            if(this.nowpage!=this.totalpage){
+                this.nowpage++;
+            }
+        },
+        nowpagepre(){
+            if(this.nowpage!=1){
+                this.nowpage--;
+            }
+        },
         lastmonth(){
             this.dataA=this.dataB;
             let data=this.dataA.filter(function (v) {
@@ -65,6 +151,7 @@ const myapptable = new Vue({
                 return table==date;
                 } );
                 this.dataA=data;
+
 
         },
         thismonth(){
@@ -134,8 +221,9 @@ const myapptable = new Vue({
             }
         },
         date_clear(){
-            sms_date='';
+            this.sms_date='';
             this.dataA=this.dataB;
+            this.allsearch();
         },
         all_clear(){
             this.dev_name='';
@@ -146,10 +234,11 @@ const myapptable = new Vue({
             this.noticode='';
             this.sms_keyword='';
             this.dataA=this.dataB;
+            this.allsearch();
         },
         allsearch(){
-            let dataO=[this.dev_name,this.dev_businesses,this.dev_number,this.send_number,this.sms_content,this.noticode,this.sms_keyword];
-            let check =dataO[0].length+dataO[1].length+dataO[2].length+dataO[3].length+dataO[4].length+dataO[5].length+dataO[6].length
+            let dataO=[this.dev_name,this.dev_businesses,this.dev_number,this.send_number,this.sms_content,this.noticode,this.sms_keyword,this.sms_date];
+            let check =dataO[0].length+dataO[1].length+dataO[2].length+dataO[3].length+dataO[4].length+dataO[5].length+dataO[6].length+dataO[7].length
             if(check<1){
                 return
             }
@@ -157,8 +246,8 @@ const myapptable = new Vue({
 
             this.dataA=this.dataB;
             let data=this.dataA.filter(function (v) {
-                let dataM=[v.device.name,v.device.businesses,v.device.number.toString(), v.send_number.toString(),v.sms_content,v.noticode.toString(),v.keyword];
-                for(let i=0;i<7;i++){
+                let dataM=[v.device.name,v.device.businesses,v.device.number+'', v.send_number+'',v.sms_content,v.noticode+'',v.keyword,v.sms_sendtime];
+                for(let i=0;i<8;i++){
                     if((dataO[i]!=''&&dataM[i]!=null)&&dataM[i].includes(dataO[i])){
                         return true;
                     }
@@ -177,7 +266,7 @@ const myapptable = new Vue({
         refresh(){
             setTimeout(() => {
             	this.refresh();
-            },6000);
+            },7000);
             if(this.stop){
                 var that=this;
                 try {
@@ -212,7 +301,14 @@ const myapptable = new Vue({
             }
         },
     },
+    created () {
+        console.log('created');
+      },
+    beforeMount () {
+        console.log('beforeMount');
+    },
     mounted(){
+        console.log('mounted');
         this.$nextTick(()=>{
             var that=this;
             let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
@@ -230,11 +326,18 @@ const myapptable = new Vue({
                 }
             })
         });
-
-
-
+    },
+    created () {
+        console.log('created');
+    },
+    beforeUpdate () {
+        console.log('beforeUpdate');
+    },
+    updated (){
+        console.log('updated');
     },
 
-
 });
-setTimeout(myapptable.refresh(),6000);
+setTimeout(myapptable.refresh(),7000);
+
+
