@@ -31,7 +31,7 @@ const app = new Vue({
 Vue.filter('timeString', function (value) {
     return moment(value).format('YYYY-MM-DD HH:mm:ss');
   });
-Vue.prototype.$search_data = new Vue();
+
 const myapptable = new Vue({
     el: '#myapptable',
     data() {
